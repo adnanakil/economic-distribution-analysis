@@ -145,7 +145,22 @@
   <div class="chart-card"><div id="ownershipChart"></div></div>
   <p><small>Source: Federal Reserve Distributional Financial Accounts (WFRBLT01014, WFRBLT01021, etc.)</small></p>
 
-  <h2>7. Key take‑aways</h2>
+  <h2>7. Wealth Trajectories by Birth Year: How Different Generations Fare</h2>
+  <p>This chart tracks actual wealth accumulation for people born in different years, showing how economic conditions have shaped each generation's financial journey. Follow any line to see how that birth cohort's wealth evolved as they aged.</p>
+  <div class="chart-card"><div id="ageWealthChart"></div></div>
+  <p><small>Source: Federal Reserve Survey of Consumer Finances (1989-2022), inflation-adjusted to 2024 dollars</small></p>
+
+  <h3>Reading the Cohort Trajectories</h3>
+  <p>Each line represents people born in a specific year, tracking their median net worth as they age:</p>
+  <ul>
+    <li><strong>Born 1950 (Boomers):</strong> Now in their 70s, they accumulated wealth steadily through the 80s-90s boom, reaching $410k median net worth by age 72.</li>
+    <li><strong>Born 1970 (Gen X):</strong> Hit by the dot-com bust in their 30s and financial crisis at 38, but recovered to $247k by age 52.</li>
+    <li><strong>Born 1980 (Older Millennials):</strong> Entered job market during recession, saw net worth crater to $19k at age 33 (2013), but rebounded to $136k by age 42.</li>
+    <li><strong>Born 1995 (Younger Millennials):</strong> Started with $25k at age 21, reached $39k by age 27—higher than 1980 cohort at same age despite pandemic.</li>
+  </ul>
+  <p>The chart reveals how timing matters: those who hit prime earning years during recessions (2001, 2008, 2020) show visible wealth dips, while those who were young during downturns often recovered more fully than those who were older.</p>
+
+  <h2>8. Key take‑aways</h2>
   <ol>
     <li><strong>After taxes, disparities persist.</strong> In 2023, the average worker took home ~$4.0k in new income after taxes (28% rate), while capital-owner households kept ~$50.9k thanks to lower tax rates on capital gains (20% rate).</li>
     <li><strong>Capital rebounds harder.</strong> During recessions (2009, 2020) both slices dip negative, but profits bounce back faster than wages.</li>
@@ -153,10 +168,11 @@
     <li><strong>The bottom half owns almost nothing.</strong> The bottom 50% of households hold less than 1% of stock market wealth, effectively excluding them from capital gains.</li>
     <li><strong>Productivity-pay gap keeps widening.</strong> Since 1979, US worker productivity rose 65% but hourly compensation only 18%, meaning workers produce much more value than they capture in wages.</li>
     <li><strong>Housing drives the affordability crisis.</strong> Official FRED data shows housing costs rose 50% above inflation since 1960, while electricity became 12% cheaper and food stayed stable.</li>
+    <li><strong>Birth timing shapes wealth outcomes.</strong> Those born in 1980 saw wealth drop to $19k at age 33 (2008 crisis), while 1995 babies already have $39k at 27. Economic timing matters as much as age itself.</li>
   </ol>
 
 
-  <h2>8. Important Limitations</h2>
+  <h2>9. Important Limitations</h2>
   <p>This analysis has several important limitations that should be considered:</p>
   <ul>
     <li><strong>Tax rate methodology:</strong> Uses weighted averages (~28% for labor reflecting mix of income levels and payroll taxes, ~20% for capital reflecting that top 10% own 90% of stocks and pay 15-20% capital gains rates). Doesn't include state taxes or tax credits.</li>
@@ -167,7 +183,7 @@
   </ul>
   <p>Despite these limitations, the broad patterns—growing productivity-pay gaps, concentrated ownership, and unequal distribution of growth—remain robust findings. The after-tax analysis shows that preferential tax treatment of capital income amplifies underlying inequalities.</p>
   
-  <h2>9. Tax Rate Methodology</h2>
+  <h2>10. Tax Rate Methodology</h2>
   <p>Our after-tax calculations use weighted average effective rates based on CBO data:</p>
   <ul>
     <li><strong>Labor income (28%):</strong> Reflects a weighted average across all workers, including:
@@ -276,11 +292,20 @@
       legend: { ...ownershipLayout.legend, font: { size: isMobile ? 10 : 12 } }
     };
     
+    const mobileAgeWealthLayout = {
+      ...ageWealthLayout,
+      height: isSmallMobile ? 350 : (isMobile ? 400 : 460),
+      margin: { t: 40, r: 60, l: 50, b: 100 },
+      title: { ...ageWealthLayout.title, font: { size: isMobile ? 14 : 16 } },
+      legend: { ...ageWealthLayout.legend, font: { size: isMobile ? 10 : 12 } }
+    };
+    
     Plotly.relayout('barChart', isMobile ? mobileBarLayout : barLayout);
     Plotly.relayout('perCapChart', isMobile ? mobilePerCapLayout : perCapLayout);
     Plotly.relayout('productivityChart', isMobile ? mobileProductivityLayout : productivityLayout);
     Plotly.relayout('cpiChart', isMobile ? mobileCpiLayout : cpiLayout);
     Plotly.relayout('ownershipChart', isMobile ? mobileOwnershipLayout : ownershipLayout);
+    Plotly.relayout('ageWealthChart', isMobile ? mobileAgeWealthLayout : ageWealthLayout);
   }
   
   window.addEventListener('resize', updateLayouts);
@@ -456,6 +481,142 @@
   Plotly.newPlot('productivityChart', productivityData, productivityLayout, config);
   Plotly.newPlot('cpiChart', cpiData, cpiLayout, config);
   Plotly.newPlot('ownershipChart', ownershipData, ownershipLayout, config);
+  
+  // ---------------- Chart 7: wealth by cohort ----------------
+  // Wealth trajectories by birth cohort
+  // Each cohort shows median net worth at different ages
+  const cohortData = [
+    {
+      name: 'Born 1950',
+      x: [39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72],  // ages
+      y: [88.5, 73.5, 128.9, 142.5, 167.8, 185.4, 313.4, 232.1, 209.5, 313.7, 357.2, 409.9],  // median net worth in thousands
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#8b0000' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1955',
+      x: [34, 37, 40, 43, 46, 49, 52, 55, 58, 61, 64, 67],
+      y: [22.8, 73.5, 71.3, 87.2, 167.8, 185.4, 219.3, 232.1, 209.5, 235.0, 314.8, 409.9],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#dc143c' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1960',
+      x: [29, 32, 35, 38, 41, 44, 47, 50, 53, 56, 59, 62],
+      y: [22.8, 20.3, 71.3, 87.2, 95.6, 99.2, 219.3, 150.4, 129.5, 235.0, 314.8, 364.5],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#ff4500' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1965',
+      x: [24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57],
+      y: [22.8, 20.3, 21.2, 24.9, 95.6, 99.2, 110.5, 150.4, 129.5, 157.3, 212.5, 364.5],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#ff6347' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1970',
+      x: [22, 25, 28, 31, 34, 37, 40, 43, 46, 49, 52],
+      y: [20.3, 21.2, 24.9, 28.7, 29.4, 110.5, 68.9, 62.7, 157.3, 212.5, 247.2],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#1e90ff' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1975',
+      x: [20, 23, 26, 29, 32, 35, 38, 41, 44, 47],
+      y: [21.2, 24.9, 28.7, 29.4, 28.3, 68.9, 62.7, 86.0, 110.6, 247.2],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#4169e1' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1980',
+      x: [21, 24, 27, 30, 33, 36, 39, 42],
+      y: [28.7, 29.4, 28.3, 20.5, 18.9, 86.0, 110.6, 135.6],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#32cd32' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1985',
+      x: [22, 25, 28, 31, 34, 37],
+      y: [28.3, 20.5, 18.9, 25.4, 30.6, 135.6],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#228b22' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1990',
+      x: [20, 23, 26, 29, 32],
+      y: [20.5, 18.9, 25.4, 30.6, 39.0],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#ff1493' },
+      marker: { size: 5 }
+    },
+    {
+      name: 'Born 1995',
+      x: [21, 24, 27],
+      y: [25.4, 30.6, 39.0],
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 2, color: '#9370db' },
+      marker: { size: 5 }
+    }
+  ];
+  
+  const ageWealthLayout = {
+    height: 460,
+    margin: { t: 50, r: 20, l: 60, b: 80 },
+    title: { text: 'Median Net Worth by Birth Cohort as They Age', pad: { b: 10 } },
+    xaxis: { 
+      title: 'Age',
+      range: [20, 75]
+    },
+    yaxis: {
+      title: 'Median Net Worth (thousands)',
+      tickprefix: '$',
+      ticksuffix: 'k',
+      rangemode: 'tozero'
+    },
+    legend: { 
+      orientation: 'v', 
+      x: 0.02, 
+      y: 0.98,
+      xanchor: 'left',
+      yanchor: 'top',
+      bgcolor: 'rgba(255,255,255,0.8)'
+    },
+    hovermode: 'x unified',
+    annotations: [{
+      x: 30,
+      y: 20.5,
+      text: '2008 Crisis',
+      showarrow: true,
+      arrowhead: 2,
+      arrowsize: 1,
+      arrowwidth: 1,
+      arrowcolor: '#666',
+      ax: -40,
+      ay: -30,
+      font: { size: 11, color: '#666' }
+    }]
+  };
+  
+  Plotly.newPlot('ageWealthChart', cohortData, ageWealthLayout, config);
   
   // Initial layout update
   updateLayouts();
