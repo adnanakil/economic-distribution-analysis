@@ -139,12 +139,17 @@
   <p><small>Sources: US data from BLS; EU data from Eurostat (labour productivity per hour worked) and ECB (real compensation per employee)</small></p>
 
 
-  <h2>6. Who owns the capital?</h2>
+  <h2>6. Component Breakdown: What Drives the Cost of Living?</h2>
+  <p>Official FRED data reveals surprising trends in real (inflation-adjusted) prices since 1960. While housing costs have risen 50% above inflation, electricity has actually become 12% cheaper in real terms, and food prices have remained relatively stable.</p>
+  <div class="chart-card"><div id="cpiChart"></div></div>
+  <p><small>Source: Federal Reserve Economic Data (FRED) series CUSR0000SAH1 (shelter), CUSR0000SEHF01 (electricity), CPIUFDSL (food), CPIAUCSL (overall CPI)</small></p>
+
+  <h2>7. Who owns the capital?</h2>
   <p>The concentration of wealth becomes clearer when we examine who actually owns corporate equity and mutual funds. Fed data reveals an ownership pyramid where the top 1% of households control nearly half of all stock market wealth.</p>
   <div class="chart-card"><div id="ownershipChart"></div></div>
   <p><small>Source: Federal Reserve Distributional Financial Accounts (WFRBLT01014, WFRBLT01021, etc.)</small></p>
 
-  <h2>7. Key take‑aways</h2>
+  <h2>8. Key take‑aways</h2>
   <ol>
     <li><strong>After taxes, disparities persist.</strong> In 2023, the average worker took home ~$4.0k in new income after taxes (28% rate), while capital-owner households kept ~$50.9k thanks to lower tax rates on capital gains (20% rate).</li>
     <li><strong>Capital rebounds harder.</strong> During recessions (2009, 2020) both slices dip negative, but profits bounce back faster than wages.</li>
@@ -152,10 +157,11 @@
     <li><strong>The bottom half owns almost nothing.</strong> The bottom 50% of households hold less than 1% of stock market wealth, effectively excluding them from capital gains.</li>
     <li><strong>Productivity-pay gap keeps widening.</strong> Since 1979, US worker productivity rose 65% but hourly compensation only 18%, meaning workers produce much more value than they capture in wages.</li>
     <li><strong>EU shows similar but smaller gap.</strong> European workers also see wages lag productivity, but the divergence (20.5% vs 15.2% since 2000) is less extreme than in the US.</li>
+    <li><strong>Housing drives the affordability crisis.</strong> Official FRED data shows housing costs rose 50% above inflation since 1960, while electricity became 12% cheaper and food stayed stable.</li>
   </ol>
 
 
-  <h2>8. Important Limitations</h2>
+  <h2>9. Important Limitations</h2>
   <p>This analysis has several important limitations that should be considered:</p>
   <ul>
     <li><strong>Tax rate methodology:</strong> Uses weighted averages (~28% for labor reflecting mix of income levels and payroll taxes, ~20% for capital reflecting that top 10% own 90% of stocks and pay 15-20% capital gains rates). Doesn't include state taxes or tax credits.</li>
@@ -166,7 +172,7 @@
   </ul>
   <p>Despite these limitations, the broad patterns—growing productivity-pay gaps, concentrated ownership, and unequal distribution of growth—remain robust findings. The after-tax analysis shows that preferential tax treatment of capital income amplifies underlying inequalities.</p>
   
-  <h2>9. Tax Rate Methodology</h2>
+  <h2>10. Tax Rate Methodology</h2>
   <p>Our after-tax calculations use weighted average effective rates based on CBO data:</p>
   <ul>
     <li><strong>Labor income (28%):</strong> Reflects a weighted average across all workers, including:
@@ -266,6 +272,18 @@
     };
     
     
+    const mobileCpiLayout = {
+      ...cpiLayout,
+      height: isSmallMobile ? 350 : (isMobile ? 400 : 460),
+      margin: { t: 40, r: 10, l: 50, b: 100 },
+      title: { ...cpiLayout.title, font: { size: isMobile ? 14 : 16 } },
+      legend: { ...cpiLayout.legend, font: { size: isMobile ? 10 : 12 } },
+      annotations: cpiLayout.annotations.map(ann => ({
+        ...ann,
+        font: { ...ann.font, size: isMobile ? 9 : 11 }
+      }))
+    };
+    
     const mobileOwnershipLayout = {
       ...ownershipLayout,
       height: isSmallMobile ? 350 : (isMobile ? 400 : 460),
@@ -278,6 +296,7 @@
     Plotly.relayout('perCapChart', isMobile ? mobilePerCapLayout : perCapLayout);
     Plotly.relayout('productivityChart', isMobile ? mobileProductivityLayout : productivityLayout);
     Plotly.relayout('internationalChart', isMobile ? mobileInternationalLayout : internationalLayout);
+    Plotly.relayout('cpiChart', isMobile ? mobileCpiLayout : cpiLayout);
     Plotly.relayout('ownershipChart', isMobile ? mobileOwnershipLayout : ownershipLayout);
   }
   
@@ -447,7 +466,89 @@
     }]
   };
   
-  // ---------------- Chart 5: ownership distribution ----------------
+  // ---------------- Chart 5: CPI components (official FRED data) ----------------
+  const cpiYears = [1960, 1970, 1980, 1990, 2000, 2010, 2020, 2024];
+  const cpiHousingReal = [100.0, 107.2, 115.2, 125.6, 131.6, 133.5, 147.6, 149.7];
+  const cpiElectricityReal = [100.0, 81.1, 91.1, 88.9, 73.9, 87.7, 82.1, 88.1];
+  const cpiFoodReal = [100.0, 99.5, 103.9, 99.9, 96.1, 99.3, 101.8, 103.8];
+  
+  const cpiData = [
+    {
+      x: cpiYears,
+      y: cpiHousingReal,
+      name: 'Housing/Shelter',
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 3, color: '#dc2626' },
+      marker: { size: 8 }
+    },
+    {
+      x: cpiYears,
+      y: cpiElectricityReal,
+      name: 'Electricity',
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 3, color: '#3b82f6' },
+      marker: { size: 8 }
+    },
+    {
+      x: cpiYears,
+      y: cpiFoodReal,
+      name: 'Food',
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 3, color: '#10b981' },
+      marker: { size: 8 }
+    },
+    {
+      x: cpiYears,
+      y: Array(cpiYears.length).fill(100),
+      name: 'Baseline (Overall CPI = 100)',
+      type: 'scatter',
+      mode: 'lines',
+      line: { width: 2, color: '#6b7280', dash: 'dash' },
+      marker: { size: 0 }
+    }
+  ];
+  
+  const cpiLayout = {
+    height: 460,
+    margin: { t: 50, r: 20, l: 60, b: 80 },
+    title: { text: 'Real Price Changes: Essential Goods (Inflation-Adjusted, 1960=100)', pad: { b: 10 } },
+    yaxis: { title: 'Index (1960 = 100, adjusted for inflation)', range: [60, 160] },
+    xaxis: { title: 'Year' },
+    legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.15, yanchor: 'top' },
+    annotations: [{
+      x: 2024,
+      y: 149.7,
+      xref: 'x',
+      yref: 'y',
+      text: '+50%',
+      showarrow: false,
+      xanchor: 'left',
+      font: { size: 11, color: '#dc2626' }
+    }, {
+      x: 2024,
+      y: 88.1,
+      xref: 'x',
+      yref: 'y',
+      text: '-12%',
+      showarrow: false,
+      xanchor: 'left',
+      font: { size: 11, color: '#3b82f6' }
+    }, {
+      x: 2024,
+      y: 103.8,
+      xref: 'x',
+      yref: 'y',
+      text: '+4%',
+      showarrow: false,
+      xanchor: 'left',
+      font: { size: 11, color: '#10b981' }
+    }]
+  };
+  
+  // ---------------- Chart 6: ownership distribution ----------------
   // Based on Fed Distributional Financial Accounts Q3 2024 data
   const ownershipData = [
     { x: ['2010', '2015', '2020', '2024'], y: [47.2, 47.6, 47.7, 48.1], name: 'Top 1%', type: 'bar', marker: { color: '#8b0000' } },
@@ -466,6 +567,7 @@
   };
   Plotly.newPlot('productivityChart', productivityData, productivityLayout, config);
   Plotly.newPlot('internationalChart', internationalData, internationalLayout, config);
+  Plotly.newPlot('cpiChart', cpiData, cpiLayout, config);
   Plotly.newPlot('ownershipChart', ownershipData, ownershipLayout, config);
   
   // Initial layout update
