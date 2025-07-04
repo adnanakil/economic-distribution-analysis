@@ -137,8 +137,8 @@
   <div class="chart-card"><div id="internationalChart"></div></div>
   <p><small>Sources: US data from BLS; EU data from Eurostat (labour productivity per hour worked) and ECB (real compensation per employee)</small></p>
 
-  <h2>6. The Rising Cost of Basic Needs</h2>
-  <p>Since 1960, the cost of essential goods has outpaced both overall inflation and wage growth. Housing costs have increased 1,800%, electricity 1,400%, and food 1,100%, while median wages only rose 800%—making basic necessities increasingly unaffordable.</p>
+  <h2>6. The Rising Cost of Basic Needs (Inflation-Adjusted)</h2>
+  <p>After adjusting for general inflation, we see the real price changes of essential goods. Housing has become 57% more expensive in real terms, electricity 22% more, while food has actually become 4% cheaper. Meanwhile, real wages have declined by 30% relative to overall prices.</p>
   <div class="chart-card"><div id="cpiChart"></div></div>
   <p><small>Source: U.S. Bureau of Labor Statistics, Consumer Price Index for All Urban Consumers (CPI-U), indexed to 1960=100</small></p>
 
@@ -155,7 +155,7 @@
     <li><strong>The bottom half owns almost nothing.</strong> The bottom 50% of households hold less than 1% of stock market wealth, effectively excluding them from capital gains.</li>
     <li><strong>Productivity-pay gap keeps widening.</strong> Since 1979, US worker productivity rose 65% but hourly compensation only 18%, meaning workers produce much more value than they capture in wages.</li>
     <li><strong>EU shows similar but smaller gap.</strong> European workers also see wages lag productivity, but the divergence (20.5% vs 15.2% since 2000) is less extreme than in the US.</li>
-    <li><strong>Basic needs becoming unaffordable.</strong> Essential goods like housing (+1,800%), electricity (+1,400%), and food (+1,100%) have far outpaced wage growth (+800%) since 1960.</li>
+    <li><strong>Basic needs becoming unaffordable.</strong> In real terms, housing costs have risen 57% above inflation while real wages have fallen 30%, creating a significant affordability crisis.</li>
   </ol>
 </main>
 
@@ -432,19 +432,21 @@
   };
   
   // ---------------- Chart 5: CPI for essential goods ----------------
-  // CPI data indexed to 1960=100
+  // Inflation-adjusted data (normalized to overall CPI, 1960=100)
   const cpiYears = [1960, 1970, 1980, 1990, 2000, 2010, 2020, 2024];
-  const cpiHousing = [100, 138, 362, 581, 808, 1216, 1589, 1800];  // Housing/Shelter
-  const cpiElectricity = [100, 125, 314, 507, 678, 1021, 1298, 1400];  // Electricity
-  const cpiFood = [100, 139, 355, 529, 696, 877, 1042, 1100];  // Food
   const cpiOverall = [100, 139, 347, 531, 696, 880, 1054, 1150];  // Overall CPI
-  const medianWages = [100, 142, 291, 428, 571, 680, 771, 800];  // Median wages
+  
+  // Calculate inflation-adjusted values (original CPI / overall CPI * 100)
+  const cpiHousingReal = [100, 99, 104, 109, 116, 138, 151, 157];  // Housing relative to CPI
+  const cpiElectricityReal = [100, 90, 91, 95, 97, 116, 123, 122];  // Electricity relative to CPI
+  const cpiFoodReal = [100, 100, 102, 100, 100, 100, 99, 96];  // Food relative to CPI
+  const medianWagesReal = [100, 102, 84, 81, 82, 77, 73, 70];  // Real wages
   
   const cpiData = [
     {
       x: cpiYears,
-      y: cpiHousing,
-      name: 'Housing/Shelter',
+      y: cpiHousingReal,
+      name: 'Housing/Shelter (real)',
       type: 'scatter',
       mode: 'lines+markers',
       line: { shape: 'spline', width: 3, color: '#dc2626' },
@@ -452,8 +454,8 @@
     },
     {
       x: cpiYears,
-      y: cpiElectricity,
-      name: 'Electricity',
+      y: cpiElectricityReal,
+      name: 'Electricity (real)',
       type: 'scatter',
       mode: 'lines+markers',
       line: { shape: 'spline', width: 3, color: '#f59e0b' },
@@ -461,8 +463,8 @@
     },
     {
       x: cpiYears,
-      y: cpiFood,
-      name: 'Food',
+      y: cpiFoodReal,
+      name: 'Food (real)',
       type: 'scatter',
       mode: 'lines+markers',
       line: { shape: 'spline', width: 3, color: '#10b981' },
@@ -470,46 +472,46 @@
     },
     {
       x: cpiYears,
-      y: cpiOverall,
-      name: 'Overall CPI',
-      type: 'scatter',
-      mode: 'lines+markers',
-      line: { shape: 'spline', width: 2, color: '#6b7280', dash: 'dash' },
-      marker: { size: 6 }
-    },
-    {
-      x: cpiYears,
-      y: medianWages,
-      name: 'Median Wages',
+      y: medianWagesReal,
+      name: 'Real Median Wages',
       type: 'scatter',
       mode: 'lines+markers',
       line: { shape: 'spline', width: 3, color: '#2563eb' },
       marker: { size: 8 }
+    },
+    {
+      x: cpiYears,
+      y: Array(cpiYears.length).fill(100),
+      name: 'Baseline (Overall CPI)',
+      type: 'scatter',
+      mode: 'lines',
+      line: { width: 2, color: '#6b7280', dash: 'dash' },
+      marker: { size: 0 }
     }
   ];
   
   const cpiLayout = {
     height: 460,
     margin: { t: 50, r: 20, l: 60, b: 80 },
-    title: { text: 'Essential Goods vs Wages: Cumulative Growth Since 1960', pad: { b: 10 } },
-    yaxis: { title: 'Index (1960 = 100)', type: 'log', tickformat: ',d' },
+    title: { text: 'Real Price Changes: Essential Goods vs Wages (Inflation-Adjusted)', pad: { b: 10 } },
+    yaxis: { title: 'Index (1960 = 100, adjusted for inflation)', range: [60, 170] },
     xaxis: { title: 'Year' },
     legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.15, yanchor: 'top' },
     annotations: [{
       x: 2024,
-      y: 1800,
+      y: 157,
       xref: 'x',
       yref: 'y',
-      text: '+1,800%',
+      text: '+57%',
       showarrow: false,
       xanchor: 'left',
       font: { size: 11, color: '#dc2626' }
     }, {
       x: 2024,
-      y: 800,
+      y: 70,
       xref: 'x',
       yref: 'y',
-      text: '+800%',
+      text: '-30%',
       showarrow: false,
       xanchor: 'left',
       font: { size: 11, color: '#2563eb' }
