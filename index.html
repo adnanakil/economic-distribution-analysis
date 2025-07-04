@@ -133,35 +133,30 @@
   <div class="chart-card"><div id="productivityChart"></div></div>
   <p><small>Source: U.S. Bureau of Labor Statistics, Real hourly compensation (COMPRNFB) and Labor productivity (OPHNFB), indexed to 1979=100</small></p>
 
-  <h2>5. International Comparison: US vs EU</h2>
-  <p>The productivity-wage gap isn't unique to the US. Since 2000, the EU has seen productivity grow by 20.5% while real wages increased by only 15.2%. However, the gap is more pronounced in the US, where productivity gains have far outpaced wage growth.</p>
-  <div class="chart-card"><div id="internationalChart"></div></div>
-  <p><small>Sources: US data from BLS; EU data from Eurostat (labour productivity per hour worked) and ECB (real compensation per employee)</small></p>
 
 
-  <h2>6. Component Breakdown: What Drives the Cost of Living?</h2>
+  <h2>5. Component Breakdown: What Drives the Cost of Living?</h2>
   <p>Official FRED data reveals surprising trends in real (inflation-adjusted) prices since 1960. While housing costs have risen 50% above inflation, electricity has actually become 12% cheaper in real terms, and food prices have remained relatively stable.</p>
   <div class="chart-card"><div id="cpiChart"></div></div>
   <p><small>Source: Federal Reserve Economic Data (FRED) series CUSR0000SAH1 (shelter), CUSR0000SEHF01 (electricity), CPIUFDSL (food), CPIAUCSL (overall CPI)</small></p>
 
-  <h2>7. Who owns the capital?</h2>
+  <h2>6. Who owns the capital?</h2>
   <p>The concentration of wealth becomes clearer when we examine who actually owns corporate equity and mutual funds. Fed data reveals an ownership pyramid where the top 1% of households control nearly half of all stock market wealth.</p>
   <div class="chart-card"><div id="ownershipChart"></div></div>
   <p><small>Source: Federal Reserve Distributional Financial Accounts (WFRBLT01014, WFRBLT01021, etc.)</small></p>
 
-  <h2>8. Key take‑aways</h2>
+  <h2>7. Key take‑aways</h2>
   <ol>
     <li><strong>After taxes, disparities persist.</strong> In 2023, the average worker took home ~$4.0k in new income after taxes (28% rate), while capital-owner households kept ~$50.9k thanks to lower tax rates on capital gains (20% rate).</li>
     <li><strong>Capital rebounds harder.</strong> During recessions (2009, 2020) both slices dip negative, but profits bounce back faster than wages.</li>
     <li><strong>Ownership concentration amplifies gains.</strong> Fed data show the top&nbsp;1&nbsp;% own ~50&nbsp;% of corporate equity, funnelling half of the capital slice to just 1.3 million households.</li>
     <li><strong>The bottom half owns almost nothing.</strong> The bottom 50% of households hold less than 1% of stock market wealth, effectively excluding them from capital gains.</li>
     <li><strong>Productivity-pay gap keeps widening.</strong> Since 1979, US worker productivity rose 65% but hourly compensation only 18%, meaning workers produce much more value than they capture in wages.</li>
-    <li><strong>EU shows similar but smaller gap.</strong> European workers also see wages lag productivity, but the divergence (20.5% vs 15.2% since 2000) is less extreme than in the US.</li>
     <li><strong>Housing drives the affordability crisis.</strong> Official FRED data shows housing costs rose 50% above inflation since 1960, while electricity became 12% cheaper and food stayed stable.</li>
   </ol>
 
 
-  <h2>9. Important Limitations</h2>
+  <h2>8. Important Limitations</h2>
   <p>This analysis has several important limitations that should be considered:</p>
   <ul>
     <li><strong>Tax rate methodology:</strong> Uses weighted averages (~28% for labor reflecting mix of income levels and payroll taxes, ~20% for capital reflecting that top 10% own 90% of stocks and pay 15-20% capital gains rates). Doesn't include state taxes or tax credits.</li>
@@ -172,7 +167,7 @@
   </ul>
   <p>Despite these limitations, the broad patterns—growing productivity-pay gaps, concentrated ownership, and unequal distribution of growth—remain robust findings. The after-tax analysis shows that preferential tax treatment of capital income amplifies underlying inequalities.</p>
   
-  <h2>10. Tax Rate Methodology</h2>
+  <h2>9. Tax Rate Methodology</h2>
   <p>Our after-tax calculations use weighted average effective rates based on CBO data:</p>
   <ul>
     <li><strong>Labor income (28%):</strong> Reflects a weighted average across all workers, including:
@@ -259,17 +254,6 @@
       }))
     };
     
-    const mobileInternationalLayout = {
-      ...internationalLayout,
-      height: isSmallMobile ? 350 : (isMobile ? 400 : 460),
-      margin: { t: 40, r: 10, l: 50, b: 120 },
-      title: { ...internationalLayout.title, font: { size: isMobile ? 14 : 16 } },
-      legend: { ...internationalLayout.legend, font: { size: isMobile ? 10 : 12 } },
-      annotations: internationalLayout.annotations.map(ann => ({
-        ...ann,
-        font: { ...ann.font, size: isMobile ? 9 : 11 }
-      }))
-    };
     
     
     const mobileCpiLayout = {
@@ -295,7 +279,6 @@
     Plotly.relayout('barChart', isMobile ? mobileBarLayout : barLayout);
     Plotly.relayout('perCapChart', isMobile ? mobilePerCapLayout : perCapLayout);
     Plotly.relayout('productivityChart', isMobile ? mobileProductivityLayout : productivityLayout);
-    Plotly.relayout('internationalChart', isMobile ? mobileInternationalLayout : internationalLayout);
     Plotly.relayout('cpiChart', isMobile ? mobileCpiLayout : cpiLayout);
     Plotly.relayout('ownershipChart', isMobile ? mobileOwnershipLayout : ownershipLayout);
   }
@@ -371,102 +354,7 @@
     }]
   };
   
-  // ---------------- Chart 4: international comparison ----------------
-  // US vs EU productivity and wages growth
-  const intlYears = [2000, 2005, 2010, 2015, 2020, 2024];
-  const usProductivityInt = [100, 109.5, 118.2, 120.1, 125.7, 132.3];  // US productivity since 2000
-  const usWagesInt = [100, 101.5, 104.1, 105.9, 110.2, 113.8];  // US real wages since 2000
-  const euProductivity = [100, 105.3, 109.8, 114.2, 118.5, 120.5];  // EU productivity since 2000
-  const euWages = [100, 103.8, 107.2, 110.5, 113.8, 115.2];  // EU real wages since 2000
-  
-  const internationalData = [
-    {
-      x: intlYears,
-      y: usProductivityInt,
-      name: 'US Productivity',
-      type: 'scatter',
-      mode: 'lines+markers',
-      line: { shape: 'spline', width: 3, color: '#2563eb', dash: 'solid' },
-      marker: { size: 8 }
-    },
-    {
-      x: intlYears,
-      y: usWagesInt,
-      name: 'US Real Wages',
-      type: 'scatter',
-      mode: 'lines+markers',
-      line: { shape: 'spline', width: 3, color: '#93c5fd', dash: 'solid' },
-      marker: { size: 8 }
-    },
-    {
-      x: intlYears,
-      y: euProductivity,
-      name: 'EU Productivity',
-      type: 'scatter',
-      mode: 'lines+markers',
-      line: { shape: 'spline', width: 3, color: '#dc2626', dash: 'dot' },
-      marker: { size: 8 }
-    },
-    {
-      x: intlYears,
-      y: euWages,
-      name: 'EU Real Wages',
-      type: 'scatter',
-      mode: 'lines+markers',
-      line: { shape: 'spline', width: 3, color: '#fca5a5', dash: 'dot' },
-      marker: { size: 8 }
-    }
-  ];
-  
-  const internationalLayout = {
-    height: 460,
-    margin: { t: 50, r: 20, l: 60, b: 100 },
-    title: { text: 'Productivity vs Real Wages: US and EU (2000-2024)', pad: { b: 10 } },
-    yaxis: { title: 'Index (2000 = 100)', range: [80, 140] },
-    xaxis: { title: 'Year' },
-    legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.2, yanchor: 'top' },
-    annotations: [{
-      x: 2024,
-      y: 132.3,
-      xref: 'x',
-      yref: 'y',
-      text: 'US +32.3%',
-      showarrow: false,
-      xanchor: 'left',
-      font: { size: 11, color: '#2563eb' }
-    }, {
-      x: 2024,
-      y: 113.8,
-      xref: 'x',
-      yref: 'y',
-      text: 'US +13.8%',
-      showarrow: false,
-      xanchor: 'left',
-      font: { size: 11, color: '#93c5fd' }
-    }, {
-      x: 2024,
-      y: 120.5,
-      xref: 'x',
-      yref: 'y',
-      text: 'EU +20.5%',
-      showarrow: false,
-      xanchor: 'left',
-      yshift: -15,
-      font: { size: 11, color: '#dc2626' }
-    }, {
-      x: 2024,
-      y: 115.2,
-      xref: 'x',
-      yref: 'y',
-      text: 'EU +15.2%',
-      showarrow: false,
-      xanchor: 'left',
-      yshift: -15,
-      font: { size: 11, color: '#fca5a5' }
-    }]
-  };
-  
-  // ---------------- Chart 5: CPI components (official FRED data) ----------------
+  // ---------------- Chart 4: CPI components (official FRED data) ----------------
   const cpiYears = [1960, 1970, 1980, 1990, 2000, 2010, 2020, 2024];
   const cpiHousingReal = [100.0, 107.2, 115.2, 125.6, 131.6, 133.5, 147.6, 149.7];
   const cpiElectricityReal = [100.0, 81.1, 91.1, 88.9, 73.9, 87.7, 82.1, 88.1];
@@ -548,7 +436,7 @@
     }]
   };
   
-  // ---------------- Chart 6: ownership distribution ----------------
+  // ---------------- Chart 5: ownership distribution ----------------
   // Based on Fed Distributional Financial Accounts Q3 2024 data
   const ownershipData = [
     { x: ['2010', '2015', '2020', '2024'], y: [47.2, 47.6, 47.7, 48.1], name: 'Top 1%', type: 'bar', marker: { color: '#8b0000' } },
@@ -566,7 +454,6 @@
     legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.25, yanchor: 'top' }
   };
   Plotly.newPlot('productivityChart', productivityData, productivityLayout, config);
-  Plotly.newPlot('internationalChart', internationalData, internationalLayout, config);
   Plotly.newPlot('cpiChart', cpiData, cpiLayout, config);
   Plotly.newPlot('ownershipChart', ownershipData, ownershipLayout, config);
   
