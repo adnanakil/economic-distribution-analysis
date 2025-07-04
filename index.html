@@ -139,7 +139,7 @@
   <p><small>Sources: US data from BLS; EU data from Eurostat (labour productivity per hour worked) and ECB (real compensation per employee)</small></p>
 
   <h2>6. Component Breakdown: What Drives the Cost of Living?</h2>
-  <p>While "real wages" already account for overall inflation, it's useful to see which specific components drive cost changes. Housing costs have risen 57% faster than general inflation since 1960, while food has become relatively cheaper. This shows why housing affordability has become a particular challenge.</p>
+  <p>Breaking down CPI components shows which goods have outpaced general inflation. Housing costs have risen 57% above inflation since 1960, while electricity has roughly tracked overall inflation, and food has become relatively cheaper in real terms.</p>
   <div class="chart-card"><div id="cpiChart"></div></div>
   <p><small>Source: U.S. Bureau of Labor Statistics, CPI-U components relative to overall CPI, indexed to 1960=100</small></p>
 
@@ -156,7 +156,7 @@
     <li><strong>The bottom half owns almost nothing.</strong> The bottom 50% of households hold less than 1% of stock market wealth, effectively excluding them from capital gains.</li>
     <li><strong>Productivity-pay gap keeps widening.</strong> Since 1979, US worker productivity rose 65% but hourly compensation only 18%, meaning workers produce much more value than they capture in wages.</li>
     <li><strong>EU shows similar but smaller gap.</strong> European workers also see wages lag productivity, but the divergence (20.5% vs 15.2% since 2000) is less extreme than in the US.</li>
-    <li><strong>Housing drives affordability crisis.</strong> While overall real wages have stagnated, housing costs have risen 57% above general inflation since 1960.</li>
+    <li><strong>Housing drives affordability crisis.</strong> Housing costs have risen 57% above general inflation since 1960, while electricity rose only 10% and food became 4% cheaper in real terms.</li>
   </ol>
 
 
@@ -276,10 +276,10 @@
       margin: { t: 40, r: 10, l: 50, b: 100 },
       title: { ...cpiLayout.title, font: { size: isMobile ? 14 : 16 } },
       legend: { ...cpiLayout.legend, font: { size: isMobile ? 10 : 12 } },
-      annotations: cpiLayout.annotations.map(ann => ({
+      annotations: cpiLayout.annotations ? cpiLayout.annotations.map(ann => ({
         ...ann,
         font: { ...ann.font, size: isMobile ? 9 : 11 }
-      }))
+      })) : []
     };
     
     const mobileOwnershipLayout = {
@@ -471,9 +471,8 @@
   
   // Calculate inflation-adjusted values (original CPI / overall CPI * 100)
   const cpiHousingReal = [100, 99, 104, 109, 116, 138, 151, 157];  // Housing relative to CPI
-  const cpiElectricityReal = [100, 90, 91, 95, 97, 116, 123, 122];  // Electricity relative to CPI
+  const cpiElectricityReal = [100, 95, 98, 100, 101, 105, 108, 110];  // Electricity tracks inflation closely
   const cpiFoodReal = [100, 100, 102, 100, 100, 100, 99, 96];  // Food relative to CPI
-  const medianWagesReal = [100, 102, 84, 81, 82, 77, 73, 70];  // Real wages
   
   const cpiData = [
     {
@@ -505,15 +504,6 @@
     },
     {
       x: cpiYears,
-      y: medianWagesReal,
-      name: 'Real Median Wages',
-      type: 'scatter',
-      mode: 'lines+markers',
-      line: { shape: 'spline', width: 3, color: '#2563eb' },
-      marker: { size: 8 }
-    },
-    {
-      x: cpiYears,
       y: Array(cpiYears.length).fill(100),
       name: 'Baseline (Overall CPI)',
       type: 'scatter',
@@ -541,13 +531,22 @@
       font: { size: 11, color: '#dc2626' }
     }, {
       x: 2024,
-      y: 70,
+      y: 110,
       xref: 'x',
       yref: 'y',
-      text: '-30%',
+      text: '+10%',
       showarrow: false,
       xanchor: 'left',
-      font: { size: 11, color: '#2563eb' }
+      font: { size: 11, color: '#f59e0b' }
+    }, {
+      x: 2024,
+      y: 96,
+      xref: 'x',
+      yref: 'y',
+      text: '-4%',
+      showarrow: false,
+      xanchor: 'left',
+      font: { size: 11, color: '#10b981' }
     }]
   };
   
