@@ -180,8 +180,13 @@
   </div>
   <p>The data reveals a stark reality: while 92% of children born in 1940 earned more than their parents, only 43% of those born in 1990 can say the same. The chance of moving from the bottom income quintile to the top has nearly halved, while the likelihood of remaining stuck at the bottom has increased by 45%.</p>
 
-  <h2>9. Corporate Profits: A Growing Slice of the Economy</h2>
-  <p>Corporate profits as a share of GDP reveal another dimension of inequality. After declining through the 1970s and hitting a low in the 1980s, the profit share has surged to post-war highs, nearly doubling from its 1980s trough.</p>
+  <h2>9. The Great Rebalancing: Labor's Loss is Capital's Gain</h2>
+  <p>The inverse relationship between labor compensation and corporate profits reveals a zero-sum dynamic. As labor's share of the economy has steadily declined, corporate profits have surged to fill the gap—a massive transfer of economic rewards from workers to shareholders.</p>
+  <div class="chart-card"><div id="laborVsProfitChart"></div></div>
+  <p><small>Source: BLS Non-farm Business Labor Share (PRS85006173) and FRED Corporate Profits/GDP (1947-2024)</small></p>
+  
+  <h2>10. Corporate Profits: A Growing Slice of the Economy</h2>
+  <p>Breaking down corporate profits by decade shows how dramatically the profit share has grown, especially when accounting for recessions. The 2010s stand out as the only recession-free decade, allowing profits to reach unprecedented levels.</p>
   <div class="chart-card"><div id="profitShareChart"></div></div>
   <p><small>Source: Federal Reserve Economic Data (FRED), Corporate Profits After Tax and GDP series (1947-2024)</small></p>
 
@@ -196,7 +201,7 @@
   </ul>
   <p>While the 1980s show how severe recessions can crush profits, the 2010s prove the flip side: a recession-free decade saw profits jump to 10.4% of GDP. But structural factors—globalization, technology, market concentration, and declining union power—explain why profits stayed high even through the 2000s recessions.</p>
 
-  <h2>10. Key take‑aways</h2>
+  <h2>11. Key take‑aways</h2>
   <ol>
     <li><strong>After taxes, disparities persist.</strong> In 2023, the average worker took home ~$4.0k in new income after taxes (28% rate), while capital-owner households kept ~$50.9k thanks to lower tax rates on capital gains (20% rate).</li>
     <li><strong>Capital rebounds harder.</strong> During recessions (2009, 2020) both slices dip negative, but profits bounce back faster than wages.</li>
@@ -207,10 +212,11 @@
     <li><strong>Birth timing shapes wealth outcomes.</strong> Those born in 1980 saw wealth drop to $19k at age 33 (2008 crisis), while 1995 babies already have $39k at 27. Economic timing matters as much as age itself.</li>
     <li><strong>The American Dream is fading fast.</strong> Only 43% of 1990s babies earn more than their parents (vs 92% for 1940s babies). Bottom-to-top mobility dropped from 12% to 7%, making class increasingly hereditary.</li>
     <li><strong>Corporate profits doubled as share of economy.</strong> After-tax profits rose from 5.3% of GDP in the 1980s to 11.4% today—hundreds of billions shifting from wages to shareholders annually.</li>
+    <li><strong>Labor's loss is capital's gain.</strong> As labor share fell from 114 (1940s) to 99 (2020s), corporate profits doubled. The inverse relationship shows a zero-sum transfer of economic rewards.</li>
   </ol>
 
 
-  <h2>11. Important Limitations</h2>
+  <h2>12. Important Limitations</h2>
   <p>This analysis has several important limitations that should be considered:</p>
   <ul>
     <li><strong>Tax rate methodology:</strong> Uses weighted averages (~28% for labor reflecting mix of income levels and payroll taxes, ~20% for capital reflecting that top 10% own 90% of stocks and pay 15-20% capital gains rates). Doesn't include state taxes or tax credits.</li>
@@ -221,7 +227,7 @@
   </ul>
   <p>Despite these limitations, the broad patterns—growing productivity-pay gaps, concentrated ownership, and unequal distribution of growth—remain robust findings. The after-tax analysis shows that preferential tax treatment of capital income amplifies underlying inequalities.</p>
   
-  <h2>12. Tax Rate Methodology</h2>
+  <h2>13. Tax Rate Methodology</h2>
   <p>Our after-tax calculations use weighted average effective rates based on CBO data:</p>
   <ul>
     <li><strong>Labor income (28%):</strong> Reflects a weighted average across all workers, including:
@@ -361,6 +367,18 @@
       }))
     };
     
+    const mobileLaborVsProfitLayout = {
+      ...laborVsProfitLayout,
+      height: isSmallMobile ? 350 : (isMobile ? 400 : 460),
+      margin: { t: 40, r: 60, l: 50, b: 100 },
+      title: { ...laborVsProfitLayout.title, font: { size: isMobile ? 14 : 16 } },
+      legend: { ...laborVsProfitLayout.legend, font: { size: isMobile ? 10 : 12 } },
+      annotations: laborVsProfitLayout.annotations.map(ann => ({
+        ...ann,
+        font: { ...ann.font, size: isMobile ? 9 : 11 }
+      }))
+    };
+    
     Plotly.relayout('barChart', isMobile ? mobileBarLayout : barLayout);
     Plotly.relayout('perCapChart', isMobile ? mobilePerCapLayout : perCapLayout);
     Plotly.relayout('productivityChart', isMobile ? mobileProductivityLayout : productivityLayout);
@@ -368,6 +386,7 @@
     Plotly.relayout('ownershipChart', isMobile ? mobileOwnershipLayout : ownershipLayout);
     Plotly.relayout('ageWealthChart', isMobile ? mobileAgeWealthLayout : ageWealthLayout);
     Plotly.relayout('mobilityChart', isMobile ? mobileMobilityLayout : mobilityLayout);
+    Plotly.relayout('laborVsProfitChart', isMobile ? mobileLaborVsProfitLayout : laborVsProfitLayout);
     Plotly.relayout('profitShareChart', isMobile ? mobileProfitShareLayout : profitShareLayout);
   }
   
@@ -762,7 +781,112 @@
   
   Plotly.newPlot('mobilityChart', mobilityData, mobilityLayout, config);
   
-  // ---------------- Chart 9: corporate profits share ----------------
+  // ---------------- Chart 9: labor vs profit share ----------------
+  // Labor share and corporate profit share by year
+  const laborProfitYears = ["1947", "1949", "1951", "1953", "1955", "1957", "1959", "1961", "1963", "1965", "1967", "1969", "1971", "1973", "1975", "1977", "1979", "1981", "1983", "1985", "1987", "1989", "1991", "1993", "1995", "1997", "1999", "2001", "2003", "2005", "2007", "2009", "2011", "2013", "2015", "2017", "2019", "2021", "2023"];
+  const laborShareValues = [115.3, 113.3, 110.7, 113.6, 111.3, 114.7, 113.4, 114.7, 112.2, 109.8, 110.5, 112.8, 111.6, 112.4, 110.1, 108.9, 110.8, 110.5, 109.3, 108.4, 111.3, 109.9, 110.7, 109.3, 107.2, 107.4, 109.5, 111.7, 107.3, 104.4, 104.9, 102.0, 99.7, 98.6, 99.8, 100.0, 100.0, 100.6, 96.8];  // Index 2017=100
+  const profitShareValuesLine = [8.6, 7.4, 6.7, 6.0, 7.0, 6.4, 6.4, 5.6, 6.1, 7.2, 6.6, 5.9, 5.5, 7.1, 6.4, 7.7, 8.4, 6.4, 5.4, 4.8, 4.6, 4.8, 5.0, 5.2, 6.6, 6.9, 5.9, 5.2, 6.8, 10.2, 9.8, 9.0, 10.2, 11.0, 10.1, 10.2, 9.6, 12.2, 11.1];  // % of GDP
+  
+  const laborVsProfitData = [
+    {
+      x: laborProfitYears,
+      y: laborShareValues,
+      name: 'Labor Share (2017=100)',
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 3, color: '#2563eb' },
+      marker: { size: 5 },
+      yaxis: 'y'
+    },
+    {
+      x: laborProfitYears,
+      y: profitShareValuesLine,
+      name: 'Corporate Profits (% of GDP)',
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline', width: 3, color: '#dc2626' },
+      marker: { size: 5 },
+      yaxis: 'y2'
+    }
+  ];
+  
+  const laborVsProfitLayout = {
+    height: 460,
+    margin: { t: 50, r: 80, l: 60, b: 80 },
+    title: { text: 'The Inverse Relationship: Labor Share vs Corporate Profits', pad: { b: 10 } },
+    xaxis: { 
+      title: 'Year',
+      range: [1945, 2025]
+    },
+    yaxis: {
+      title: 'Labor Share Index (2017=100)',
+      side: 'left',
+      range: [90, 120],
+      ticksuffix: '',
+      titlefont: { color: '#2563eb' },
+      tickfont: { color: '#2563eb' }
+    },
+    yaxis2: {
+      title: 'Corporate Profits (% of GDP)',
+      ticksuffix: '%',
+      overlaying: 'y',
+      side: 'right',
+      range: [0, 15],
+      showgrid: false,
+      titlefont: { color: '#dc2626' },
+      tickfont: { color: '#dc2626' }
+    },
+    legend: { 
+      orientation: 'h',
+      x: 0.5,
+      xanchor: 'center',
+      y: -0.15,
+      yanchor: 'top'
+    },
+    annotations: [{
+      x: 1950,
+      y: 114,
+      text: 'Labor<br>Peak',
+      showarrow: true,
+      arrowhead: 2,
+      ax: -30,
+      ay: -30,
+      font: { size: 11, color: '#2563eb' }
+    }, {
+      x: 2023,
+      y: 96.8,
+      text: 'Labor<br>Trough',
+      showarrow: true,
+      arrowhead: 2,
+      ax: 30,
+      ay: 30,
+      font: { size: 11, color: '#2563eb' }
+    }, {
+      x: 1985,
+      y: 4.8,
+      text: 'Profit<br>Trough',
+      showarrow: true,
+      arrowhead: 2,
+      ax: -30,
+      ay: 30,
+      yref: 'y2',
+      font: { size: 11, color: '#dc2626' }
+    }, {
+      x: 2021,
+      y: 12.2,
+      text: 'Profit<br>Peak',
+      showarrow: true,
+      arrowhead: 2,
+      ax: 30,
+      ay: -30,
+      yref: 'y2',
+      font: { size: 11, color: '#dc2626' }
+    }]
+  };
+  
+  Plotly.newPlot('laborVsProfitChart', laborVsProfitData, laborVsProfitLayout, config);
+  
+  // ---------------- Chart 10: corporate profits share ----------------
   // Corporate profits after tax as percentage of GDP
   const profitShareDecades = ["1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"];
   const profitShareDecadeAvgs = [8.3, 6.5, 6.3, 6.9, 5.3, 5.8, 7.9, 10.4, 11.4];
