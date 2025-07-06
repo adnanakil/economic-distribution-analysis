@@ -179,15 +179,16 @@
 <!-- Chart 5: Corporate Tax Rates -->
 <div class="chart-container">
   <h2>5. The Corporate Tax Giveaway</h2>
-  <p class="chart-description">Federal corporate tax rates have been slashed from 52% to 21%, amplifying profit growth</p>
+  <p class="chart-description">While statutory rates fell from 52% to 21%, effective rates (what corporations actually pay) dropped even more dramatically</p>
   <div class="chart-wrapper"><div id="taxChart"></div></div>
 </div>
 
 <div style="background: #f9fafb; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #3b82f6;">
-  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">Policy Choices That Favored Capital</h3>
-  <p style="margin-bottom: 0.75rem;">The 60% reduction in corporate tax rates represents one of the largest policy transfers to capital in American history. Kaymak and Schott (2023) found that this tax decline can explain about half of the labor share decline in manufacturing. Lower taxes mean more after-tax profits for shareholders and less pressure to share gains with workers.</p>
-  <p style="margin-bottom: 0.75rem;">Suárez, Timothy, and Xu (2023) in Econometrica showed that each 1-point cut in corporate taxes reduces firm-level labor share by roughly 1 percentage point. The cumulative effect of cutting rates from 52% to 21% has been transformative – billions that once funded public goods now flow directly to shareholders.</p>
-  <p style="margin-bottom: 0;">This wasn't inevitable – it was a choice. Other developed nations maintained higher corporate taxes and stronger labor protections, avoiding America's extreme inequality.</p>
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">The Real Tax Giveaway: Effective Rates Tell the True Story</h3>
+  <p style="margin-bottom: 0.75rem;">While the statutory rate cut from 52% to 21% was dramatic, the effective rate story is even more striking. In the 1950s, corporations actually paid about 40% of their profits in taxes. By 2024, despite a 21% statutory rate, corporations pay just 11.9% – benefiting from loopholes, deductions, and creative accounting.</p>
+  <p style="margin-bottom: 0.75rem;">The decline is staggering: effective corporate tax rates fell from 39.6% in the 1950s to just 8.9% in the 2020s. This means corporations today keep over 90% of their profits, compared to just 60% in the post-war era. Kaymak and Schott (2023) found that this tax decline can explain about half of the labor share decline in manufacturing.</p>
+  <p style="margin-bottom: 0.75rem;">Most shocking: even during the 2017 tax cut, the effective rate was already at historic lows (11.7% in 2010). The Tax Cuts and Jobs Act pushed an already minimal tax burden even lower. In 2020, corporations paid just 8.9% – the lowest effective rate in modern history.</p>
+  <p style="margin-bottom: 0;">This represents hundreds of billions annually that once funded schools, infrastructure, and social programs now flowing directly to shareholders. It wasn't inevitable – it was a choice.</p>
 </div>
 
 <!-- Chart 6: Industrial Robots Impact -->
@@ -242,7 +243,7 @@
     <li><strong>The Productivity-Pay Gap:</strong> Worker productivity soared 388% since 1948, but real compensation grew only 212% – breaking the historic link between output and wages</li>
     <li><strong>Record Corporate Profits:</strong> Now claiming ~13% of GDP, nearly double the ~7% levels of the early 1990s</li>
     <li><strong>Collapsed Worker Power:</strong> Private sector unionization plummeted from 20% to 10%, tracking perfectly with labor's declining share</li>
-    <li><strong>Tax Policy Favoring Capital:</strong> Corporate tax rates slashed by 60%, from 52% to 21% – one of history's largest transfers to capital</li>
+    <li><strong>Tax Policy Favoring Capital:</strong> Effective corporate tax rates plummeted from 40% to 12% – corporations now keep 88% of profits vs 60% in the 1950s</li>
     <li><strong>The Automation Wave:</strong> Industrial robots quadrupled (1993-2015), directly replacing workers and reducing wages</li>
     <li><strong>Cumulative Impact:</strong> These interconnected forces represent a systematic reallocation of economic rewards from those who work to those who own</li>
   </ul>
@@ -269,7 +270,7 @@
     <li>Productivity & Compensation: FRED series OPHNFB and COMPRNFB</li>
     <li>Corporate Profits: FRED series CPROFIT as percentage of GDP</li>
     <li>Union Membership: BLS data (not available in FRED, manually verified)</li>
-    <li>Corporate Tax Rates: Historical IRS statutory rates (manually verified)</li>
+    <li>Corporate Tax Rates: Statutory rates from IRS; Effective rates calculated from FRED series FCTAX/A053RC1Q027SBEA</li>
     <li>Industrial Robots: Acemoglu & Restrepo (2020) IFR robot density data</li>
   </ul>
   <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted);">API Key used: a858d6aeb49035d915e8424430998b86</p>
@@ -479,38 +480,83 @@ const unionLayout = {
 Plotly.newPlot('unionChart', unionData, unionLayout, config);
 
 // Chart 5: Corporate Tax Rates
+// Statutory rates
 const taxData = [{
   x: corpTaxYears,
   y: corpTaxRates,
+  name: 'Statutory Rate',
   type: 'bar',
   marker: { 
-    color: corpTaxRates.map(rate => rate > 40 ? '#3b82f6' : '#dc2626')
+    color: '#3b82f6',
+    opacity: 0.7
   }
 }];
 
+// Add effective rates data
+const effectiveYears = ["1950", "1955", "1960", "1965", "1970", "1975", "1980", "1985", "1990", "1995", "2000", "2005", "2010", "2015", "2020", "2024"];
+const effectiveRates = [38.7, 40.5, 38.2, 33.2, 31.4, 24.7, 20.8, 20.3, 23.3, 22.4, 24.7, 18.7, 11.7, 14.7, 8.9, 11.9];
+
+// Add effective rate line
+taxData.push({
+  x: effectiveYears,
+  y: effectiveRates,
+  name: 'Effective Rate (Actual)',
+  type: 'scatter',
+  mode: 'lines+markers',
+  line: { 
+    shape: 'spline', 
+    width: 3, 
+    color: '#dc2626'
+  },
+  marker: { size: 8 }
+});
+
 const taxLayout = {
   height: 380,
-  margin: { t: 30, r: 20, l: 60, b: 60 },
+  margin: { t: 30, r: 20, l: 60, b: 80 },
   xaxis: { title: 'Year' },
   yaxis: { 
-    title: 'Statutory Federal Corporate Tax Rate (%)',
+    title: 'Corporate Tax Rate (%)',
     ticksuffix: '%',
     range: [0, 60]
+  },
+  legend: {
+    x: 0.02,
+    y: 0.98,
+    bgcolor: 'rgba(255,255,255,0.8)'
   },
   annotations: [{
     x: 1952,
     y: 52,
-    text: '52%',
+    text: 'Statutory<br>52%',
     showarrow: false,
     yanchor: 'bottom',
-    font: { size: 12, color: '#fff' }
+    font: { size: 11, color: '#1e293b' }
+  }, {
+    x: 1955,
+    y: 40.5,
+    text: 'Effective<br>40.5%',
+    showarrow: true,
+    arrowhead: 2,
+    ax: 30,
+    ay: -20,
+    font: { size: 10, color: '#dc2626' }
   }, {
     x: 2024,
     y: 21,
     text: '21%',
     showarrow: false,
     yanchor: 'bottom',
-    font: { size: 12, color: '#fff' }
+    font: { size: 11, color: '#1e293b' }
+  }, {
+    x: 2024,
+    y: 11.9,
+    text: 'Actual: 11.9%',
+    showarrow: true,
+    arrowhead: 2,
+    ax: -40,
+    ay: 20,
+    font: { size: 10, color: '#dc2626' }
   }]
 };
 
