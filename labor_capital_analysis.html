@@ -217,22 +217,23 @@
 <div style="background: #f9fafb; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #f59e0b;">
   <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">The Most Dramatic Trade Shock in History</h3>
   <p style="margin-bottom: 0.75rem;">The "China shock" identified by economists Autor, Dorn, and Hanson represents the most sudden and devastating trade impact ever experienced by American workers. Chinese imports as a share of U.S. spending exploded from 0.6% in 1990 to 7.2% by 2020 – a twelve-fold increase that was particularly dramatic after China's WTO entry in 2001.</p>
-  <p style="margin-bottom: 0.75rem;">The human cost was staggering: 2.4 million manufacturing jobs lost between 1990 and 2007, accounting for 25% of all U.S. manufacturing job losses in that period. Unlike previous trade shocks, these jobs never came back. Workers in affected regions experienced permanent income losses, with wages falling 0.76% for every $1,000 increase in import exposure per worker.</p>
+  <p style="margin-bottom: 0.75rem;">The human cost was staggering: 2.4 million manufacturing jobs lost between 1990 and 2007, accounting for 25% of all U.S. manufacturing job losses in that period. Unlike previous trade shocks, these jobs never came back. Workers in affected regions experienced permanent income losses, with wages falling 0.5-0.8 percentage points (central estimate: 0.6pp) in manufacturing employment share for every $1,000 increase in import exposure per worker.</p>
   <p style="margin-bottom: 0;">The scatter plot below shows the devastating correlation: regions with higher Chinese import exposure (horizontal axis) experienced dramatically larger manufacturing job losses (vertical axis). Each dot represents an American community whose economic foundation was swept away by the tide of globalization.</p>
 </div>
 
 <!-- Chart 8: Import Exposure vs Job Loss -->
 <div class="chart-container">
   <h2>8. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
-  <p class="chart-description">Each $1,000 increase in Chinese import exposure per worker led to a 0.6 percentage point decline in manufacturing employment</p>
+  <p class="chart-description">Each $1,000 increase in Chinese import exposure per worker led to a 0.5-0.8 percentage point decline in manufacturing employment share of working-age population (central estimate: 0.6pp)</p>
   <div class="chart-wrapper"><div id="importExposureChart"></div></div>
 </div>
 
 <div style="background: #f9fafb; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #dc2626;">
   <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">No Recovery, No Relief</h3>
-  <p style="margin-bottom: 0.75rem;">What makes the China shock particularly cruel is its permanence. Autor and colleagues found no evidence of recovery in affected regions even a decade later. Unlike the economic theory that promised new jobs would replace old ones, these communities experienced persistent unemployment, rising disability claims, and declining marriage rates.</p>
-  <p style="margin-bottom: 0.75rem;">The political consequences were profound: regions hit hardest by Chinese import competition shifted dramatically toward political extremes, expressing their economic despair through the ballot box. The bipartisan consensus on free trade, built over decades, shattered in these hollowed-out factory towns.</p>
-  <p style="margin-bottom: 0;">This wasn't creative destruction – it was just destruction. The China shock proves that when global capitalism moves too fast, it doesn't create opportunity; it creates wastelands.</p>
+  <p style="margin-bottom: 0.75rem;">What makes the China shock particularly cruel is its permanence. Autor and colleagues found no evidence of recovery in manufacturing employment or workers' lifetime earnings even a decade later.<sup>*</sup> Unlike the economic theory that promised new jobs would replace old ones, these communities experienced persistent unemployment, rising disability claims (Autor et al., 2014), and declining marriage rates (Autor et al., 2018).</p>
+  <p style="margin-bottom: 0.75rem;">The political consequences were profound: regions hit hardest by Chinese import competition shifted dramatically toward political extremes, expressing their economic despair through the ballot box (Feigenbaum & Hall, 2015; Autor et al., 2020). The bipartisan consensus on free trade, built over decades, shattered in these hollowed-out factory towns.</p>
+  <p style="margin-bottom: 0.75rem;">This wasn't creative destruction – it was just destruction. The China shock proves that when global capitalism moves too fast, it doesn't create opportunity; it creates wastelands.</p>
+  <p style="margin-bottom: 0; font-size: 0.85rem; font-style: italic;">*Note: A 2021 follow-up by Autor et al. found that while local GDP eventually rebounds through growth in health care, education, and retail sectors, manufacturing jobs and the lifetime earnings of displaced workers never recover.</p>
 </div>
 
 <div style="background: #1e293b; color: #f8fafc; padding: 2rem; margin: 3rem 0 2rem; border-radius: 0.75rem;">
@@ -303,7 +304,7 @@
     <li>Union Membership: BLS data (not available in FRED, manually verified)</li>
     <li>Corporate Tax Rates: Statutory rates from IRS; Effective rates calculated from FRED series FCTAX/A053RC1Q027SBEA</li>
     <li>Industrial Robots: Acemoglu & Restrepo (2020) IFR robot density data</li>
-    <li>China Shock: Autor, Dorn & Hanson (2013) "The China Syndrome" import penetration and employment data</li>
+    <li>China Shock: Autor, Dorn & Hanson (2013) "The China Syndrome: Local Labor Market Effects of Import Competition in the United States," American Economic Review 103(6): 2121-68. <a href="https://www.aeaweb.org/articles?id=10.1257/aer.103.6.2121" target="_blank">Paper</a> | <a href="https://github.com/amacadauthor/chinasyndromedata" target="_blank">Replication data</a></li>
   </ul>
   <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted);">API Key used: a858d6aeb49035d915e8424430998b86</p>
 </div>
@@ -769,7 +770,7 @@ const scatterData = [{
 
 // Add regression line
 const xRange = [0, 8];
-const slope = -0.596; // ADH coefficient
+const slope = -0.596; // ADH coefficient (central estimate from -0.53 to -0.65 range)
 const yRange = xRange.map(x => slope * x);
 
 scatterData.push({
@@ -793,7 +794,7 @@ const scatterLayout = {
     range: [-0.5, 8.5]
   },
   yaxis: { 
-    title: 'Change in Manufacturing Employment Share (pp)',
+    title: 'Change in Manufacturing Employment Share of Working-Age Population (pp)',
     range: [-8, 4],
     zeroline: true,
     zerolinecolor: '#e5e7eb',
@@ -803,7 +804,7 @@ const scatterLayout = {
   annotations: [{
     x: 6,
     y: -3.5,
-    text: 'Each $1000 increase<br>= 0.6pp job loss',
+    text: 'Each $1000 increase<br>= 0.5-0.8pp decline<br>(central: 0.6pp)',
     showarrow: true,
     arrowhead: 2,
     ax: -40,
