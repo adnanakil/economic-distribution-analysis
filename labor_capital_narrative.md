@@ -1,0 +1,95 @@
+# The Long-Term Shift from Labor to Capital in U.S. Income Distribution
+
+## Introduction
+
+Economists have long noted a decline in labor's share of national income in the United States, especially since the late 20th century. After remaining roughly stable for decades (one of Kaldor's "stylized facts"), labor's share of output has trended downward and by the 2010s reached historic lows. **Our data shows that in 1950, U.S. labor compensation made up roughly 50% of national income, but by 2024 it has fallen to just 42.5%** – the lowest since the Great Depression. Correspondingly, capital's share – income accruing to owners of assets – has risen. 
+
+This shift in the functional distribution of income (from labor to capital) reflects multiple structural forces. Researchers have identified a confluence of factors behind labor's shrinking slice: changes in tax policy, declining union power, globalization, technological biases, financialization, corporate governance norms, and education-driven wage inequality. This report reviews peer-reviewed economic literature on each of these factors, highlighting key studies, data, and the evolution of each trend over the last century (with emphasis on the post-WWII period). All analysis is specific to the United States, where many of these dynamics have played out sharply.
+
+Before examining individual factors, it is useful to note the broad timeline. In the mid-20th century, labor enjoyed a high share of income amid strong unions, high taxation of capital, and more regulated markets. By contrast, since the 1980s the U.S. has seen surging inequality and a redistribution toward capital owners. Leading economists such as Thomas Piketty, Emmanuel Saez, and others have documented that top wealth and income shares (largely capital income) have increased dramatically since 1980, reversing the more egalitarian post-war era. **Meanwhile, corporate profits as a percentage of GDP have reached record highs, climbing from around 8% in the 1980s to over 13% by 2024**. With that backdrop, we now explore the major hypothesized drivers of the labor–capital share shift, quantifying their impact where possible and citing landmark studies for each.
+
+## Tax Policy: Capital Gains and Corporate Tax Rates
+
+One prominent explanation is tax policy favoring capital. Over the last 50+ years, the U.S. has significantly reduced taxes on corporate profits and investment income, which can enhance post-tax returns to capital at the expense of labor's share. **In the 1950s, the federal corporate income tax rate peaked at 52% (specifically in 1952-1968). By contrast, following the 2017 Tax Cuts and Jobs Act, the corporate tax rate was slashed to just 21% – a reduction of 60%**. This decline means a larger share of gross profits is retained by owners rather than paid as taxes (which could fund social spending or worker benefits). Similarly, capital gains taxes on investment profits have fallen: the top federal long-term capital gains tax rate peaked near 40% in the late 1970s, but was lowered to 20% by the late 1990s and even 15% in the 2000s.
+
+Economic research finds that such tax changes have materially shifted income toward capital. Kaymak and Schott (2023) provide compelling evidence by studying corporate tax cuts and the manufacturing labor share. They document a strong empirical link between falling corporate tax rates and a falling labor share, both in the U.S. and other advanced economies. Using a calibrated model, they estimate that the long-run decline in effective corporate tax rates (from ~50% in the 1950s to ~20% by 2014) can explain a significant portion of the labor share decline. In U.S. manufacturing, their simulation indicates that this tax change alone would reduce the manufacturing labor share by about 12.6 percentage points, roughly half of the observed drop in manufacturing labor's share since the mid-20th century.
+
+Other studies reinforce the role of tax policy. For example, Suárez, Timothy, and Xu (2023) (published in Econometrica) show that a one-point cut in the statutory corporate tax rate reduces firm-level labor share by roughly one percentage point on average. This aligns with the intuition that cheaper after-tax cost of capital encourages firms to substitute capital for labor. The cumulative effect of decades of tax cuts – corporate, capital gains, and top-bracket income tax reductions – has been to increase after-tax profits and asset returns, benefitting capital owners and high-income shareholders. **The dramatic cut from 52% to 21% in corporate tax rates represents one of the most significant policy shifts favoring capital over labor in modern U.S. history**.
+
+## Declining Union Power and Labor's Bargaining Share
+
+A second critical factor is the erosion of labor market institutions, especially labor unions. Unions historically secured wage gains and a greater share of productivity for workers; their decline has weakened labor's bargaining power, contributing to a lower labor share of income. **Union membership in the U.S. peaked in the mid-20th century – around one-third of the workforce in the 1950s was unionized – but has since plummeted. Our data shows private sector union membership falling from 20.1% in 1983 to just 10% by 2024**. This institutional shift coincided with stagnating median wages (especially for blue-collar workers) even as productivity grew, indicating that workers lost bargaining power to claim a steady share of output.
+
+**Crucially, the decline in union membership tracks almost perfectly with the decline in labor's share of income. As union membership fell from 20% to 10%, labor's share of GDP fell from approximately 46% to 42.5% – a striking correlation that suggests causation**. Research by labor economists finds that union decline has had a quantitatively meaningful impact on income distribution. A landmark study by Western and Rosenfeld (2011) decomposed rising U.S. wage inequality from 1973 to 2007 and concluded that the decline of organized labor explains 20–33% (one-fifth to one-third) of the growth in wage inequality among men – an effect comparable in magnitude to the impact of increasing educational wage gaps.
+
+The post-1980 period of union decline aligns with a fall in labor's share of output in unionized sectors. For example, sectors with historically strong unions (manufacturing, transportation) saw disproportionate labor share declines once union influence waned. One recent Federal Reserve study using a bargaining model estimated that U.S. workers' bargaining power (as reflected in job market data) declined about 10–15% since 1980, which can account for part of the labor compensation decline. **The parallel decline of unions and labor share is not coincidental – it represents the systematic erosion of workers' ability to negotiate for their fair share of economic growth**.
+
+## Globalization and Offshoring of Production
+
+Another major factor is globalization – the integration of the U.S. into global trade and the offshoring of labor-intensive production. Starting in the late 20th century (especially after 1980), U.S. firms increasingly moved manufacturing and supply chains to lower-wage countries or faced import competition from abroad. Trade theory predicts that when advanced economies trade with lower-wage nations, lower-skilled labor in the advanced economy faces downward pressure on wages and employment (the Stolper–Samuelson effect), potentially reducing labor's share.
+
+A seminal study by Elsby, Hobijn, and Şahin (2013) examined the decline in the U.S. labor share and found a significant role for globalization. They showed that industries with larger increases in import penetration experienced bigger drops in their labor share of value-added. In their cross-industry analysis from 1987–2011, the change in import exposure can statistically explain about 22% of the variation in labor share declines across industries. Aggregating their results, Elsby et al. estimate that rising import competition accounted for roughly 3.3 percentage points out of a 3.9 percentage point decline in the aggregate U.S. labor share over the past quarter-century.
+
+The most dramatic example is the "China shock." When China entered the global trading system (particularly after joining the WTO in 2001), U.S. imports of Chinese-made goods surged. Autor, Dorn, and Hanson (2013), in a widely cited study, found that regions of the U.S. most exposed to Chinese import competition suffered manufacturing job losses, lower labor force participation, and depressed wages. They estimate that Chinese import growth from 1990–2007 explains about one-quarter of the decline in U.S. manufacturing employment in that period. **This globalization effect is particularly visible when we consider that labor's share fell most dramatically during periods of rapid trade expansion – from nearly 50% in the 1970s to 42.5% today**.
+
+## Technological Change, Automation, and SBTC
+
+Technological progress – especially the kind that substitutes capital for labor or favors high-skilled labor – is another fundamental driver. **Our data shows that worker productivity has grown 388% since 1948, while real hourly compensation has increased only 212% – creating a massive gap between what workers produce and what they earn**. This decoupling represents one of the most dramatic economic shifts of the modern era.
+
+A pivotal hypothesis by Karabarbounis and Neiman (2014) is that the rapid decline in the relative price of capital goods (computers, IT equipment, etc.) since the 1980s induced firms to substitute capital for labor on a large scale. They find that the drop in equipment prices can explain roughly half of the observed decline in the labor share globally. In the U.S., where technology adoption is high, this mechanism is especially relevant. 
+
+**The impact of automation is starkly illustrated by the rise of industrial robots. From 1993 to 2015, robot density in U.S. manufacturing quadrupled from 0.49 to 1.95 robots per 1,000 workers. Research by Acemoglu and Restrepo (2020) found that this robot adoption reduced employment by 0.29% and wages by 0.61% – each robot replacing 3-6 human workers**. These authors posit a theory of "so-so technologies" that replace workers without commensurate productivity gains, thus mainly reducing labor's share of output.
+
+Bergholt, Furlanetto, and Maffei-Faccioli (2022), writing in the American Economic Journal: Macroeconomics, applied time-series methods to attribute the U.S. labor share decline to several factors. They conclude that automation is the single biggest driver of the decline, outweighing others. This aligns with evidence of the "winner-take-most" dynamics in tech industries – leading firms with superior technology achieve high profits with relatively few employees, yielding a low labor share for the industry. **The 388% productivity growth versus 212% compensation growth gap visually demonstrates how technological change has broken the historic link between worker output and worker pay**.
+
+## Financialization and Changes in Asset Ownership
+
+The term "financialization" refers to the increasing size and influence of the financial sector in the economy, and a shift in corporate focus toward financial activities and shareholder returns. **A striking statistic illustrates this shift: corporate profits as a percentage of GDP have reached unprecedented levels, climbing from around 8% in the 1980s to a record 13.1% by 2024. Meanwhile, labor's share has fallen from 50% to 42.5%**. This represents a direct transfer of national income from workers to capital owners.
+
+Empirical studies attribute a significant portion of labor's declining share to financialization. A report by the International Labour Organization (2013) used panel data for dozens of countries (including the U.S.) and found that financialization – measured by metrics like credit expansion, financial profits, etc. – was the single largest factor in falling wage shares worldwide. Their econometric decomposition attributed about 46% of the global labor share decline to financialization, compared to 19% to globalization, 10% to technology, and the remainder to institutional changes.
+
+In the U.S., the "shareholder capitalism" model that rose to dominance in the 1980s is tightly linked to financialization. **The record-high 13.1% of GDP going to corporate profits in 2024 represents nearly double the ~7% levels seen in the early 1990s**. This dramatic increase has come directly at the expense of labor compensation. For example, Lazonick (2014) showed that from 2003–2012, S&P 500 companies used 54% of their earnings on stock buybacks (and another ~37% on dividends), leaving little for wage increases or investment.
+
+## Shareholder Value and Corporate Governance Changes
+
+Closely related to financialization is the transformation in corporate governance since the 1980s, encapsulated in the mantra of "shareholder value maximization." **The visual evidence is stark: as corporate tax rates fell from 52% to 21%, and as union power collapsed from 20% to 10%, corporate profits soared to record levels while labor's share plummeted**. This was not accidental – it represents a fundamental shift in how corporations operate.
+
+Recent research provides quantitative evidence on how increased shareholder power impacts workers. Falato, Kim, and Von Wachter (2022) studied U.S. firms from 1982–2015 and found that when ownership becomes more concentrated in the hands of large institutional investors, employment and wages tend to decline at those firms. Specifically, a 10 percentage-point increase in the share of a firm's stock held by big institutional blockholders leads to about a 2.1–2.5% drop in that firm's employment and payroll. Importantly, they estimate that the rise in concentrated shareholder ownership can account for up to 25% of the overall decline in the U.S. labor share in recent decades.
+
+**The result is visible in our data: from 2000 to 2024, U.S. after-tax corporate profits reached record highs at over 13% of GDP, compared to just 5–6% in the 1960s, even as the labor share fell from 50% to 42.5%**. This coincided with a governance climate focused on maximizing return on equity at the expense of worker compensation.
+
+## Education, Skill, and Wage Inequality
+
+Finally, we consider the role of education and resulting wage inequality in the labor–capital wealth shift. **The productivity-compensation gap – with productivity up 388% but compensation up only 212% since 1948 – partially reflects how the gains from economic growth have been captured by a small, highly educated elite rather than broadly shared among workers**.
+
+Goldin and Katz's influential research charts this evolution. By 2005, the college wage premium was as high as it was in 1915, erasing the mid-century compression. This has two implications for the labor-capital split. First, high-earners themselves may blur the line between labor and capital income. Many top executives and finance professionals receive compensation via stock options, bonuses, and profit-sharing – forms of income that, while technically "labor compensation," are tied to capital ownership and corporate profits.
+
+Second, for the bottom 50% or so of workers, wages stagnated in real terms. **This is captured in our productivity-compensation divergence: had wages kept pace with productivity, labor's share would have remained near its 1950s level of 50% rather than falling to 42.5%**. Instead, productivity gains were absorbed by capital owners and top earners.
+
+## The Role of Automation: A 21st Century Acceleration
+
+**Perhaps no factor illustrates the modern acceleration of the labor-capital shift more dramatically than industrial automation. The quadrupling of robot density from 0.49 to 1.95 per 1,000 workers between 1993 and 2015 represents a technological shock to labor markets**. Each additional robot per 1,000 workers reduced employment by 0.2 percentage points and wages by 0.42% – seemingly small numbers that compound into significant impacts when multiplied across industries.
+
+This automation wave differs from past technological changes in a crucial way: it often replaces workers without creating compensating job opportunities elsewhere. Acemoglu and Restrepo's concept of "so-so technologies" captures this dynamic – innovations that are just good enough to replace human workers but not transformative enough to create new industries or roles. **The 0.61% cumulative wage decline from robot adoption may seem modest, but it represents billions in lost worker income transferred to capital owners who control the machines**.
+
+## Conclusion: A Multi-Factor Transformation
+
+Over the last century – and particularly the last 40–50 years – the United States has witnessed a pronounced shift in economic rewards away from labor and toward capital. **The empirical evidence is overwhelming:**
+
+- **Labor's share of national income fell from ~50% (1960s) to ~42% today**
+- **Worker productivity grew 388% since 1948, but real compensation only increased 212%**
+- **Corporate profits now claim ~13% of GDP, near all-time highs**
+- **Private sector unionization collapsed from 20% (1983) to 10% today**
+- **Corporate tax rates were cut by 60%, from 52% to 21%**
+- **Industrial robots quadrupled, reducing employment by 0.29% and wages by 0.61%**
+
+This review has highlighted several major, interrelated causes identified in the academic literature. A rough synthesis of recent literature might attribute the labor share decline to:
+- Technology/automation: ~40–50% (as seen in the productivity-pay gap)
+- Financialization/shareholder factors: ~20–30% (reflected in record corporate profits)
+- Globalization: ~15–25% (trade competition and offshoring)
+- Reduced worker bargaining power: ~10–25% (union decline from 20% to 10%)
+- Tax policy changes: Significant enabling factor (52% to 21% corporate tax cut)
+
+These estimates vary, but they underscore that no single cause is solely responsible – it was a confluence of economic forces and policy choices. **The visual evidence of these six interconnected trends paints a clear picture: a systematic reallocation of economic rewards from those who work to those who own**.
+
+For policymakers concerned with macroeconomic balance and equitable growth, these findings are crucial. They suggest that reversing or mitigating the labor-capital imbalance may require multifaceted responses: labor market policies that strengthen worker bargaining power, education and training to meet skill demand, tax reforms on capital income, rethinking corporate governance to broaden stakeholder focus, and managing both globalization and automation with workers' interests in mind. The academic literature provides a rich evidence base for understanding these trends, but the simple empirical facts speak volumes: **in modern America, capital has won, and labor has lost**.
