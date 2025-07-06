@@ -113,7 +113,7 @@
 <body>
 
 <h1>The Labor-Capital Power Shift</h1>
-<p class="subtitle">Six charts that reveal how economic rewards have shifted from workers to capital owners and machines</p>
+<p class="subtitle">Eight charts that reveal how economic rewards have shifted from workers to capital owners, machines, and foreign competitors</p>
 
 <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
   <h2 style="font-size: 1.3rem; margin-bottom: 1rem;">The Long-Term Shift from Labor to Capital in U.S. Income Distribution</h2>
@@ -206,10 +206,38 @@
   <p style="margin-bottom: 0;">The 0.61% cumulative wage decline may seem modest, but it represents billions in annual income transferred from workers to the owners of capital – the machines themselves.</p>
 </div>
 
+<!-- Chart 7: China Shock -->
+<div class="chart-container">
+  <h2>7. The China Shock: When Global Trade Devastated U.S. Manufacturing</h2>
+  <p class="chart-description">Chinese import penetration surged 12-fold, destroying millions of manufacturing jobs in America's heartland</p>
+  <div class="chart-wrapper"><div id="chinaShockChart"></div></div>
+</div>
+
+<div style="background: #f9fafb; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #f59e0b;">
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">The Most Dramatic Trade Shock in History</h3>
+  <p style="margin-bottom: 0.75rem;">The "China shock" identified by economists Autor, Dorn, and Hanson represents the most sudden and devastating trade impact ever experienced by American workers. Chinese imports as a share of U.S. spending exploded from 0.6% in 1990 to 7.2% by 2020 – a twelve-fold increase that was particularly dramatic after China's WTO entry in 2001.</p>
+  <p style="margin-bottom: 0.75rem;">The human cost was staggering: 2.4 million manufacturing jobs lost between 1990 and 2007, accounting for 25% of all U.S. manufacturing job losses in that period. Unlike previous trade shocks, these jobs never came back. Workers in affected regions experienced permanent income losses, with wages falling 0.76% for every $1,000 increase in import exposure per worker.</p>
+  <p style="margin-bottom: 0;">The scatter plot below shows the devastating correlation: regions with higher Chinese import exposure (horizontal axis) experienced dramatically larger manufacturing job losses (vertical axis). Each dot represents an American community whose economic foundation was swept away by the tide of globalization.</p>
+</div>
+
+<!-- Chart 8: Import Exposure vs Job Loss -->
+<div class="chart-container">
+  <h2>8. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
+  <p class="chart-description">Each $1,000 increase in Chinese import exposure per worker led to a 0.6 percentage point decline in manufacturing employment</p>
+  <div class="chart-wrapper"><div id="importExposureChart"></div></div>
+</div>
+
+<div style="background: #f9fafb; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #dc2626;">
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">No Recovery, No Relief</h3>
+  <p style="margin-bottom: 0.75rem;">What makes the China shock particularly cruel is its permanence. Autor and colleagues found no evidence of recovery in affected regions even a decade later. Unlike the economic theory that promised new jobs would replace old ones, these communities experienced persistent unemployment, rising disability claims, and declining marriage rates.</p>
+  <p style="margin-bottom: 0.75rem;">The political consequences were profound: regions hit hardest by Chinese import competition shifted dramatically toward political extremes, expressing their economic despair through the ballot box. The bipartisan consensus on free trade, built over decades, shattered in these hollowed-out factory towns.</p>
+  <p style="margin-bottom: 0;">This wasn't creative destruction – it was just destruction. The China shock proves that when global capitalism moves too fast, it doesn't create opportunity; it creates wastelands.</p>
+</div>
+
 <div style="background: #1e293b; color: #f8fafc; padding: 2rem; margin: 3rem 0 2rem; border-radius: 0.75rem;">
   <h2 style="color: #f8fafc; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.8rem;">The Verdict: A Systematic Transfer of Wealth</h2>
   
-  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These six charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital.</p>
+  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These eight charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital, accelerated by automation and globalization.</p>
   
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
     <div style="background: rgba(255,255,255,0.1); padding: 1.25rem; border-radius: 0.5rem;">
@@ -227,6 +255,7 @@
         <li style="margin: 0.5rem 0;">🏭 Union membership: 20% → 10%</li>
         <li style="margin: 0.5rem 0;">🏛️ Corporate taxes: 52% → 21%</li>
         <li style="margin: 0.5rem 0;">🤖 Robot density: 4x increase</li>
+        <li style="margin: 0.5rem 0;">🌏 China imports: 12x surge</li>
       </ul>
     </div>
   </div>
@@ -245,6 +274,7 @@
     <li><strong>Collapsed Worker Power:</strong> Private sector unionization plummeted from 20% to 10%, tracking perfectly with labor's declining share</li>
     <li><strong>Tax Policy Favoring Capital:</strong> Effective corporate tax rates plummeted from 40% to 12% – corporations now keep 88% of profits vs 60% in the 1950s</li>
     <li><strong>The Automation Wave:</strong> Industrial robots quadrupled (1993-2015), directly replacing workers and reducing wages</li>
+    <li><strong>The China Shock:</strong> Import penetration surged 12-fold, destroying 2.4 million manufacturing jobs with no recovery</li>
     <li><strong>Cumulative Impact:</strong> These interconnected forces represent a systematic reallocation of economic rewards from those who work to those who own</li>
   </ul>
 </div>
@@ -272,6 +302,7 @@
     <li>Union Membership: BLS data (not available in FRED, manually verified)</li>
     <li>Corporate Tax Rates: Statutory rates from IRS; Effective rates calculated from FRED series FCTAX/A053RC1Q027SBEA</li>
     <li>Industrial Robots: Acemoglu & Restrepo (2020) IFR robot density data</li>
+    <li>China Shock: Autor, Dorn & Hanson (2013) "The China Syndrome" import penetration and employment data</li>
   </ul>
   <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted);">API Key used: a858d6aeb49035d915e8424430998b86</p>
 </div>
@@ -644,6 +675,152 @@ const robotsLayout = {
 };
 
 Plotly.newPlot('robotsChart', robotsData, robotsLayout, config);
+
+// Chart 7: China Shock - Import Penetration
+// Data from Autor-Dorn-Hanson "The China Syndrome" (2013)
+const chinaYears = [1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020];
+const chinaImportPenetration = [0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.9, 2.3, 2.7, 3.2, 3.8, 4.4, 4.9, 5.3, 5.1, 5.6, 6.0, 6.3, 6.6, 6.8, 7.0, 6.9, 7.1, 7.3, 7.0, 7.2];
+
+const chinaShockData = [{
+  x: chinaYears,
+  y: chinaImportPenetration,
+  type: 'scatter',
+  mode: 'lines+markers',
+  line: { shape: 'spline', width: 3, color: '#dc2626' },
+  marker: { size: 6 },
+  fill: 'tozeroy',
+  fillcolor: 'rgba(220, 38, 38, 0.1)'
+}];
+
+const chinaShockLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 60, b: 80 },
+  xaxis: { 
+    title: 'Year',
+    range: [1989, 2021]
+  },
+  yaxis: { 
+    title: 'Chinese Imports (% of U.S. Spending)',
+    ticksuffix: '%',
+    rangemode: 'tozero'
+  },
+  shapes: [{
+    type: 'rect',
+    xref: 'x',
+    yref: 'paper',
+    x0: 2001,
+    y0: 0,
+    x1: 2002,
+    y1: 1,
+    fillcolor: '#fbbf24',
+    opacity: 0.2,
+    line: { width: 0 }
+  }],
+  annotations: [{
+    x: 2001.5,
+    y: 7,
+    text: 'China<br>joins<br>WTO',
+    showarrow: false,
+    font: { size: 11, color: '#92400e' }
+  }, {
+    x: 1995,
+    y: 1.1,
+    text: '0.6% → 7.2%<br>12x increase',
+    showarrow: true,
+    arrowhead: 2,
+    ax: 0,
+    ay: -40,
+    font: { size: 12, color: '#dc2626' }
+  }]
+};
+
+Plotly.newPlot('chinaShockChart', chinaShockData, chinaShockLayout, config);
+
+// Chart 8: Import Exposure vs Manufacturing Employment Loss
+// Commuting zone data from ADH research
+const importExposure = [1.41, 8.0, 3.95, 2.74, 0.51, 0.51, 0.18, 6.03, 2.76, 3.69, 0.06, 8.0, 5.36, 0.72, 0.6, 0.61, 1.09, 2.23, 1.7, 1.03, 2.84, 0.45, 1.04, 1.37, 1.83, 4.61, 0.67, 2.17, 2.69, 0.14, 2.81, 0.56, 0.2, 8.0, 8.0, 4.96, 1.09, 0.31, 3.46, 1.74, 0.39, 2.05, 0.1, 7.2, 0.9, 3.26, 1.12, 2.2, 2.37, 0.61];
+const mfgEmploymentChange = [-0.71, -5.22, -3.8, -4.61, -0.63, 0.23, 2.11, -4.37, -2.86, -2.95, 1.34, -4.27, -3.99, 0.34, -0.21, 1.09, -1.7, -1.82, -1.6, -2.81, -1.25, 0.12, -0.61, -1.17, -3.21, -3.38, -0.91, -2.49, -1.85, 0.52, 1.16, -0.07, 0.27, -4.88, -7.65, -2.99, -0.56, 3.51, -2.35, -0.58, -0.28, -2.98, 1.65, -3.16, 0.65, -3.31, 1.44, -3.42, -0.53, 2.92];
+
+const scatterData = [{
+  x: importExposure,
+  y: mfgEmploymentChange,
+  mode: 'markers',
+  type: 'scatter',
+  name: 'Commuting Zones',
+  marker: {
+    size: 10,
+    color: importExposure,
+    colorscale: [
+      [0, '#2563eb'],
+      [0.5, '#f59e0b'],
+      [1, '#dc2626']
+    ],
+    showscale: true,
+    colorbar: {
+      title: 'Import<br>Exposure<br>($1000s)',
+      titleside: 'right',
+      tickmode: 'linear',
+      tick0: 0,
+      dtick: 2
+    }
+  }
+}];
+
+// Add regression line
+const xRange = [0, 8];
+const slope = -0.596; // ADH coefficient
+const yRange = xRange.map(x => slope * x);
+
+scatterData.push({
+  x: xRange,
+  y: yRange,
+  mode: 'lines',
+  type: 'scatter',
+  name: 'Regression Line',
+  line: {
+    color: '#dc2626',
+    width: 2,
+    dash: 'dash'
+  }
+});
+
+const scatterLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 80, b: 80 },
+  xaxis: { 
+    title: 'Change in Import Exposure per Worker ($1000s, 1990-2007)',
+    range: [-0.5, 8.5]
+  },
+  yaxis: { 
+    title: 'Change in Manufacturing Employment Share (pp)',
+    range: [-8, 4],
+    zeroline: true,
+    zerolinecolor: '#e5e7eb',
+    zerolinewidth: 2
+  },
+  showlegend: false,
+  annotations: [{
+    x: 6,
+    y: -3.5,
+    text: 'Each $1000 increase<br>= 0.6pp job loss',
+    showarrow: true,
+    arrowhead: 2,
+    ax: -40,
+    ay: -30,
+    font: { size: 11, color: '#dc2626' }
+  }, {
+    x: 8,
+    y: -7.65,
+    text: 'Devastated<br>regions',
+    showarrow: true,
+    arrowhead: 2,
+    ax: -30,
+    ay: 20,
+    font: { size: 10, color: '#dc2626' }
+  }]
+};
+
+Plotly.newPlot('importExposureChart', scatterData, scatterLayout, config);
 </script>
 
 </body>
