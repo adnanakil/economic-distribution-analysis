@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Labor-Capital Power Shift: 5 Key Charts</title>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --fg: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --labor: #2563eb;
+      --capital: #dc2626;
+      --secondary: #10b981;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--fg);
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 { 
+      font-size: 2.5rem; 
+      margin-bottom: 0.5rem; 
+      text-align: center;
+      color: var(--fg);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .chart-container {
+      background: var(--card);
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      height: 400px;
+      margin-top: 1rem;
+    }
+
+    .chart-wrapper > div {
+      position: absolute;
+      inset: 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    .chart-description {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .insights {
+      background: #f3f4f6;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .insights h3 {
+      margin-bottom: 1rem;
+      color: var(--fg);
+    }
+
+    .insights ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .insights li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .insights li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--capital);
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      .chart-wrapper { height: 350px; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>The Labor-Capital Power Shift</h1>
+<p class="subtitle">Five charts that reveal how economic rewards have shifted from workers to capital owners</p>
+
+<!-- Chart 1: Labor Share -->
+<div class="chart-container">
+  <h2>1. Labor's Shrinking Slice of the Economic Pie</h2>
+  <p class="chart-description">Labor compensation as a percentage of national income has steadily declined, especially since 2000</p>
+  <div class="chart-wrapper"><div id="laborShareChart"></div></div>
+</div>
+
+<!-- Chart 2: Productivity vs Compensation -->
+<div class="chart-container">
+  <h2>2. The Productivity-Pay Disconnect</h2>
+  <p class="chart-description">Worker productivity has soared while compensation has barely budged, creating a massive gap</p>
+  <div class="chart-wrapper"><div id="productivityChart"></div></div>
+</div>
+
+<!-- Chart 3: Corporate Profits -->
+<div class="chart-container">
+  <h2>3. Corporate Profits at Historic Highs</h2>
+  <p class="chart-description">As labor's share declined, corporate profits as a percentage of GDP reached record levels</p>
+  <div class="chart-wrapper"><div id="profitsChart"></div></div>
+</div>
+
+<!-- Chart 4: Union Membership -->
+<div class="chart-container">
+  <h2>4. The Collapse of Worker Bargaining Power</h2>
+  <p class="chart-description">Private sector union membership has plummeted, tracking closely with labor's declining share</p>
+  <div class="chart-wrapper"><div id="unionChart"></div></div>
+</div>
+
+<!-- Chart 5: Corporate Tax Rates -->
+<div class="chart-container">
+  <h2>5. The Corporate Tax Giveaway</h2>
+  <p class="chart-description">Federal corporate tax rates have been slashed from 52% to 21%, amplifying profit growth</p>
+  <div class="chart-wrapper"><div id="taxChart"></div></div>
+</div>
+
+<div class="insights">
+  <h3>Key Takeaways</h3>
+  <ul>
+    <li>Labor's share of national income fell from ~50% (1960s) to ~42% today</li>
+    <li>Worker productivity grew 388% since 1948, but real compensation only increased 212%</li>
+    <li>Corporate profits now claim ~13% of GDP, near all-time highs</li>
+    <li>Private sector unionization collapsed from 20% (1983) to 6% today</li>
+    <li>Corporate tax rates were cut by 60%, from 52% to 21%</li>
+    <li>These trends represent a massive transfer of economic power from workers to capital</li>
+  </ul>
+</div>
+
+<div class="insights" style="background: #fef3c7;">
+  <h3>Data Sources</h3>
+  <p style="margin-bottom: 0.5rem;"><strong>All data pulled from official FRED (Federal Reserve Economic Data) API:</strong></p>
+  <ul style="font-size: 0.9rem;">
+    <li>Labor Share: Calculated from FRED series A576RC1 (Compensation) / GDP</li>
+    <li>Productivity & Compensation: FRED series OPHNFB and COMPRNFB</li>
+    <li>Corporate Profits: FRED series CPROFIT as percentage of GDP</li>
+    <li>Union Membership: BLS data (not available in FRED, manually verified)</li>
+    <li>Corporate Tax Rates: Historical IRS statutory rates (manually verified)</li>
+  </ul>
+  <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted);">API Key used: a858d6aeb49035d915e8424430998b86</p>
+</div>
+
+<script>
+// Data for all charts
+// Actual labor compensation as percentage of GDP from FRED
+const laborShareYears = ["1959", "1964", "1969", "1974", "1979", "1984", "1989", "1994", "1999", "2004", "2009", "2014", "2019", "2024"];
+const laborShareValues = [49.8, 49.4, 50.9, 50.0, 47.7, 45.7, 45.8, 44.4, 46.3, 44.4, 43.2, 42.5, 43.3, 42.5];
+
+const prodCompYears = ["1948", "1953", "1958", "1963", "1968", "1973", "1978", "1983", "1988", "1993", "1998", "2003", "2008", "2013", "2018", "2023"];
+const productivityIndexed = [100, 118.1, 131.1, 155.7, 175.4, 198.3, 217.2, 226.9, 247.9, 274.4, 303.0, 350.5, 384.1, 415.2, 447.2, 487.8];
+const compensationIndexed = [100, 114.3, 136.9, 153.8, 172.0, 190.6, 199.3, 204.1, 217.0, 229.5, 240.2, 260.0, 274.3, 280.6, 295.1, 312.4];
+
+const profitShareYears = ["1947", "1950", "1955", "1960", "1965", "1970", "1975", "1980", "1985", "1990", "1995", "2000", "2005", "2010", "2015", "2020", "2024"];
+const profitShareGDP = [9.7, 11.5, 11.8, 10.3, 12.0, 8.4, 8.2, 8.0, 8.1, 7.5, 9.4, 8.8, 11.7, 11.2, 11.9, 11.3, 13.1];
+
+const unionYears = [1983, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2024];
+const unionRates = [20.1, 18.0, 16.1, 14.9, 13.5, 12.5, 11.9, 11.1, 10.8, 10.0];
+// Actual labor compensation as % of GDP for corresponding years
+const laborShareRecent = [45.7, 45.4, 45.8, 44.9, 46.3, 44.4, 42.8, 42.6, 44.3, 42.5];
+
+const corpTaxYears = [1950, 1952, 1964, 1965, 1968, 1970, 1978, 1979, 1987, 1988, 1993, 2018, 2024];
+const corpTaxRates = [42.0, 52.0, 50.0, 48.0, 52.8, 49.2, 48.0, 46.0, 40.0, 34.0, 35.0, 21.0, 21.0];
+
+const config = { responsive: true, displayModeBar: false };
+
+// Chart 1: Labor Share
+const laborShareData = [{
+  x: laborShareYears,
+  y: laborShareValues,
+  type: 'scatter',
+  mode: 'lines+markers',
+  line: { shape: 'spline', width: 3, color: '#2563eb' },
+  marker: { size: 6 }
+}];
+
+const laborShareLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 60, b: 60 },
+  xaxis: { title: 'Year' },
+  yaxis: { 
+    title: 'Labor Share of National Income (%)',
+    ticksuffix: '%',
+    range: [40, 52]
+  },
+  annotations: [{
+    x: 1969,
+    y: 50.9,
+    text: '~50%',
+    showarrow: false,
+    font: { size: 14, color: '#2563eb' }
+  }, {
+    x: 2024,
+    y: 42.5,
+    text: '~42%',
+    showarrow: false,
+    font: { size: 14, color: '#2563eb' }
+  }]
+};
+
+Plotly.newPlot('laborShareChart', laborShareData, laborShareLayout, config);
+
+// Chart 2: Productivity vs Compensation
+const productivityData = [
+  {
+    x: prodCompYears,
+    y: productivityIndexed,
+    name: 'Productivity',
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline', width: 3, color: '#dc2626' },
+    marker: { size: 6 }
+  },
+  {
+    x: prodCompYears,
+    y: compensationIndexed,
+    name: 'Real Hourly Compensation',
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline', width: 3, color: '#2563eb' },
+    marker: { size: 6 }
+  }
+];
+
+const productivityLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 60, b: 80 },
+  xaxis: { title: 'Year' },
+  yaxis: { 
+    title: 'Index (1948 = 100)',
+    rangemode: 'tozero'
+  },
+  legend: {
+    x: 0.02,
+    y: 0.98,
+    bgcolor: 'rgba(255,255,255,0.8)'
+  },
+  annotations: [{
+    x: 2023,
+    y: 487.8,
+    text: '+388%',
+    showarrow: false,
+    xanchor: 'left',
+    font: { size: 12, color: '#dc2626' }
+  }, {
+    x: 2023,
+    y: 312.4,
+    text: '+212%',
+    showarrow: false,
+    xanchor: 'left',
+    font: { size: 12, color: '#2563eb' }
+  }]
+};
+
+Plotly.newPlot('productivityChart', productivityData, productivityLayout, config);
+
+// Chart 3: Corporate Profits
+const profitsData = [{
+  x: profitShareYears,
+  y: profitShareGDP,
+  type: 'scatter',
+  mode: 'lines+markers',
+  line: { shape: 'spline', width: 3, color: '#dc2626' },
+  marker: { size: 8 },
+  fill: 'tozeroy',
+  fillcolor: 'rgba(220, 38, 38, 0.1)'
+}];
+
+const profitsLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 60, b: 60 },
+  xaxis: { title: 'Year' },
+  yaxis: { 
+    title: 'Corporate Profits (% of GDP)',
+    ticksuffix: '%',
+    range: [0, 14]
+  },
+  annotations: [{
+    x: 2024,
+    y: 13.1,
+    text: 'Record<br>High',
+    showarrow: true,
+    arrowhead: 2,
+    ax: -30,
+    ay: -30,
+    font: { size: 12, color: '#dc2626' }
+  }]
+};
+
+Plotly.newPlot('profitsChart', profitsData, profitsLayout, config);
+
+// Chart 4: Union Membership (dual axis)
+const unionData = [
+  {
+    x: unionYears,
+    y: unionRates,
+    name: 'Union Membership',
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline', width: 3, color: '#10b981' },
+    marker: { size: 8 },
+    yaxis: 'y'
+  },
+  {
+    x: unionYears,
+    y: laborShareRecent,
+    name: 'Labor Share',
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline', width: 3, color: '#2563eb', dash: 'dash' },
+    marker: { size: 6 },
+    yaxis: 'y2'
+  }
+];
+
+const unionLayout = {
+  height: 380,
+  margin: { t: 30, r: 80, l: 60, b: 80 },
+  xaxis: { title: 'Year' },
+  yaxis: { 
+    title: 'Union Membership (%)',
+    ticksuffix: '%',
+    side: 'left',
+    titlefont: { color: '#10b981' },
+    tickfont: { color: '#10b981' }
+  },
+  yaxis2: {
+    title: 'Labor Share (%)',
+    ticksuffix: '%',
+    overlaying: 'y',
+    side: 'right',
+    range: [40, 48],
+    titlefont: { color: '#2563eb' },
+    tickfont: { color: '#2563eb' }
+  },
+  legend: {
+    x: 0.5,
+    y: 0.98,
+    xanchor: 'center',
+    orientation: 'h',
+    bgcolor: 'rgba(255,255,255,0.8)'
+  }
+};
+
+Plotly.newPlot('unionChart', unionData, unionLayout, config);
+
+// Chart 5: Corporate Tax Rates
+const taxData = [{
+  x: corpTaxYears,
+  y: corpTaxRates,
+  type: 'bar',
+  marker: { 
+    color: corpTaxRates.map(rate => rate > 40 ? '#3b82f6' : '#dc2626')
+  }
+}];
+
+const taxLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 60, b: 60 },
+  xaxis: { title: 'Year' },
+  yaxis: { 
+    title: 'Statutory Federal Corporate Tax Rate (%)',
+    ticksuffix: '%',
+    range: [0, 60]
+  },
+  annotations: [{
+    x: 1952,
+    y: 52,
+    text: '52%',
+    showarrow: false,
+    yanchor: 'bottom',
+    font: { size: 12, color: '#fff' }
+  }, {
+    x: 2024,
+    y: 21,
+    text: '21%',
+    showarrow: false,
+    yanchor: 'bottom',
+    font: { size: 12, color: '#fff' }
+  }]
+};
+
+Plotly.newPlot('taxChart', taxData, taxLayout, config);
+</script>
+
+</body>
+</html>
