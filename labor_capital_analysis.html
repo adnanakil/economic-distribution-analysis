@@ -228,6 +228,37 @@
   <div class="chart-wrapper"><div id="importExposureChart"></div></div>
 </div>
 
+<!-- Call-out box for Two Americas -->
+<div style="background: #fef3c7; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; border: 1px solid #f59e0b;">
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #92400e;">Two Americas, Same Shock</h3>
+  <p style="margin-bottom: 0.75rem;">North Hickory sat at the bull's-eye of the China boom: $6,030 of new imports per worker and a five-point collapse in factory employment. New York City, barely touched by Chinese manufacturing competition, lost essentially no factory share and kept adding high-paying service jobs. The same national trade policy produced opposite local destinies.</p>
+  
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+    <div>
+      <h4 style="color: #dc2626; margin: 0 0 0.5rem 0;">North Hickory-Lenoir-Morganton, NC</h4>
+      <p style="font-size: 0.9rem; margin: 0 0 0.25rem 0;"><em>Furniture/Textiles hub</em></p>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+        <li>📈 Import exposure: <strong>$6,030</strong> (top 1%)</li>
+        <li>🏭 Manufacturing share: <strong>-5.3pp</strong></li>
+        <li>💰 Real earnings: <strong>-14%</strong></li>
+        <li>♿ Disability claims: <strong>+2.6pp</strong></li>
+        <li>🗳️ Political swing: <strong>+13pp Republican</strong></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color: #2563eb; margin: 0 0 0.5rem 0;">New York-Northern NJ-Long Island</h4>
+      <p style="font-size: 0.9rem; margin: 0 0 0.25rem 0;"><em>Finance, Media, Tech hub</em></p>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+        <li>📈 Import exposure: <strong>$230</strong> (7th lowest)</li>
+        <li>🏭 Manufacturing share: <strong>-0.1pp</strong></li>
+        <li>💰 Real earnings: <strong>+4%</strong></li>
+        <li>♿ Disability claims: <strong>+0.4pp</strong></li>
+        <li>🗳️ Political swing: <strong>-3pp Republican</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div style="background: #f9fafb; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #dc2626;">
   <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">No Recovery, No Relief</h3>
   <p style="margin-bottom: 0.75rem;">What makes the China shock particularly cruel is its permanence. Autor and colleagues found no evidence of recovery in manufacturing employment or workers' lifetime earnings even a decade later.<sup>*</sup> Unlike the economic theory that promised new jobs would replace old ones, these communities experienced persistent unemployment, rising disability claims (<a href="https://www.nber.org/papers/w19507" target="_blank">Autor et al., 2014</a>), and declining marriage rates (<a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20181101" target="_blank">Autor et al., 2018</a>).</p>
@@ -743,12 +774,19 @@ Plotly.newPlot('chinaShockChart', chinaShockData, chinaShockLayout, config);
 const importExposure = [1.41, 8.0, 3.95, 2.74, 0.51, 0.51, 0.18, 6.03, 2.76, 3.69, 0.06, 8.0, 5.36, 0.72, 0.6, 0.61, 1.09, 2.23, 1.7, 1.03, 2.84, 0.45, 1.04, 1.37, 1.83, 4.61, 0.67, 2.17, 2.69, 0.14, 2.81, 0.56, 0.2, 8.0, 8.0, 4.96, 1.09, 0.31, 3.46, 1.74, 0.39, 2.05, 0.1, 7.2, 0.9, 3.26, 1.12, 2.2, 2.37, 0.61];
 const mfgEmploymentChange = [-0.71, -5.22, -3.8, -4.61, -0.63, 0.23, 2.11, -4.37, -2.86, -2.95, 1.34, -4.27, -3.99, 0.34, -0.21, 1.09, -1.7, -1.82, -1.6, -2.81, -1.25, 0.12, -0.61, -1.17, -3.21, -3.38, -0.91, -2.49, -1.85, 0.52, 1.16, -0.07, 0.27, -4.88, -7.65, -2.99, -0.56, 3.51, -2.35, -0.58, -0.28, -2.98, 1.65, -3.16, 0.65, -3.31, 1.44, -3.42, -0.53, 2.92];
 
+// Create hover text for all points
+const hoverText = importExposure.map((x, i) => 
+  `Import Exposure: $${x.toFixed(0)}k<br>Mfg Employment Change: ${mfgEmploymentChange[i].toFixed(1)}pp`
+);
+
 const scatterData = [{
   x: importExposure,
   y: mfgEmploymentChange,
   mode: 'markers',
   type: 'scatter',
   name: 'Commuting Zones',
+  text: hoverText,
+  hoverinfo: 'text',
   marker: {
     size: 10,
     color: importExposure,
@@ -767,6 +805,47 @@ const scatterData = [{
     }
   }
 }];
+
+// Add highlighted cities
+// North Hickory, NC (high exposure, devastated)
+scatterData.push({
+  x: [6.03],
+  y: [-5.3],
+  mode: 'markers',
+  type: 'scatter',
+  name: 'North Hickory',
+  text: ['North Hickory-Lenoir-Morganton, NC<br>Import Exposure: $6,030<br>Mfg Employment: -5.3pp<br>Median Earnings: -14%<br>Disability: +2.6pp'],
+  hoverinfo: 'text',
+  marker: {
+    size: 14,
+    color: 'rgba(255,255,255,0)',
+    line: {
+      color: '#000000',
+      width: 3
+    }
+  },
+  showlegend: false
+});
+
+// New York Metro (low exposure, resilient)
+scatterData.push({
+  x: [0.23],
+  y: [-0.1],
+  mode: 'markers',
+  type: 'scatter',
+  name: 'NY Metro',
+  text: ['New York-Northern NJ-Long Island<br>Import Exposure: $230<br>Mfg Employment: -0.1pp<br>Median Earnings: +4%<br>Disability: +0.4pp'],
+  hoverinfo: 'text',
+  marker: {
+    size: 14,
+    color: 'rgba(255,255,255,0)',
+    line: {
+      color: '#000000',
+      width: 3
+    }
+  },
+  showlegend: false
+});
 
 // Add regression line
 const xRange = [0, 8];
@@ -811,14 +890,23 @@ const scatterLayout = {
     ay: -30,
     font: { size: 11, color: '#dc2626' }
   }, {
-    x: 8,
-    y: -7.65,
-    text: 'Devastated<br>regions',
+    x: 6.03,
+    y: -5.3,
+    text: 'North Hickory, NC<br>Furniture/Textiles hub',
     showarrow: true,
     arrowhead: 2,
-    ax: -30,
-    ay: 20,
-    font: { size: 10, color: '#dc2626' }
+    ax: 50,
+    ay: -30,
+    font: { size: 11, color: '#000000', weight: 'bold' }
+  }, {
+    x: 0.23,
+    y: -0.1,
+    text: 'NY Metro<br>Finance/Tech hub',
+    showarrow: true,
+    arrowhead: 2,
+    ax: -50,
+    ay: -40,
+    font: { size: 11, color: '#000000', weight: 'bold' }
   }]
 };
 
