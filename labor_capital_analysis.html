@@ -792,11 +792,13 @@ const middleClassLayout = {
   barmode: 'stack',
   xaxis: { 
     title: 'Year',
-    type: 'category'
+    type: 'category',
+    categoryorder: 'array',
+    categoryarray: incomeYears
   },
   yaxis: { 
     title: 'Share of Adults (%)',
-    range: [0, 100],
+    range: [0, 110],
     ticksuffix: '%'
   },
   showlegend: true,
@@ -804,23 +806,24 @@ const middleClassLayout = {
     x: 0.5,
     y: 1.15,
     xanchor: 'center',
-    orientation: 'h'
+    orientation: 'h',
+    traceorder: 'reversed'
   },
   annotations: [{
-    x: '1971',
+    x: 0,
     y: 105,
     text: '61%',
     showarrow: false,
     font: { size: 14, color: '#3b82f6', weight: 'bold' }
   }, {
-    x: '2023',
+    x: 6,
     y: 105,
     text: '51%',
     showarrow: false,
     font: { size: 14, color: '#3b82f6', weight: 'bold' }
   }, {
     x: 3,
-    y: 110,
+    y: 108,
     text: '→ 10pp decline',
     showarrow: false,
     font: { size: 12, color: '#6b7280' }
