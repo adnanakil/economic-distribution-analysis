@@ -206,9 +206,24 @@
   <p style="margin-bottom: 0;">This isn't just correlation – it's causation. When we stopped taxing capital, we stopped valuing labor.</p>
 </div>
 
-<!-- Chart 7: Industrial Robots Impact -->
+<!-- Chart 7: The Missing Middle -->
 <div class="chart-container">
-  <h2>7. The Automation Wave: Robots Replacing Workers</h2>
+  <h2>7. The Missing Middle: How America's Income Distribution Hollowed Out</h2>
+  <p class="chart-description">The middle class shrank from 61% to 51% as Americans moved to both extremes – but mostly upward</p>
+  <div class="chart-wrapper"><div id="middleClassChart"></div></div>
+</div>
+
+<div style="background: #f9fafb; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #8b5cf6;">
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">The Barbell Economy: Winners and Losers</h3>
+  <p style="margin-bottom: 0.75rem;">America's economy has split into two tracks. On one side: capital-intensive firms like Google, Goldman Sachs, and biotech companies that hire fewer, highly-paid workers. On the other: labor-intensive service businesses – restaurants, retail, care work – offering low wages and few benefits.</p>
+  <p style="margin-bottom: 0.75rem;">The casualties? Middle-income jobs that once sustained the American Dream. When Sears employed 300,000 workers in the 1980s, most earned middle-class wages with benefits. Today's retail giant Amazon employs 1.5 million, but most are warehouse workers earning half what Sears employees made (adjusted for inflation). Travel agents, bank tellers, manufacturing workers – entire occupations that provided pathways to the middle class have vanished.</p>
+  <p style="margin-bottom: 0.75rem;">As MIT economist David Autor documented, automation eliminates "routine" middle-skill jobs while complementing high-skill work and leaving low-skill service jobs untouched. The result: job polarization that mirrors income polarization.</p>
+  <p style="margin-bottom: 0;">The numbers don't lie: while 8% moved up to high incomes, only 3% fell to low incomes. But this masks the real tragedy – those who lost middle-class jobs rarely moved up. Instead, new college graduates claimed the high-income spots while displaced workers competed for service jobs. Same economy, different worlds.</p>
+</div>
+
+<!-- Chart 8: Industrial Robots Impact -->
+<div class="chart-container">
+  <h2>8. The Automation Wave: Robots Replacing Workers</h2>
   <p class="chart-description">Each robot per 1,000 workers reduces employment by 0.2% and wages by 0.42% (Acemoglu-Restrepo)</p>
   <div class="chart-wrapper"><div id="robotsChart"></div></div>
 </div>
@@ -221,9 +236,9 @@
   <p style="margin-bottom: 0;">The 0.61% cumulative wage decline may seem modest, but it represents billions in annual income transferred from workers to the owners of capital – the machines themselves.</p>
 </div>
 
-<!-- Chart 8: China Shock -->
+<!-- Chart 9: China Shock -->
 <div class="chart-container">
-  <h2>8. The China Shock: When Global Trade Devastated U.S. Manufacturing</h2>
+  <h2>9. The China Shock: When Global Trade Devastated U.S. Manufacturing</h2>
   <p class="chart-description">Chinese import penetration surged 12-fold, destroying millions of manufacturing jobs in America's heartland</p>
   <div class="chart-wrapper"><div id="chinaShockChart"></div></div>
 </div>
@@ -235,9 +250,9 @@
   <p style="margin-bottom: 0;">The scatter plot below shows the devastating correlation: regions with higher Chinese import exposure (horizontal axis) experienced dramatically larger manufacturing job losses (vertical axis). Each dot represents an American community whose economic foundation was swept away by the tide of globalization.</p>
 </div>
 
-<!-- Chart 9: Import Exposure vs Job Loss -->
+<!-- Chart 10: Import Exposure vs Job Loss -->
 <div class="chart-container">
-  <h2>9. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
+  <h2>10. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
   <p class="chart-description">Each $1,000 increase in Chinese import exposure per worker led to a 0.5-0.8 percentage point decline in manufacturing employment share of working-age population (central estimate: 0.6pp)</p>
   <div class="chart-wrapper"><div id="importExposureChart"></div></div>
 </div>
@@ -284,7 +299,7 @@
 <div style="background: #1e293b; color: #f8fafc; padding: 2rem; margin: 3rem 0 2rem; border-radius: 0.75rem;">
   <h2 style="color: #f8fafc; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.8rem;">The Verdict: A Systematic Transfer of Wealth</h2>
   
-  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These nine charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital, accelerated by automation and globalization.</p>
+  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These ten charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital, accelerated by automation and globalization.</p>
   
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
     <div style="background: rgba(255,255,255,0.1); padding: 1.25rem; border-radius: 0.5rem;">
@@ -732,7 +747,89 @@ const taxLaborLayout = {
 
 Plotly.newPlot('taxLaborShareChart', taxLaborData, taxLaborLayout, config);
 
-// Chart 7: Industrial Robots Impact
+// Chart 7: The Missing Middle - Income Distribution
+const incomeYears = ['1971', '1981', '1991', '2001', '2011', '2021', '2023'];
+const lowerIncome = [27, 29, 27, 27, 29, 29, 30];
+const middleIncome = [61, 59, 56, 54, 51, 50, 51];
+const upperIncome = [11, 12, 17, 18, 20, 21, 19];
+
+const middleClassData = [
+  {
+    x: incomeYears,
+    y: lowerIncome,
+    name: 'Lower Income',
+    type: 'bar',
+    marker: { color: '#dc2626' },
+    text: lowerIncome.map(v => v + '%'),
+    textposition: 'inside',
+    textfont: { color: 'white', size: 12 }
+  },
+  {
+    x: incomeYears,
+    y: middleIncome,
+    name: 'Middle Income',
+    type: 'bar',
+    marker: { color: '#3b82f6' },
+    text: middleIncome.map(v => v + '%'),
+    textposition: 'inside',
+    textfont: { color: 'white', size: 12 }
+  },
+  {
+    x: incomeYears,
+    y: upperIncome,
+    name: 'Upper Income',
+    type: 'bar',
+    marker: { color: '#10b981' },
+    text: upperIncome.map(v => v + '%'),
+    textposition: 'inside',
+    textfont: { color: 'white', size: 12 }
+  }
+];
+
+const middleClassLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 60, b: 50 },
+  barmode: 'stack',
+  xaxis: { 
+    title: 'Year',
+    type: 'category'
+  },
+  yaxis: { 
+    title: 'Share of Adults (%)',
+    range: [0, 100],
+    ticksuffix: '%'
+  },
+  showlegend: true,
+  legend: {
+    x: 0.5,
+    y: 1.15,
+    xanchor: 'center',
+    orientation: 'h'
+  },
+  annotations: [{
+    x: '1971',
+    y: 105,
+    text: '61%',
+    showarrow: false,
+    font: { size: 14, color: '#3b82f6', weight: 'bold' }
+  }, {
+    x: '2023',
+    y: 105,
+    text: '51%',
+    showarrow: false,
+    font: { size: 14, color: '#3b82f6', weight: 'bold' }
+  }, {
+    x: 3,
+    y: 110,
+    text: '→ 10pp decline',
+    showarrow: false,
+    font: { size: 12, color: '#6b7280' }
+  }]
+};
+
+Plotly.newPlot('middleClassChart', middleClassData, middleClassLayout, config);
+
+// Chart 8: Industrial Robots Impact
 // Data from Acemoglu & Restrepo (2020): Robots and Jobs: Evidence from US Labor Markets
 // Industrial robots per 1,000 workers in US manufacturing
 const robotYears = [1993, 1995, 1997, 1999, 2001, 2003, 2005, 2007, 2009, 2011, 2013, 2015];
