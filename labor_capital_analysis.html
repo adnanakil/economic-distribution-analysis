@@ -221,9 +221,23 @@
   <p style="margin-bottom: 0;">The numbers don't lie: while 8% moved up to high incomes, only 3% fell to low incomes. But this masks the real tragedy – those who lost middle-class jobs rarely moved up. Instead, new college graduates claimed the high-income spots while displaced workers competed for service jobs. Same economy, different worlds.</p>
 </div>
 
-<!-- Chart 8: Industrial Robots Impact -->
+<!-- Chart 8: Income Share Distribution -->
 <div class="chart-container">
-  <h2>8. The Automation Wave: Robots Replacing Workers</h2>
+  <h2>8. The Real Wealth Transfer: Share of Total Income by Class</h2>
+  <p class="chart-description">Upper-income households captured nearly all income gains, now holding 48% of total income despite being only 19% of adults</p>
+  <div class="chart-wrapper"><div id="incomeShareChart"></div></div>
+</div>
+
+<div style="background: #fee2e2; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; border: 1px solid #dc2626;">
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #991b1b;">The Concentration of Wealth: Where the Money Really Went</h3>
+  <p style="margin-bottom: 0.75rem;">While the middle class shrank by 10 percentage points in population, their share of total income collapsed by 19 points – from 62% to 43%. Meanwhile, the upper-income tier nearly doubled their share from 29% to 48%, despite growing from just 11% to 19% of the population.</p>
+  <p style="margin-bottom: 0.75rem;">This reveals the true nature of inequality: it's not just about how many people are in each tier, but how much of the economic pie they control. Today, the richest 19% of Americans control nearly half of all income – more than the entire middle class.</p>
+  <p style="margin-bottom: 0;">Most striking: lower-income Americans, despite growing from 27% to 30% of the population, saw their already meager share of income shrink further from 10% to just 9%. The American economy hasn't just polarized – it has fundamentally redistributed rewards upward.</p>
+</div>
+
+<!-- Chart 9: Industrial Robots Impact -->
+<div class="chart-container">
+  <h2>9. The Automation Wave: Robots Replacing Workers</h2>
   <p class="chart-description">Each robot per 1,000 workers reduces employment by 0.2% and wages by 0.42% (Acemoglu-Restrepo)</p>
   <div class="chart-wrapper"><div id="robotsChart"></div></div>
 </div>
@@ -236,9 +250,9 @@
   <p style="margin-bottom: 0;">The 0.61% cumulative wage decline may seem modest, but it represents billions in annual income transferred from workers to the owners of capital – the machines themselves.</p>
 </div>
 
-<!-- Chart 9: China Shock -->
+<!-- Chart 10: China Shock -->
 <div class="chart-container">
-  <h2>9. The China Shock: When Global Trade Devastated U.S. Manufacturing</h2>
+  <h2>10. The China Shock: When Global Trade Devastated U.S. Manufacturing</h2>
   <p class="chart-description">Chinese import penetration surged 12-fold, destroying millions of manufacturing jobs in America's heartland</p>
   <div class="chart-wrapper"><div id="chinaShockChart"></div></div>
 </div>
@@ -250,9 +264,9 @@
   <p style="margin-bottom: 0;">The scatter plot below shows the devastating correlation: regions with higher Chinese import exposure (horizontal axis) experienced dramatically larger manufacturing job losses (vertical axis). Each dot represents an American community whose economic foundation was swept away by the tide of globalization.</p>
 </div>
 
-<!-- Chart 10: Import Exposure vs Job Loss -->
+<!-- Chart 11: Import Exposure vs Job Loss -->
 <div class="chart-container">
-  <h2>10. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
+  <h2>11. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
   <p class="chart-description">Each $1,000 increase in Chinese import exposure per worker led to a 0.5-0.8 percentage point decline in manufacturing employment share of working-age population (central estimate: 0.6pp)</p>
   <div class="chart-wrapper"><div id="importExposureChart"></div></div>
 </div>
@@ -299,7 +313,7 @@
 <div style="background: #1e293b; color: #f8fafc; padding: 2rem; margin: 3rem 0 2rem; border-radius: 0.75rem;">
   <h2 style="color: #f8fafc; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.8rem;">The Verdict: A Systematic Transfer of Wealth</h2>
   
-  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These ten charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital, accelerated by automation and globalization.</p>
+  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These eleven charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital, accelerated by automation and globalization.</p>
   
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
     <div style="background: rgba(255,255,255,0.1); padding: 1.25rem; border-radius: 0.5rem;">
@@ -832,7 +846,105 @@ const middleClassLayout = {
 
 Plotly.newPlot('middleClassChart', middleClassData, middleClassLayout, config);
 
-// Chart 8: Industrial Robots Impact
+// Chart 8: Income Share Distribution
+// Data from Pew Research on aggregate income share by tier
+const shareYears = ['1970', '1980', '1990', '2000', '2010', '2018'];
+const lowerIncomeShare = [10, 9, 9, 9, 9, 9];
+const middleIncomeShare = [62, 60, 56, 53, 45, 43];
+const upperIncomeShare = [29, 31, 35, 38, 46, 48];
+
+const incomeShareData = [
+  {
+    x: shareYears,
+    y: lowerIncomeShare,
+    name: 'Lower Income',
+    type: 'bar',
+    marker: { color: '#dc2626' },
+    text: lowerIncomeShare.map(v => v + '%'),
+    textposition: 'inside',
+    textfont: { color: 'white', size: 12 }
+  },
+  {
+    x: shareYears,
+    y: middleIncomeShare,
+    name: 'Middle Income',
+    type: 'bar',
+    marker: { color: '#3b82f6' },
+    text: middleIncomeShare.map(v => v + '%'),
+    textposition: 'inside',
+    textfont: { color: 'white', size: 12 }
+  },
+  {
+    x: shareYears,
+    y: upperIncomeShare,
+    name: 'Upper Income',
+    type: 'bar',
+    marker: { color: '#10b981' },
+    text: upperIncomeShare.map(v => v + '%'),
+    textposition: 'inside',
+    textfont: { color: 'white', size: 12 }
+  }
+];
+
+const incomeShareLayout = {
+  height: 380,
+  margin: { t: 30, r: 20, l: 60, b: 50 },
+  barmode: 'stack',
+  xaxis: { 
+    title: 'Year',
+    type: 'category',
+    categoryorder: 'array',
+    categoryarray: shareYears
+  },
+  yaxis: { 
+    title: 'Share of Aggregate Income (%)',
+    range: [0, 110],
+    ticksuffix: '%'
+  },
+  showlegend: true,
+  legend: {
+    x: 0.5,
+    y: 1.15,
+    xanchor: 'center',
+    orientation: 'h',
+    traceorder: 'reversed'
+  },
+  annotations: [{
+    x: 0,
+    y: 50,
+    text: '62%',
+    showarrow: false,
+    font: { size: 16, color: 'white', weight: 'bold' }
+  }, {
+    x: 5,
+    y: 35,
+    text: '43%',
+    showarrow: false,
+    font: { size: 16, color: 'white', weight: 'bold' }
+  }, {
+    x: 0,
+    y: 90,
+    text: '29%',
+    showarrow: false,
+    font: { size: 16, color: 'white', weight: 'bold' }
+  }, {
+    x: 5,
+    y: 85,
+    text: '48%',
+    showarrow: false,
+    font: { size: 16, color: 'white', weight: 'bold' }
+  }, {
+    x: 2.5,
+    y: 108,
+    text: 'Middle class lost 19pp of income share',
+    showarrow: false,
+    font: { size: 12, color: '#6b7280' }
+  }]
+};
+
+Plotly.newPlot('incomeShareChart', incomeShareData, incomeShareLayout, config);
+
+// Chart 9: Industrial Robots Impact
 // Data from Acemoglu & Restrepo (2020): Robots and Jobs: Evidence from US Labor Markets
 // Industrial robots per 1,000 workers in US manufacturing
 const robotYears = [1993, 1995, 1997, 1999, 2001, 2003, 2005, 2007, 2009, 2011, 2013, 2015];
