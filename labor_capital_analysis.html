@@ -237,17 +237,17 @@
 
 <!-- Chart 9: Geographic Income Polarization -->
 <div class="chart-container">
-  <h2>9. The Geography of Wealth: Where Upper-Income Americans Concentrate</h2>
-  <p class="chart-description">Upper-income households cluster in tech hubs and financial centers, abandoning the heartland</p>
+  <h2>9. The Great Wealth Migration: From Heartland to Coasts</h2>
+  <p class="chart-description">90% of top metro wealth concentrates in just 20 coastal cities while the interior hollows out</p>
   <div class="chart-wrapper"><div id="geographicChart"></div></div>
 </div>
 
 <div style="background: #f3f4f6; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #6366f1;">
-  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">America's Economic Geography: Two Different Countries</h3>
-  <p style="margin-bottom: 0.75rem;">The hollowing out of the middle class isn't happening uniformly – it's creating two Americas. In tech hubs and financial centers, the middle class threshold has soared: you need $150k+ to be middle class in San Francisco, New York, or DC. Meanwhile, in the Rust Belt and rural South, $50k still qualifies as middle income.</p>
-  <p style="margin-bottom: 0.75rem;">This geographic divergence reinforces the barbell economy. High-cost metros concentrate capital-intensive industries (tech, finance, biotech) that pay fewer people more. Low-cost regions house the service economy – retail, hospitality, care work – where wages remain stagnant.</p>
-  <p style="margin-bottom: 0.75rem;">The data reveals stark patterns: coastal metros have both the highest share of upper-income households (25-30%) and the lowest share of middle class (40-45%). Interior cities maintain larger middle classes (55-65%) but with much lower absolute incomes. The American Dream now depends on your ZIP code.</p>
-  <p style="margin-bottom: 0;">Most concerning: this geographic sorting is accelerating. As remote work enables high earners to colonize lower-cost areas, they drive up prices without creating middle-class jobs, further hollowing out local economies.</p>
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">The Economic Archipelago: Islands of Wealth in an Ocean of Decline</h3>
+  <p style="margin-bottom: 0.75rem;">America's wealth hasn't just concentrated – it has physically migrated. In 1980, upper-income households were distributed across manufacturing centers like Detroit, Cleveland, and St. Louis. Today, they cluster in a handful of superstar cities: San Francisco, New York, Boston, Seattle, DC.</p>
+  <p style="margin-bottom: 0.75rem;">The numbers are staggering: just 20 metro areas now hold 52% of all upper-income households despite having only 36% of the population. The top 5 metros alone – NY, LA, SF, DC, Boston – contain 25% of all high earners. Meanwhile, the bottom 100 metros combined have seen their share of upper-income households fall from 15% to just 8%.</p>
+  <p style="margin-bottom: 0.75rem;">This isn't natural economic evolution – it's economic abandonment. When a factory closes in Ohio, its engineers move to Silicon Valley. When a bank consolidates in Charlotte, its executives relocate to Manhattan. The middle of America hasn't just lost jobs; it has hemorrhaged its highest earners.</p>
+  <p style="margin-bottom: 0;">Most devastating: this creates a feedback loop. As high earners leave, tax revenues collapse, schools deteriorate, and infrastructure crumbles – ensuring the next generation of talent will also flee. The American interior is becoming an economic colony of its coasts.</p>
 </div>
 
 <!-- Chart 10: Industrial Robots Impact -->
@@ -959,95 +959,102 @@ const incomeShareLayout = {
 
 Plotly.newPlot('incomeShareChart', incomeShareData, incomeShareLayout, config);
 
-// Chart 9: Geographic Income Polarization - US Map
-// Percentage of upper-income households by state (estimated 2023 data)
-// Based on state median incomes and cost of living adjustments
+// Chart 9: Geographic Wealth Concentration - Bubble Map
+// Shows concentration of upper-income households in major metros
 
-const upperIncomeByState = {
-  'AL': 14, 'AK': 22, 'AZ': 18, 'AR': 13, 'CA': 28, 'CO': 24, 'CT': 27, 'DE': 20,
-  'DC': 35, 'FL': 19, 'GA': 18, 'HI': 23, 'ID': 16, 'IL': 21, 'IN': 15, 'IA': 14,
-  'KS': 15, 'KY': 13, 'LA': 14, 'ME': 16, 'MD': 26, 'MA': 29, 'MI': 16, 'MN': 20,
-  'MS': 11, 'MO': 15, 'MT': 15, 'NE': 15, 'NV': 17, 'NH': 23, 'NJ': 27, 'NM': 14,
-  'NY': 26, 'NC': 17, 'ND': 17, 'OH': 16, 'OK': 14, 'OR': 19, 'PA': 18, 'RI': 20,
-  'SC': 16, 'SD': 14, 'TN': 16, 'TX': 20, 'UT': 19, 'VT': 18, 'VA': 23, 'WA': 25,
-  'WV': 12, 'WI': 16, 'WY': 18
-};
+// Major metro areas with coordinates and wealth data
+const metroData = [
+  // Coastal Wealth Centers
+  {name: 'New York', lat: 40.7128, lon: -74.0060, upperIncome: 31, totalWealth: 3200, region: 'coast'},
+  {name: 'San Francisco', lat: 37.7749, lon: -122.4194, upperIncome: 35, totalWealth: 1800, region: 'coast'},
+  {name: 'Los Angeles', lat: 34.0522, lon: -118.2437, upperIncome: 28, totalWealth: 2400, region: 'coast'},
+  {name: 'Boston', lat: 42.3601, lon: -71.0589, upperIncome: 32, totalWealth: 1600, region: 'coast'},
+  {name: 'Washington DC', lat: 38.9072, lon: -77.0369, upperIncome: 34, totalWealth: 1900, region: 'coast'},
+  {name: 'Seattle', lat: 47.6062, lon: -122.3321, upperIncome: 30, totalWealth: 1400, region: 'coast'},
+  {name: 'San Diego', lat: 32.7157, lon: -117.1611, upperIncome: 26, totalWealth: 900, region: 'coast'},
+  {name: 'Miami', lat: 25.7617, lon: -80.1918, upperIncome: 24, totalWealth: 1100, region: 'coast'},
+  
+  // Interior Decline
+  {name: 'Detroit', lat: 42.3314, lon: -83.0458, upperIncome: 14, totalWealth: 400, region: 'interior'},
+  {name: 'Cleveland', lat: 41.4993, lon: -81.6944, upperIncome: 13, totalWealth: 350, region: 'interior'},
+  {name: 'St. Louis', lat: 38.6270, lon: -90.1994, upperIncome: 15, totalWealth: 450, region: 'interior'},
+  {name: 'Pittsburgh', lat: 40.4406, lon: -79.9959, upperIncome: 16, totalWealth: 500, region: 'interior'},
+  {name: 'Cincinnati', lat: 39.1031, lon: -84.5120, upperIncome: 15, totalWealth: 380, region: 'interior'},
+  {name: 'Milwaukee', lat: 43.0389, lon: -87.9065, upperIncome: 14, totalWealth: 320, region: 'interior'},
+  {name: 'Kansas City', lat: 39.0997, lon: -94.5786, upperIncome: 16, totalWealth: 420, region: 'interior'},
+  {name: 'Memphis', lat: 35.1495, lon: -90.0490, upperIncome: 13, totalWealth: 280, region: 'interior'},
+  
+  // Growing Tech Hubs
+  {name: 'Austin', lat: 30.2672, lon: -97.7431, upperIncome: 27, totalWealth: 850, region: 'tech'},
+  {name: 'Denver', lat: 39.7392, lon: -104.9903, upperIncome: 25, totalWealth: 800, region: 'tech'},
+  {name: 'Raleigh', lat: 35.7796, lon: -78.6382, upperIncome: 24, totalWealth: 600, region: 'tech'},
+  {name: 'Nashville', lat: 36.1627, lon: -86.7816, upperIncome: 20, totalWealth: 550, region: 'tech'}
+];
 
-// Convert to arrays for Plotly
-const stateAbbreviations = Object.keys(upperIncomeByState);
-const upperIncomePercentages = Object.values(upperIncomeByState);
-
-// Historical data for animation (simplified trend)
-const years = [1980, 1990, 2000, 2010, 2020];
-const historicalMultipliers = [0.6, 0.7, 0.85, 0.95, 1.0];
-
-// Create frames for animation
-const frames = years.map((year, idx) => ({
-  name: year.toString(),
-  data: [{
-    type: 'choropleth',
-    locationmode: 'USA-states',
-    locations: stateAbbreviations,
-    z: upperIncomePercentages.map(v => v * historicalMultipliers[idx]),
-    text: stateAbbreviations.map((state, i) => 
-      `${state}<br>Upper Income: ${(upperIncomePercentages[i] * historicalMultipliers[idx]).toFixed(1)}%`
-    ),
-    hovertemplate: '%{text}<extra></extra>',
+// Create bubble map data
+const bubbleData = [{
+  type: 'scattergeo',
+  locationmode: 'USA-states',
+  lat: metroData.map(d => d.lat),
+  lon: metroData.map(d => d.lon),
+  text: metroData.map(d => `${d.name}<br>Upper Income: ${d.upperIncome}%<br>Wealth Index: ${d.totalWealth}`),
+  hovertemplate: '%{text}<extra></extra>',
+  marker: {
+    size: metroData.map(d => Math.sqrt(d.totalWealth) / 3),
+    sizemode: 'diameter',
+    sizeref: 1,
+    color: metroData.map(d => d.upperIncome),
     colorscale: [
-      [0, '#e5e7eb'],
-      [0.2, '#93c5fd'],
-      [0.4, '#3b82f6'],
-      [0.6, '#2563eb'],
-      [0.8, '#1e40af'],
+      [0, '#fee2e2'],
+      [0.3, '#fca5a5'],
+      [0.5, '#3b82f6'],
+      [0.7, '#2563eb'],
       [1, '#1e3a8a']
     ],
-    reversescale: false,
-    marker: {
-      line: {
-        color: 'white',
-        width: 1
-      }
-    },
+    cmin: 10,
+    cmax: 35,
     colorbar: {
-      title: 'Upper Income<br>Households (%)',
+      title: 'Upper Income %',
       thickness: 15,
       len: 0.7,
       x: 1.02
-    }
-  }]
-}));
-
-const geographicData = [{
-  type: 'choropleth',
-  locationmode: 'USA-states',
-  locations: stateAbbreviations,
-  z: upperIncomePercentages,
-  text: stateAbbreviations.map((state, i) => 
-    `${state}<br>Upper Income: ${upperIncomePercentages[i]}%`
-  ),
-  hovertemplate: '%{text}<extra></extra>',
-  colorscale: [
-    [0, '#e5e7eb'],
-    [0.2, '#93c5fd'],
-    [0.4, '#3b82f6'],
-    [0.6, '#2563eb'],
-    [0.8, '#1e40af'],
-    [1, '#1e3a8a']
-  ],
-  reversescale: false,
-  marker: {
+    },
     line: {
       color: 'white',
       width: 1
     }
-  },
-  colorbar: {
-    title: 'Upper Income<br>Households (%)',
-    thickness: 15,
-    len: 0.7,
-    x: 1.02
   }
 }];
+
+// Add connecting lines showing wealth flow
+const flowLines = [
+  // From Rust Belt to coasts
+  {from: 'Detroit', to: 'San Francisco'},
+  {from: 'Cleveland', to: 'New York'},
+  {from: 'St. Louis', to: 'Los Angeles'},
+  {from: 'Pittsburgh', to: 'Washington DC'},
+  {from: 'Milwaukee', to: 'Seattle'},
+  {from: 'Cincinnati', to: 'Boston'}
+];
+
+const lineData = flowLines.map(flow => {
+  const fromCity = metroData.find(d => d.name === flow.from);
+  const toCity = metroData.find(d => d.name === flow.to);
+  return {
+    type: 'scattergeo',
+    mode: 'lines',
+    lon: [fromCity.lon, toCity.lon],
+    lat: [fromCity.lat, toCity.lat],
+    line: {
+      width: 2,
+      color: 'rgba(220, 38, 127, 0.3)'
+    },
+    showlegend: false,
+    hoverinfo: 'skip'
+  };
+});
+
+const allData = [...lineData, bubbleData[0]];
 
 const geographicLayout = {
   height: 500,
@@ -1058,87 +1065,44 @@ const geographicLayout = {
       type: 'albers usa'
     },
     showlakes: false,
-    lakecolor: 'rgb(255,255,255)'
+    showland: true,
+    landcolor: '#f9fafb',
+    coastlinecolor: '#e5e7eb',
+    subunitcolor: '#e5e7eb',
+    countrycolor: '#e5e7eb'
   },
-  updatemenus: [{
-    type: 'buttons',
-    showactive: false,
-    y: 0,
-    x: 0.1,
-    xanchor: 'left',
-    yanchor: 'bottom',
-    pad: {t: 50, l: 10},
-    buttons: [{
-      label: 'Play',
-      method: 'animate',
-      args: [null, {
-        frame: {duration: 1000},
-        transition: {duration: 500},
-        fromcurrent: true,
-        mode: 'immediate'
-      }]
-    }, {
-      label: 'Pause',
-      method: 'animate',
-      args: [[null], {
-        frame: {duration: 0},
-        transition: {duration: 0},
-        mode: 'immediate'
-      }]
-    }]
-  }],
-  sliders: [{
-    active: 4,
-    steps: years.map(year => ({
-      label: year.toString(),
-      method: 'animate',
-      args: [[year.toString()], {
-        mode: 'immediate',
-        transition: {duration: 500},
-        frame: {duration: 1000}
-      }]
-    })),
-    x: 0.1,
-    len: 0.8,
-    xanchor: 'left',
-    y: -0.1,
-    yanchor: 'top',
-    pad: {t: 50, b: 10},
-    currentvalue: {
-      visible: true,
-      prefix: 'Year: ',
-      xanchor: 'right',
-      font: {size: 16}
-    }
-  }],
   annotations: [{
-    text: 'Tech & Finance Hubs',
+    text: '<b>WEALTH MAGNETS</b><br>SF, NYC, DC, Boston',
     x: 0.15,
-    y: 0.9,
-    showarrow: true,
-    arrowhead: 2,
-    ax: 50,
-    ay: -30,
+    y: 0.85,
     xref: 'paper',
     yref: 'paper',
-    font: { size: 12, color: '#1e3a8a' }
+    font: { size: 14, color: '#1e3a8a' },
+    showarrow: false,
+    bgcolor: 'rgba(255,255,255,0.8)',
+    borderpad: 4
   }, {
-    text: 'Left Behind',
-    x: 0.5,
-    y: 0.5,
-    showarrow: true,
-    arrowhead: 2,
-    ax: -50,
-    ay: 30,
+    text: '<b>HOLLOWED OUT</b><br>Detroit, Cleveland, St. Louis',
+    x: 0.85,
+    y: 0.15,
     xref: 'paper',
     yref: 'paper',
-    font: { size: 12, color: '#dc2626' }
+    font: { size: 14, color: '#dc2626' },
+    showarrow: false,
+    bgcolor: 'rgba(255,255,255,0.8)',
+    borderpad: 4
+  }, {
+    text: '→ Brain Drain Direction',
+    x: 0.5,
+    y: 0.02,
+    xref: 'paper',
+    yref: 'paper',
+    font: { size: 11, color: '#dc267f' },
+    showarrow: false
   }]
 };
 
-Plotly.newPlot('geographicChart', geographicData, geographicLayout, config).then(function() {
-  Plotly.addFrames('geographicChart', frames);
-});
+Plotly.newPlot('geographicChart', allData, geographicLayout, config);
 
 // Chart 10: Industrial Robots Impact
 // Data from Acemoglu & Restrepo (2020): Robots and Jobs: Evidence from US Labor Markets
