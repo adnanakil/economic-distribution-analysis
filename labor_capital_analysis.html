@@ -235,9 +235,24 @@
   <p style="margin-bottom: 0;">Most striking: lower-income Americans, despite growing from 27% to 30% of the population, saw their already meager share of income shrink further from 10% to just 9%. The American economy hasn't just polarized – it has fundamentally redistributed rewards upward.</p>
 </div>
 
-<!-- Chart 9: Industrial Robots Impact -->
+<!-- Chart 9: Geographic Income Polarization -->
 <div class="chart-container">
-  <h2>9. The Automation Wave: Robots Replacing Workers</h2>
+  <h2>9. The Geography of Inequality: Middle Class Thresholds by State</h2>
+  <p class="chart-description">Income needed to be middle class varies dramatically by state – from $36k in Mississippi to $200k in DC</p>
+  <div class="chart-wrapper"><div id="geographicChart"></div></div>
+</div>
+
+<div style="background: #f3f4f6; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #6366f1;">
+  <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1e293b;">America's Economic Geography: Two Different Countries</h3>
+  <p style="margin-bottom: 0.75rem;">The hollowing out of the middle class isn't happening uniformly – it's creating two Americas. In tech hubs and financial centers, the middle class threshold has soared: you need $150k+ to be middle class in San Francisco, New York, or DC. Meanwhile, in the Rust Belt and rural South, $50k still qualifies as middle income.</p>
+  <p style="margin-bottom: 0.75rem;">This geographic divergence reinforces the barbell economy. High-cost metros concentrate capital-intensive industries (tech, finance, biotech) that pay fewer people more. Low-cost regions house the service economy – retail, hospitality, care work – where wages remain stagnant.</p>
+  <p style="margin-bottom: 0.75rem;">The data reveals stark patterns: coastal metros have both the highest share of upper-income households (25-30%) and the lowest share of middle class (40-45%). Interior cities maintain larger middle classes (55-65%) but with much lower absolute incomes. The American Dream now depends on your ZIP code.</p>
+  <p style="margin-bottom: 0;">Most concerning: this geographic sorting is accelerating. As remote work enables high earners to colonize lower-cost areas, they drive up prices without creating middle-class jobs, further hollowing out local economies.</p>
+</div>
+
+<!-- Chart 10: Industrial Robots Impact -->
+<div class="chart-container">
+  <h2>10. The Automation Wave: Robots Replacing Workers</h2>
   <p class="chart-description">Each robot per 1,000 workers reduces employment by 0.2% and wages by 0.42% (Acemoglu-Restrepo)</p>
   <div class="chart-wrapper"><div id="robotsChart"></div></div>
 </div>
@@ -250,9 +265,9 @@
   <p style="margin-bottom: 0;">The 0.61% cumulative wage decline may seem modest, but it represents billions in annual income transferred from workers to the owners of capital – the machines themselves.</p>
 </div>
 
-<!-- Chart 10: China Shock -->
+<!-- Chart 11: China Shock -->
 <div class="chart-container">
-  <h2>10. The China Shock: When Global Trade Devastated U.S. Manufacturing</h2>
+  <h2>11. The China Shock: When Global Trade Devastated U.S. Manufacturing</h2>
   <p class="chart-description">Chinese import penetration surged 12-fold, destroying millions of manufacturing jobs in America's heartland</p>
   <div class="chart-wrapper"><div id="chinaShockChart"></div></div>
 </div>
@@ -264,9 +279,9 @@
   <p style="margin-bottom: 0;">The scatter plot below shows the devastating correlation: regions with higher Chinese import exposure (horizontal axis) experienced dramatically larger manufacturing job losses (vertical axis). Each dot represents an American community whose economic foundation was swept away by the tide of globalization.</p>
 </div>
 
-<!-- Chart 11: Import Exposure vs Job Loss -->
+<!-- Chart 12: Import Exposure vs Job Loss -->
 <div class="chart-container">
-  <h2>11. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
+  <h2>12. The Geography of Devastation: How Import Competition Destroyed Local Economies</h2>
   <p class="chart-description">Each $1,000 increase in Chinese import exposure per worker led to a 0.5-0.8 percentage point decline in manufacturing employment share of working-age population (central estimate: 0.6pp)</p>
   <div class="chart-wrapper"><div id="importExposureChart"></div></div>
 </div>
@@ -313,7 +328,7 @@
 <div style="background: #1e293b; color: #f8fafc; padding: 2rem; margin: 3rem 0 2rem; border-radius: 0.75rem;">
   <h2 style="color: #f8fafc; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.8rem;">The Verdict: A Systematic Transfer of Wealth</h2>
   
-  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These eleven charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital, accelerated by automation and globalization.</p>
+  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">These twelve charts tell a unified story: over the past 50 years, America has witnessed one of the largest transfers of wealth in human history – not between individuals, but between economic classes. The transfer from labor to capital, accelerated by automation and globalization.</p>
   
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
     <div style="background: rgba(255,255,255,0.1); padding: 1.25rem; border-radius: 0.5rem;">
@@ -944,7 +959,103 @@ const incomeShareLayout = {
 
 Plotly.newPlot('incomeShareChart', incomeShareData, incomeShareLayout, config);
 
-// Chart 9: Industrial Robots Impact
+// Chart 9: Geographic Income Polarization
+// Middle class income thresholds by selected states (2023 data)
+const stateNames = [
+  'District of Columbia', 'Hawaii', 'Massachusetts', 'California', 'New York',
+  'Connecticut', 'New Jersey', 'Maryland', 'Washington', 'Colorado',
+  'Texas', 'Florida', 'Pennsylvania', 'Ohio', 'Michigan',
+  'North Carolina', 'Georgia', 'Tennessee', 'Kentucky', 'West Virginia',
+  'Alabama', 'Arkansas', 'Mississippi'
+];
+
+const middleClassLower = [
+  67000, 60000, 58000, 57000, 56000,
+  55000, 54000, 53000, 52000, 50000,
+  42000, 41000, 40000, 38000, 37000,
+  36000, 36000, 35000, 34000, 32000,
+  31000, 30000, 28000
+];
+
+const middleClassUpper = [
+  200000, 180000, 174000, 171000, 168000,
+  165000, 162000, 159000, 156000, 150000,
+  126000, 123000, 120000, 114000, 111000,
+  108000, 108000, 105000, 102000, 96000,
+  93000, 90000, 84000
+];
+
+const geographicData = [{
+  x: stateNames,
+  y: middleClassLower,
+  name: 'Lower Threshold',
+  type: 'bar',
+  marker: { color: '#3b82f6' },
+  hovertemplate: '%{x}<br>Lower: $%{y:,.0f}<extra></extra>'
+}, {
+  x: stateNames,
+  y: middleClassUpper.map((v, i) => v - middleClassLower[i]),
+  name: 'Middle Class Range',
+  type: 'bar',
+  marker: { color: '#60a5fa' },
+  hovertemplate: '%{x}<br>Upper: $%{customdata:,.0f}<extra></extra>',
+  customdata: middleClassUpper
+}];
+
+const geographicLayout = {
+  height: 500,
+  margin: { t: 30, r: 20, l: 80, b: 120 },
+  barmode: 'stack',
+  xaxis: { 
+    title: '',
+    tickangle: -45,
+    tickfont: { size: 10 }
+  },
+  yaxis: { 
+    title: 'Income Range ($)',
+    tickformat: '$,.0f'
+  },
+  showlegend: true,
+  legend: {
+    x: 0.7,
+    y: 0.95
+  },
+  shapes: [{
+    type: 'line',
+    x0: -0.5,
+    y0: 80000,
+    x1: 22.5,
+    y1: 80000,
+    line: {
+      color: '#dc2626',
+      width: 2,
+      dash: 'dot'
+    }
+  }],
+  annotations: [{
+    x: 0,
+    y: 220000,
+    text: 'DC: $67k-$200k',
+    showarrow: false,
+    font: { size: 11, color: '#dc2626', weight: 'bold' }
+  }, {
+    x: 22,
+    y: 100000,
+    text: 'MS: $28k-$84k',
+    showarrow: false,
+    font: { size: 11, color: '#dc2626', weight: 'bold' }
+  }, {
+    x: 11,
+    y: 85000,
+    text: 'National median: $80k',
+    showarrow: false,
+    font: { size: 10, color: '#dc2626' }
+  }]
+};
+
+Plotly.newPlot('geographicChart', geographicData, geographicLayout, config);
+
+// Chart 10: Industrial Robots Impact
 // Data from Acemoglu & Restrepo (2020): Robots and Jobs: Evidence from US Labor Markets
 // Industrial robots per 1,000 workers in US manufacturing
 const robotYears = [1993, 1995, 1997, 1999, 2001, 2003, 2005, 2007, 2009, 2011, 2013, 2015];
