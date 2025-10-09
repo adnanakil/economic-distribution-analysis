@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Fascism Risk Thermometer: Historical Analysis</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fafafa;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box h2 {
+            color: #856404;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .current-reading {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .current-reading h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .risk-score {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #dc3545;
+            margin: 1rem 0;
+        }
+
+        .risk-label {
+            font-size: 1.5rem;
+            color: #dc3545;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .comparison-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .comparison-item .label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-item .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .chart-container h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .methodology {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .methodology h2 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .methodology ul {
+            margin-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .methodology li {
+            margin-bottom: 0.5rem;
+        }
+
+        .risk-levels {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .risk-levels h3 {
+            margin-bottom: 1rem;
+        }
+
+        .risk-level-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .risk-level-item .bar {
+            height: 20px;
+            margin-right: 1rem;
+            border-radius: 2px;
+        }
+
+        .risk-low .bar {
+            width: 30%;
+            background: #28a745;
+        }
+
+        .risk-moderate .bar {
+            width: 50%;
+            background: #ffc107;
+        }
+
+        .risk-high .bar {
+            width: 70%;
+            background: #ff9800;
+        }
+
+        .risk-extreme .bar {
+            width: 90%;
+            background: #dc3545;
+        }
+
+        .citation {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .ingredients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-score {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌡️ US Fascism Risk Thermometer</h1>
+        <p class="subtitle">Tracking the four key ingredients that historically precede democratic collapse and extremist movements</p>
+    </div>
+
+    <div class="container">
+        <div class="warning-box">
+            <h2>⚠️ Current Status: Extreme Risk Territory</h2>
+            <p>The United States is currently registering its <strong>highest sustained risk level</strong> in the modern measurement period (1958-2025), surpassing even the 2008 financial crisis. This is driven not by economic factors, but by <strong>historic lows in national pride and institutional trust</strong> combined with <strong>demographic change anxiety</strong>.</p>
+        </div>
+
+        <div class="current-reading">
+            <h2>Current Risk Index (2025)</h2>
+            <div class="risk-score">75.3</div>
+            <div class="risk-label">Extreme Risk</div>
+
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="label">1980 Crisis</div>
+                    <div class="value">70.7</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="label">2009 Recession</div>
+                    <div class="value">72.0</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="label">2020 Pandemic</div>
+                    <div class="value">84.3</div>
+                </div>
+                <div class="comparison-item" style="background: #ffe6e6;">
+                    <div class="label">Current (2025)</div>
+                    <div class="value" style="color: #dc3545;">75.3</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3>Composite Fascism Risk Index Over Time (1958-2025)</h3>
+            <div id="mainThermometer" style="width: 100%; height: 500px;"></div>
+        </div>
+
+        <div class="risk-levels">
+            <h3>Risk Level Interpretation</h3>
+            <div class="risk-level-item risk-low">
+                <div class="bar"></div>
+                <div><strong>0-30: Low Risk</strong> - Stable conditions, democratic norms intact</div>
+            </div>
+            <div class="risk-level-item risk-moderate">
+                <div class="bar"></div>
+                <div><strong>30-50: Moderate Risk</strong> - Some warning signs present</div>
+            </div>
+            <div class="risk-level-item risk-high">
+                <div class="bar"></div>
+                <div><strong>50-70: High Risk</strong> - Multiple ingredients combining</div>
+            </div>
+            <div class="risk-level-item risk-extreme">
+                <div class="bar"></div>
+                <div><strong>70-100: Extreme Risk</strong> - All four ingredients at dangerous levels</div>
+            </div>
+        </div>
+
+        <div class="methodology">
+            <h2>Methodology: The Four Ingredients</h2>
+            <p>This index combines four factors identified by academic research as precursors to extremist movements:</p>
+            <ul>
+                <li><strong>Economic Crisis (33% weight):</strong> Unemployment rate - Higher unemployment increases risk-seeking behavior and scapegoating</li>
+                <li><strong>Status Threat (30% weight):</strong> National pride decline - Perceived loss of national standing creates receptivity to restoration narratives</li>
+                <li><strong>Cultural Backlash (17% weight):</strong> Demographic change - Rapid shifts from historical norms trigger anxiety</li>
+                <li><strong>Institutional Trust (20% weight):</strong> Trust in government - Collapse of faith in mainstream institutions creates demand for outsiders</li>
+            </ul>
+            <p style="margin-top: 1rem;"><em>Weights based on meta-analysis of 36 academic studies (Scheiring et al., 2024) showing economic factors explain ~33% of populist surges, with cultural and institutional factors comprising the remaining ~67%.</em></p>
+        </div>
+
+        <h2 style="margin-top: 3rem; margin-bottom: 1rem;">The Four Ingredients: Individual Trends</h2>
+
+        <div class="ingredients-grid">
+            <div class="chart-container">
+                <h3>1. Economic Crisis: Unemployment Rate</h3>
+                <div id="unemploymentChart" style="width: 100%; height: 350px;"></div>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.95rem;">
+                    <strong>Current: 4.2%</strong> - Relatively low. Economic factor is <strong>not</strong> currently driving risk.
+                </p>
+            </div>
+
+            <div class="chart-container">
+                <h3>2. Status Threat: National Pride</h3>
+                <div id="prideChart" style="width: 100%; height: 350px;"></div>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.95rem;">
+                    <strong>Current: 38%</strong> "extremely proud" - Down 32 points from 2003 peak. <strong>Historic low</strong>, major risk driver.
+                </p>
+            </div>
+
+            <div class="chart-container">
+                <h3>3. Cultural Backlash: Foreign-Born %</h3>
+                <div id="foreignChart" style="width: 100%; height: 350px;"></div>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.95rem;">
+                    <strong>Current: 14.5%</strong> - At historic peak levels (higher than 1920), rapid change creates anxiety.
+                </p>
+            </div>
+
+            <div class="chart-container">
+                <h3>4. Institutional Trust: Trust in Gov't</h3>
+                <div id="trustChart" style="width: 100%; height: 350px;"></div>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.95rem;">
+                    <strong>Current: 22%</strong> - Down 55 points from 1964 peak. Near <strong>historic lows</strong>, major risk driver.
+                </p>
+            </div>
+        </div>
+
+        <div class="warning-box" style="background: #f0f9ff; border-left-color: #3b82f6;">
+            <h2 style="color: #1e40af;">📊 Key Insight: Current Risk is Not Economic</h2>
+            <p>Unlike the Great Depression or 2008 financial crisis, <strong>current extreme risk levels are NOT driven by unemployment</strong> (which remains low at 4.2%). Instead, risk is driven by:</p>
+            <ul style="margin: 1rem 0 0 2rem; line-height: 1.8;">
+                <li><strong>National pride collapse:</strong> Fallen to historic lows (38% vs. 70% in 2003)</li>
+                <li><strong>Institutional trust collapse:</strong> Only 22% trust government (vs. 77% in 1964)</li>
+                <li><strong>Demographic anxiety:</strong> Foreign-born population at all-time highs (14.5%)</li>
+            </ul>
+            <p style="margin-top: 1rem;">This pattern aligns with research showing <strong>status threat and cultural backlash can be stronger drivers than economics</strong> (Mutz, 2018; Margalit, 2019).</p>
+        </div>
+
+        <div class="citation">
+            <h3>Data Sources & Methodology</h3>
+            <p><strong>Unemployment:</strong> Bureau of Labor Statistics (BLS), National Bureau of Economic Research (NBER) for historical data</p>
+            <p><strong>National Pride:</strong> Gallup polling (2001-2025), pre-2001 estimates based on historical context</p>
+            <p><strong>Foreign-Born Population:</strong> U.S. Census Bureau historical statistics, Migration Policy Institute</p>
+            <p><strong>Trust in Government:</strong> Pew Research Center (1958-2024), American National Election Studies</p>
+
+            <h3 style="margin-top: 2rem;">Key Academic Sources</h3>
+            <p>• Scheiring, G., Molnár, G., Geiger, B. B., & Szabó, L. (2024). The Populist Backlash Against Globalization: A Meta-Analysis of the Causal Evidence. <em>British Journal of Political Science</em>.</p>
+            <p>• Funke, M., Schularick, M., & Trebesch, C. (2016). Going to Extremes: Politics after Financial Crises, 1870-2014. <em>European Economic Review</em>.</p>
+            <p>• Mutz, D. C. (2018). Status threat, not economic hardship, explains the 2016 presidential vote. <em>PNAS</em>, 115(19).</p>
+            <p>• Margalit, Y. (2019). Economic Insecurity and the Causes of Populism, Reconsidered. <em>Journal of Economic Perspectives</em>, 33(4).</p>
+            <p>• Gozgor, G. (2022). The Role of Economic Uncertainty in the Rise of EU Populism. <em>Public Choice</em>, 190(1).</p>
+
+            <p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd;">
+                <em>Last updated: October 2025 | Part of the <a href="index.html" style="color: #667eea;">Horse Energy</a> analysis series on economic distribution and democratic stability</em>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Load data and create visualizations
+        fetch('../fascism_thermometer_data.json')
+            .then(response => response.json())
+            .then(data => {
+                createMainThermometer(data);
+                createUnemploymentChart(data);
+                createPrideChart(data);
+                createForeignChart(data);
+                createTrustChart(data);
+            })
+            .catch(error => console.error('Error loading data:', error));
+
+        function createMainThermometer(data) {
+            const composite = data.composite_index;
+
+            // Create color array based on risk levels
+            const colors = composite.fascism_risk_index.map(val => {
+                if (val < 30) return '#28a745';
+                if (val < 50) return '#ffc107';
+                if (val < 70) return '#ff9800';
+                return '#dc3545';
+            });
+
+            const trace = {
+                x: composite.year,
+                y: composite.fascism_risk_index,
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Risk Index',
+                line: {
+                    color: '#667eea',
+                    width: 3
+                },
+                marker: {
+                    color: colors,
+                    size: 8,
+                    line: {
+                        color: '#333',
+                        width: 1
+                    }
+                },
+                hovertemplate: '<b>%{x}</b><br>Risk Index: %{y:.1f}<extra></extra>'
+            };
+
+            // Add horizontal risk level lines
+            const lowRisk = {
+                x: [composite.year[0], composite.year[composite.year.length - 1]],
+                y: [30, 30],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Moderate Risk Threshold',
+                line: { color: '#ffc107', width: 2, dash: 'dash' },
+                hoverinfo: 'skip'
+            };
+
+            const highRisk = {
+                x: [composite.year[0], composite.year[composite.year.length - 1]],
+                y: [50, 50],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'High Risk Threshold',
+                line: { color: '#ff9800', width: 2, dash: 'dash' },
+                hoverinfo: 'skip'
+            };
+
+            const extremeRisk = {
+                x: [composite.year[0], composite.year[composite.year.length - 1]],
+                y: [70, 70],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Extreme Risk Threshold',
+                line: { color: '#dc3545', width: 2, dash: 'dash' },
+                hoverinfo: 'skip'
+            };
+
+            // Add annotations for key events
+            const annotations = [
+                {
+                    x: 1974,
+                    y: 60,
+                    text: 'Watergate',
+                    showarrow: true,
+                    arrowhead: 2,
+                    ax: 0,
+                    ay: -40
+                },
+                {
+                    x: 2009,
+                    y: 72,
+                    text: 'Great Recession',
+                    showarrow: true,
+                    arrowhead: 2,
+                    ax: 0,
+                    ay: -40
+                },
+                {
+                    x: 2020,
+                    y: 84,
+                    text: 'Pandemic',
+                    showarrow: true,
+                    arrowhead: 2,
+                    ax: 0,
+                    ay: -40
+                },
+                {
+                    x: 2025,
+                    y: 75.3,
+                    text: '<b>TODAY: 75.3</b><br>Extreme Risk',
+                    showarrow: true,
+                    arrowhead: 2,
+                    ax: 40,
+                    ay: -40,
+                    font: {
+                        color: '#dc3545',
+                        size: 14
+                    }
+                }
+            ];
+
+            const layout = {
+                xaxis: {
+                    title: 'Year',
+                    gridcolor: '#e5e5e5'
+                },
+                yaxis: {
+                    title: 'Fascism Risk Index (0-100)',
+                    range: [0, 100],
+                    gridcolor: '#e5e5e5'
+                },
+                plot_bgcolor: '#fafafa',
+                paper_bgcolor: 'white',
+                showlegend: true,
+                legend: {
+                    x: 0.02,
+                    y: 0.98,
+                    bgcolor: 'rgba(255,255,255,0.8)'
+                },
+                annotations: annotations,
+                hovermode: 'closest'
+            };
+
+            Plotly.newPlot('mainThermometer', [trace, lowRisk, highRisk, extremeRisk], layout, {responsive: true});
+        }
+
+        function createUnemploymentChart(data) {
+            const unemp = data.unemployment;
+
+            const trace = {
+                x: unemp.year,
+                y: unemp.unemployment_rate,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Unemployment Rate',
+                line: {
+                    color: '#667eea',
+                    width: 2
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(102, 126, 234, 0.2)',
+                hovertemplate: '<b>%{x}</b><br>Unemployment: %{y:.1f}%<extra></extra>'
+            };
+
+            const layout = {
+                xaxis: { title: 'Year', gridcolor: '#e5e5e5' },
+                yaxis: { title: 'Unemployment Rate (%)', gridcolor: '#e5e5e5' },
+                plot_bgcolor: '#fafafa',
+                paper_bgcolor: 'white',
+                showlegend: false,
+                margin: { t: 20, r: 20, b: 50, l: 60 },
+                annotations: [
+                    {
+                        x: 1933,
+                        y: 24.9,
+                        text: 'Great Depression<br>Peak: 24.9%',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: -40,
+                        font: { size: 10 }
+                    },
+                    {
+                        x: 2009,
+                        y: 9.3,
+                        text: '2009: 9.3%',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: -30,
+                        font: { size: 10 }
+                    }
+                ]
+            };
+
+            Plotly.newPlot('unemploymentChart', [trace], layout, {responsive: true});
+        }
+
+        function createPrideChart(data) {
+            const pride = data.national_pride;
+
+            const trace = {
+                x: pride.year,
+                y: pride.extremely_proud_pct,
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Extremely Proud',
+                line: {
+                    color: '#dc3545',
+                    width: 2
+                },
+                marker: {
+                    size: 6,
+                    color: pride.data_source.map(s => s === 'Gallup' ? '#dc3545' : '#999')
+                },
+                hovertemplate: '<b>%{x}</b><br>Extremely Proud: %{y}%<extra></extra>'
+            };
+
+            const layout = {
+                xaxis: { title: 'Year', gridcolor: '#e5e5e5' },
+                yaxis: { title: '% Extremely Proud to be American', gridcolor: '#e5e5e5', range: [0, 100] },
+                plot_bgcolor: '#fafafa',
+                paper_bgcolor: 'white',
+                showlegend: false,
+                margin: { t: 20, r: 20, b: 50, l: 60 },
+                annotations: [
+                    {
+                        x: 2003,
+                        y: 70,
+                        text: 'Post-9/11<br>Peak: 70%',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: -40,
+                        ay: -30,
+                        font: { size: 10 }
+                    },
+                    {
+                        x: 2025,
+                        y: 38,
+                        text: 'Today: 38%<br>(Historic Low)',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: 30,
+                        font: { size: 10, color: '#dc3545' }
+                    }
+                ]
+            };
+
+            Plotly.newPlot('prideChart', [trace], layout, {responsive: true});
+        }
+
+        function createForeignChart(data) {
+            const foreign = data.foreign_born;
+
+            const trace = {
+                x: foreign.year,
+                y: foreign.foreign_born_pct,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Foreign-Born %',
+                line: {
+                    color: '#ff9800',
+                    width: 2
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(255, 152, 0, 0.2)',
+                hovertemplate: '<b>%{x}</b><br>Foreign-Born: %{y:.1f}%<extra></extra>'
+            };
+
+            const layout = {
+                xaxis: { title: 'Year', gridcolor: '#e5e5e5' },
+                yaxis: { title: 'Foreign-Born Population (%)', gridcolor: '#e5e5e5' },
+                plot_bgcolor: '#fafafa',
+                paper_bgcolor: 'white',
+                showlegend: false,
+                margin: { t: 20, r: 20, b: 50, l: 60 },
+                annotations: [
+                    {
+                        x: 1970,
+                        y: 4.7,
+                        text: 'Historic Low<br>4.7%',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: -30,
+                        font: { size: 10 }
+                    },
+                    {
+                        x: 2025,
+                        y: 14.5,
+                        text: 'Today: 14.5%<br>(Near Record)',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: 30,
+                        font: { size: 10, color: '#ff9800' }
+                    }
+                ]
+            };
+
+            Plotly.newPlot('foreignChart', [trace], layout, {responsive: true});
+        }
+
+        function createTrustChart(data) {
+            const trust = data.trust_government;
+
+            const trace = {
+                x: trust.year,
+                y: trust.trust_govt_pct,
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Trust in Government',
+                line: {
+                    color: '#3b82f6',
+                    width: 2
+                },
+                marker: {
+                    size: 6,
+                    color: '#3b82f6'
+                },
+                hovertemplate: '<b>%{x}</b><br>Trust: %{y}%<extra></extra>'
+            };
+
+            const layout = {
+                xaxis: { title: 'Year', gridcolor: '#e5e5e5' },
+                yaxis: { title: '% Trust Gov\'t to Do Right', gridcolor: '#e5e5e5', range: [0, 100] },
+                plot_bgcolor: '#fafafa',
+                paper_bgcolor: 'white',
+                showlegend: false,
+                margin: { t: 20, r: 20, b: 50, l: 60 },
+                annotations: [
+                    {
+                        x: 1964,
+                        y: 77,
+                        text: 'Peak: 77%',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: -30,
+                        font: { size: 10 }
+                    },
+                    {
+                        x: 2012,
+                        y: 19,
+                        text: 'Historic Low: 19%',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 0,
+                        ay: 30,
+                        font: { size: 10 }
+                    },
+                    {
+                        x: 2025,
+                        y: 22,
+                        text: 'Today: 22%',
+                        showarrow: true,
+                        arrowhead: 2,
+                        ax: 30,
+                        ay: -20,
+                        font: { size: 10, color: '#3b82f6' }
+                    }
+                ]
+            };
+
+            Plotly.newPlot('trustChart', [trace], layout, {responsive: true});
+        }
+    </script>
+</body>
+</html>
