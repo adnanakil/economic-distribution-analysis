@@ -1,0 +1,191 @@
+{
+  "us_national_pride": {
+    "year": [
+      2001,
+      2003,
+      2005,
+      2007,
+      2009,
+      2011,
+      2013,
+      2015,
+      2017,
+      2019,
+      2021,
+      2023,
+      2024,
+      2025
+    ],
+    "extremely_proud_pct": [
+      55,
+      70,
+      65,
+      60,
+      57,
+      57,
+      57,
+      54,
+      47,
+      45,
+      39,
+      39,
+      38,
+      38
+    ],
+    "very_proud_pct": [
+      32,
+      22,
+      25,
+      27,
+      28,
+      29,
+      29,
+      29,
+      30,
+      28,
+      26,
+      22,
+      20,
+      20
+    ],
+    "country": [
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA"
+    ]
+  },
+  "us_trust_government": {
+    "year": [
+      2000,
+      2002,
+      2004,
+      2006,
+      2008,
+      2010,
+      2012,
+      2014,
+      2016,
+      2018,
+      2020,
+      2022,
+      2024
+    ],
+    "trust_govt_pct": [
+      44,
+      40,
+      47,
+      30,
+      24,
+      22,
+      19,
+      19,
+      20,
+      17,
+      20,
+      20,
+      23
+    ],
+    "country": [
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA",
+      "USA"
+    ]
+  },
+  "demographic_change": {
+    "United States": {
+      "years": [
+        2000,
+        2010,
+        2020
+      ],
+      "foreign_born_pct": [
+        11.1,
+        12.9,
+        13.9
+      ],
+      "note": "Nearly 14 million immigrants entered 2000-2010"
+    },
+    "Greece": {
+      "years": [
+        2000,
+        2010,
+        2015,
+        2020
+      ],
+      "foreign_born_pct": [
+        7.0,
+        11.0,
+        10.0,
+        12.6
+      ],
+      "note": "Crisis reversed trend temporarily 2010-2015"
+    },
+    "Hungary": {
+      "years": [
+        2000,
+        2010,
+        2020
+      ],
+      "foreign_born_pct": [
+        2.9,
+        4.3,
+        5.8
+      ],
+      "note": "Much lower than W. Europe but rapid increase"
+    },
+    "Germany": {
+      "years": [
+        2000,
+        2010,
+        2020
+      ],
+      "foreign_born_pct": [
+        12.5,
+        13.0,
+        15.7
+      ],
+      "note": "2015 refugee crisis major inflection point"
+    }
+  },
+  "correlation_summary": {
+    "ingredient": [
+      "Economic Crisis (unemployment)",
+      "Status Threat (national pride decline)",
+      "Cultural Backlash (rapid demographic change)",
+      "Institutional Trust (distrust of parties)"
+    ],
+    "effect_size": [
+      "~33% of populist surge explained",
+      "Stronger predictor than economics (2016 US)",
+      "Anxiety amplifies economic discontent",
+      "+14pp far-right vote for extremely distrustful"
+    ],
+    "key_metric": [
+      "1pp unemployment \u2192 1pp populist vote",
+      "2016: status threat > financial wellbeing",
+      "EU: Immigration = 80% of pop. growth 2000-18",
+      "-25 to -40pp trust gap for populist voters"
+    ]
+  }
+}
