@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Economic Crisis and the Rise of Extremism: Historical Evidence</title>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <style>
+    .back-to-blog {
+      display: inline-block;
+      margin-bottom: 2rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+
+    .back-to-blog:hover {
+      transform: scale(1.05);
+    }
+
+    :root {
+      --bg: #f9fafb;
+      --fg: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --crisis: #dc2626;
+      --good: #10b981;
+      --warning: #f59e0b;
+      --primary: #3b82f6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--fg);
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: var(--fg);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .chart-container {
+      background: var(--card);
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      height: 400px;
+      margin-top: 1rem;
+    }
+
+    .chart-wrapper > div {
+      position: absolute;
+      inset: 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    .chart-description {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .narrative-section {
+      background: #f9fafb;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    .narrative-section h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: #1e293b;
+    }
+
+    .narrative-section p {
+      margin-bottom: 0.75rem;
+    }
+
+    .narrative-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .crisis-box {
+      border-left-color: var(--crisis);
+    }
+
+    .warning-box {
+      border-left-color: var(--warning);
+    }
+
+    .intro-box {
+      background: #f0f9ff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .intro-box h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro-box p {
+      margin-bottom: 1rem;
+    }
+
+    .intro-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .stat-highlight {
+      font-weight: 600;
+      color: var(--crisis);
+    }
+
+    .insights {
+      background: #f3f4f6;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .insights h3 {
+      margin-bottom: 1rem;
+      color: var(--fg);
+    }
+
+    .insights ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .insights li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .insights li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--crisis);
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      .chart-wrapper { height: 350px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="back-to-blog">← Back to Horse Energy</a>
+
+<h1>Economic Crisis and the Rise of Extremism</h1>
+<p class="subtitle">Historical evidence on the relationship between economic conditions and support for populist and extremist movements</p>
+<p style="background: #fef3c7; padding: 0.5rem; text-align: center; font-size: 0.9rem;">Last updated: October 8, 2025 @ 00:15 UTC</p>
+
+<div class="intro-box">
+  <h2>Research Question</h2>
+  <p>Do bad economic conditions and low growth lead democracies to adopt populist attitudes and tend toward fascism? This analysis examines historical case studies and recent academic research to understand the relationship between economic distress and political extremism.</p>
+  <p>The evidence spans nearly a century, from the interwar period (1920s-1930s) to recent populist movements following the 2008 financial crisis. The data reveal consistent patterns across different countries and time periods.</p>
+  <p style="margin-bottom: 0; font-weight: 600;">Three historical case studies are examined below, followed by academic research findings.</p>
+</div>
+
+<!-- Chart 1: Weimar Germany -->
+<div class="chart-container">
+  <h2>Case 1: Weimar Germany (1928-1933)</h2>
+  <p class="chart-description">Unemployment and Nazi Party vote share during the Great Depression — correlation: 0.948</p>
+  <div class="chart-wrapper"><div id="weimarChart"></div></div>
+</div>
+
+<div class="narrative-section crisis-box">
+  <h3>The Canonical Example</h3>
+  <p>The rise of the Nazi Party in Weimar Germany represents the most extensively studied case of economic crisis leading to extremist political outcomes. In 1928, during a period of relative economic stability, the Nazi Party received just <span class="stat-highlight">2.6%</span> of the vote.</p>
+  <p>Following the 1929 stock market crash and subsequent Great Depression, unemployment in Germany rose from 8.5% in 1928 to over 30% by 1932. The Nazi vote share increased proportionally, reaching <span class="stat-highlight">37.3%</span> in July 1932.</p>
+  <p>The correlation between unemployment and Nazi vote share during this period was <span class="stat-highlight">0.948</span>—an extraordinarily strong relationship. Between 1929 and 1932, unemployment rose from 8.5% to nearly 30%, while Nazi support increased from 800,000 voters to 13.4 million.</p>
+  <p>Historical context: In the first three months of 1930, 3.3 million people were unemployed; a year later it was nearly 5 million, and by early 1932 it reached 6.1 million. At the height of the crisis in winter 1932, more than 40% of all workers in Germany were unemployed.</p>
+</div>
+
+<!-- Chart 2: Greece -->
+<div class="chart-container">
+  <h2>Case 2: Greece (2009-2015)</h2>
+  <p class="chart-description">Unemployment and Golden Dawn (neo-Nazi party) vote share during the debt crisis — correlation: 0.992</p>
+  <div class="chart-wrapper"><div id="greeceChart"></div></div>
+</div>
+
+<div class="narrative-section crisis-box">
+  <h3>Modern Parallel</h3>
+  <p>Greece's experience following the 2008 financial crisis provides a contemporary example of the same pattern. The neo-Nazi Golden Dawn party was politically marginal in 2009, receiving just <span class="stat-highlight">0.29%</span> of the vote when unemployment was 9.5%.</p>
+  <p>As the Greek debt crisis unfolded, unemployment reached 24.3% by 2012, with youth unemployment exceeding 60%. Golden Dawn's vote share increased to <span class="stat-highlight">6.97%</span> in 2012, making it the third-largest party in the Greek Parliament.</p>
+  <p>The correlation between unemployment and Golden Dawn support was <span class="stat-highlight">0.992</span>—even stronger than the Weimar Germany case. The seasonal adjusted unemployment rate grew from 7.5% in September 2008 to a record high of 27.9% in June 2013.</p>
+  <p>This represents a 24-fold increase in extremist vote share over a three-year period, directly tracking the economic crisis.</p>
+</div>
+
+<!-- Chart 3: Hungary -->
+<div class="chart-container">
+  <h2>Case 3: Hungary (2006-2014)</h2>
+  <p class="chart-description">Unemployment and Jobbik (far-right party) vote share following the financial crisis — correlation: 0.373</p>
+  <div class="chart-wrapper"><div id="hungaryChart"></div></div>
+</div>
+
+<div class="narrative-section warning-box">
+  <h3>Debt Crisis Mechanism</h3>
+  <p>Hungary's case illustrates an additional mechanism beyond unemployment: household debt crises. By 2008, <span class="stat-highlight">60% of household debt was denominated in Swiss francs</span>. When the Hungarian forint depreciated 23% between September 2008 and April 2010, household debt increased by 4% of pre-crisis GDP.</p>
+  <p>The far-right Jobbik party increased from <span class="stat-highlight">2.6%</span> in 2006 to <span class="stat-highlight">16.7%</span> in 2010 and <span class="stat-highlight">20.2%</span> in 2014. MIT research found that for every 10-percentage-point increase in debt-to-income ratio, far-right vote share increased by 1.6 to 3.0 percentage points.</p>
+  <p>Foreign-currency debt spikes accounted for approximately 3 percentage points of the national increase in far-right vote share—about 20% of the total political shift rightward. This demonstrates that economic insecurity operates through multiple channels beyond unemployment alone.</p>
+</div>
+
+<!-- Comparison Chart -->
+<div class="chart-container">
+  <h2>Comparative Analysis: Three Cases</h2>
+  <p class="chart-description">Unemployment vs. extremist vote share across Weimar Germany, Greece, and Hungary</p>
+  <div class="chart-wrapper"><div id="comparisonChart"></div></div>
+</div>
+
+<div class="narrative-section">
+  <h3>Pattern Recognition</h3>
+  <p>Examining all three cases together reveals a consistent pattern: as unemployment rises, support for extremist parties increases. The overall correlation across all cases is <span class="stat-highlight">0.579</span>, indicating a moderate to strong positive relationship.</p>
+  <p>The relationship is strongest when unemployment increases rapidly during acute economic crises (Weimar Germany, Greece). When unemployment moderates but economic insecurity persists through other channels like debt (Hungary), extremist support can continue growing even as traditional unemployment metrics improve.</p>
+  <p>This suggests that the underlying mechanism is economic insecurity broadly construed, rather than unemployment specifically. Multiple forms of economic distress—job loss, debt crises, wage stagnation—can fuel support for extremist movements.</p>
+</div>
+
+<div class="insights">
+  <h3>Academic Research Findings</h3>
+  <ul>
+    <li><strong>Economic uncertainty impact:</strong> A one-point increase in the World Uncertainty Index leads to a 2.8 percentage point increase in total populist votes, and a 1.96 percentage point increase in right-wing populist votes (PMC study, EU data)</li>
+    <li><strong>Unemployment effect:</strong> A one percentage point increase in unemployment is associated with a one percentage point increase in populist vote share (EU data 2002-2014)</li>
+    <li><strong>Debt crisis mechanism:</strong> In Hungary, a 10-percentage-point increase in debt-to-income ratio led to a 1.6 to 3.0 percentage point increase in far-right vote share (MIT research)</li>
+    <li><strong>Meta-analysis results:</strong> After adjusting for publication bias, the partial correlation coefficient between economic insecurity and populism is 0.016, indicating a positive causal effect (British Journal of Political Science meta-analysis)</li>
+    <li><strong>Turnout channel:</strong> When economic insecurity increases, almost 40% of the induced change in populist party votes comes from increased voter turnout, not just vote switching</li>
+    <li><strong>Historical scope:</strong> In 1920, there were 24 fully democratic countries in Europe; by 1939, only 11 remained—a 54% decline during a period of severe economic crisis</li>
+  </ul>
+</div>
+
+<div style="background: #fee2e2; border-left: 4px solid #dc2626; padding: 1.5rem; margin: 2rem 0; border-radius: 0 0.5rem 0.5rem 0;">
+  <h3 style="margin-top: 0; color: #991b1b;">The Interwar Lesson</h3>
+  <p style="margin-bottom: 0.75rem;">The Great Depression was not merely an economic catastrophe—it was a political one. Between 1920 and 1939, the number of democracies in Europe fell by more than half. The pattern was consistent: economic crisis preceded political radicalization.</p>
+  <p style="margin-bottom: 0.75rem;"><strong>Major fascist takeovers following economic crises:</strong></p>
+  <ul style="margin-left: 2rem; margin-bottom: 0.75rem;">
+    <li><strong>Italy (1922):</strong> Mussolini took power after the "Two Red Years" (1919-1920) brought mass unemployment and 2 million jobless</li>
+    <li><strong>Germany (1933):</strong> Hitler appointed Chancellor after unemployment reached 30% during the Great Depression</li>
+    <li><strong>Spain (1939):</strong> Franco's victory following years of economic and political instability</li>
+  </ul>
+  <p style="margin-bottom: 0;">Fascism emerged after World War I and spiked with the Great Depression, where far-right parties took control throughout Europe. By 1939, on the eve of World War II, only 11 European countries remained fully democratic.</p>
+</div>
+
+<div style="background: #1e293b; color: #f1f5f9; padding: 2rem; margin: 3rem 0 0 0; border-radius: 0.5rem;">
+  <h3 style="color: #f1f5f9; margin-bottom: 1rem;">Summary of Evidence</h3>
+  <p style="font-size: 1rem; margin-bottom: 1rem;">The historical and contemporary evidence demonstrates a consistent relationship between economic crisis and support for extremist political movements.</p>
+  <p style="font-size: 1rem; margin-bottom: 1rem;"><strong>Key findings:</strong> Unemployment, debt crises, and economic uncertainty are strongly associated with increased support for populist and extremist parties. The correlation is particularly strong during acute economic crises (0.948 in Weimar Germany, 0.992 in Greece).</p>
+  <p style="font-size: 1rem; margin-bottom: 1rem;">The mechanism operates through multiple channels: unemployment, household debt stress, economic uncertainty, and loss of confidence in mainstream institutions. Academic research confirms these relationships persist across different time periods and political contexts.</p>
+  <p style="font-size: 1rem; margin: 0;">The interwar period's collapse of democracy—from 24 to 11 democracies in Europe between 1920 and 1939—demonstrates the stakes. Economic crisis does not deterministically produce extremism, but it creates conditions under which extremist movements can rapidly gain mass support.</p>
+</div>
+
+<div style="background: #f9fafb; padding: 1rem; margin-top: 2rem; border-top: 2px solid #e5e7eb; font-size: 0.9rem; color: #6b7280;">
+  <p style="margin-bottom: 0.5rem;"><strong>Data sources:</strong> Historical election data (Wikipedia, academic sources), unemployment statistics (national statistical offices, historical records), academic research from PMC, MIT, British Journal of Political Science, Oxford Academic, PNAS</p>
+  <p style="margin-bottom: 0;"><strong>Key studies:</strong> "The role of economic uncertainty in the rise of EU populism" (PMC), "How the debt crisis of 2008-09 fueled populist politics" (MIT), "The Populist Backlash Against Globalization: A Meta-Analysis" (British Journal of Political Science)</p>
+</div>
+
+<script>
+// Load and visualize the data
+fetch('../economic_crisis_populism.json')
+  .then(response => response.json())
+  .then(data => {
+    createWeimarChart(data.weimar);
+    createGreeceChart(data.greece);
+    createHungaryChart(data.hungary);
+    createComparisonChart(data.combined);
+  })
+  .catch(error => {
+    console.error('Error loading data:', error);
+  });
+
+function createWeimarChart(data) {
+  const trace1 = {
+    x: data.year,
+    y: data.unemployment_rate,
+    type: 'scatter',
+    mode: 'lines+markers',
+    name: 'Unemployment Rate (%)',
+    line: { color: '#3b82f6', width: 3 },
+    marker: { size: 10 },
+    yaxis: 'y1'
+  };
+
+  const trace2 = {
+    x: data.year,
+    y: data.nazi_vote_share,
+    type: 'scatter',
+    mode: 'lines+markers',
+    name: 'Nazi Vote Share (%)',
+    line: { color: '#dc2626', width: 3 },
+    marker: { size: 10 },
+    yaxis: 'y2'
+  };
+
+  const layout = {
+    margin: { t: 20, r: 80, b: 40, l: 60 },
+    xaxis: { title: 'Year' },
+    yaxis: {
+      title: 'Unemployment Rate (%)',
+      side: 'left',
+      color: '#3b82f6'
+    },
+    yaxis2: {
+      title: 'Nazi Vote Share (%)',
+      overlaying: 'y',
+      side: 'right',
+      color: '#dc2626'
+    },
+    hovermode: 'x unified',
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff'
+  };
+
+  Plotly.newPlot('weimarChart', [trace1, trace2], layout, { responsive: true });
+}
+
+function createGreeceChart(data) {
+  const trace1 = {
+    x: data.year,
+    y: data.unemployment_rate,
+    type: 'scatter',
+    mode: 'lines+markers',
+    name: 'Unemployment Rate (%)',
+    line: { color: '#3b82f6', width: 3 },
+    marker: { size: 10 },
+    yaxis: 'y1'
+  };
+
+  const trace2 = {
+    x: data.year,
+    y: data.golden_dawn_vote_share,
+    type: 'scatter',
+    mode: 'lines+markers',
+    name: 'Golden Dawn Vote Share (%)',
+    line: { color: '#dc2626', width: 3 },
+    marker: { size: 10 },
+    yaxis: 'y2'
+  };
+
+  const layout = {
+    margin: { t: 20, r: 80, b: 40, l: 60 },
+    xaxis: { title: 'Year' },
+    yaxis: {
+      title: 'Unemployment Rate (%)',
+      side: 'left',
+      color: '#3b82f6'
+    },
+    yaxis2: {
+      title: 'Golden Dawn Vote Share (%)',
+      overlaying: 'y',
+      side: 'right',
+      color: '#dc2626'
+    },
+    hovermode: 'x unified',
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff'
+  };
+
+  Plotly.newPlot('greeceChart', [trace1, trace2], layout, { responsive: true });
+}
+
+function createHungaryChart(data) {
+  const trace1 = {
+    x: data.year,
+    y: data.unemployment_rate,
+    type: 'scatter',
+    mode: 'lines+markers',
+    name: 'Unemployment Rate (%)',
+    line: { color: '#3b82f6', width: 3 },
+    marker: { size: 10 },
+    yaxis: 'y1'
+  };
+
+  const trace2 = {
+    x: data.year,
+    y: data.jobbik_vote_share,
+    type: 'scatter',
+    mode: 'lines+markers',
+    name: 'Jobbik Vote Share (%)',
+    line: { color: '#dc2626', width: 3 },
+    marker: { size: 10 },
+    yaxis: 'y2'
+  };
+
+  const layout = {
+    margin: { t: 20, r: 80, b: 40, l: 60 },
+    xaxis: { title: 'Year' },
+    yaxis: {
+      title: 'Unemployment Rate (%)',
+      side: 'left',
+      color: '#3b82f6'
+    },
+    yaxis2: {
+      title: 'Jobbik Vote Share (%)',
+      overlaying: 'y',
+      side: 'right',
+      color: '#dc2626'
+    },
+    hovermode: 'x unified',
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff'
+  };
+
+  Plotly.newPlot('hungaryChart', [trace1, trace2], layout, { responsive: true });
+}
+
+function createComparisonChart(data) {
+  const weimarData = data.filter(d => d.case === 'Weimar Germany');
+  const greeceData = data.filter(d => d.case === 'Greece');
+  const hungaryData = data.filter(d => d.case === 'Hungary');
+
+  const trace1 = {
+    x: weimarData.map(d => d.unemployment),
+    y: weimarData.map(d => d.extremist_vote),
+    type: 'scatter',
+    mode: 'markers+lines',
+    name: 'Weimar Germany (Nazi Party)',
+    marker: { size: 12, color: '#dc2626' },
+    line: { color: '#dc2626', width: 2 }
+  };
+
+  const trace2 = {
+    x: greeceData.map(d => d.unemployment),
+    y: greeceData.map(d => d.extremist_vote),
+    type: 'scatter',
+    mode: 'markers+lines',
+    name: 'Greece (Golden Dawn)',
+    marker: { size: 12, color: '#f59e0b' },
+    line: { color: '#f59e0b', width: 2 }
+  };
+
+  const trace3 = {
+    x: hungaryData.map(d => d.unemployment),
+    y: hungaryData.map(d => d.extremist_vote),
+    type: 'scatter',
+    mode: 'markers+lines',
+    name: 'Hungary (Jobbik)',
+    marker: { size: 12, color: '#8b5cf6' },
+    line: { color: '#8b5cf6', width: 2 }
+  };
+
+  const layout = {
+    margin: { t: 20, r: 20, b: 60, l: 60 },
+    xaxis: { title: 'Unemployment Rate (%)' },
+    yaxis: { title: 'Extremist Party Vote Share (%)' },
+    hovermode: 'closest',
+    showlegend: true,
+    legend: { orientation: 'v', x: 0.02, y: 0.98 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff'
+  };
+
+  Plotly.newPlot('comparisonChart', [trace1, trace2, trace3], layout, { responsive: true });
+}
+</script>
+
+</body>
+</html>

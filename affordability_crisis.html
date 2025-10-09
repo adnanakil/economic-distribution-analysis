@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The American Affordability Paradox: Why You Can Survive But Not Thrive</title>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <style>
+    .back-to-blog {
+      display: inline-block;
+      margin-bottom: 2rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+
+    .back-to-blog:hover {
+      transform: scale(1.05);
+    }
+
+    :root {
+      --bg: #f9fafb;
+      --fg: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --crisis: #dc2626;
+      --good: #10b981;
+      --warning: #f59e0b;
+      --wages: #3b82f6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--fg);
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: var(--fg);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .chart-container {
+      background: var(--card);
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px var(--shadow);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      height: 400px;
+      margin-top: 1rem;
+    }
+
+    .chart-wrapper > div {
+      position: absolute;
+      inset: 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    .chart-description {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .insights {
+      background: #f3f4f6;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .insights h3 {
+      margin-bottom: 1rem;
+      color: var(--fg);
+    }
+
+    .insights ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .insights li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .insights li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--crisis);
+      font-weight: bold;
+    }
+
+    .narrative-section {
+      background: #f9fafb;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--wages);
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    .narrative-section h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: #1e293b;
+    }
+
+    .narrative-section p {
+      margin-bottom: 0.75rem;
+    }
+
+    .narrative-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .crisis-box {
+      border-left-color: var(--crisis);
+    }
+
+    .good-box {
+      border-left-color: var(--good);
+    }
+
+    .warning-box {
+      border-left-color: var(--warning);
+    }
+
+    .intro-box {
+      background: #f0f9ff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .intro-box h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro-box p {
+      margin-bottom: 1rem;
+    }
+
+    .intro-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .stat-highlight {
+      font-weight: 600;
+      color: var(--crisis);
+    }
+
+    .stat-good {
+      font-weight: 600;
+      color: var(--good);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      .chart-wrapper { height: 350px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="back-to-blog">← Back to Horse Energy</a>
+
+<h1>The American Affordability Paradox</h1>
+<p class="subtitle">Why you can afford to survive but not afford to thrive—and how investment goods became luxuries</p>
+<p style="background: #fef3c7; padding: 0.5rem; text-align: center; font-size: 0.9rem;">Last updated: October 7, 2025 @ 22:00 UTC</p>
+
+<div class="intro-box">
+  <h2>The Confusing Economy</h2>
+  <p><em>Americans are living through a deeply confusing economic moment.</em> Unemployment is low. Wages are rising. Inflation, we're told, is under control. And yet, millions of people feel like they're drowning financially. Homeownership feels impossible. Healthcare costs are crushing. College is unaffordable without massive debt.</p>
+  <p>So what's going on?</p>
+  <p>The answer lies in a fundamental <strong>bifurcation of the American economy</strong> that aggregate statistics completely miss. When you break down what Americans actually spend money on, a stark pattern emerges: the things you need to survive are holding steady or getting cheaper, while the things you need to thrive—to build wealth, to invest in your future, to achieve economic mobility—have become prohibitively expensive.</p>
+  <p style="margin-bottom: 0; font-weight: 600;">The following four charts tell the story.</p>
+</div>
+
+<!-- Chart 1: Housing Crisis -->
+<div class="chart-container">
+  <h2>1. Housing: The American Dream Becomes a Fantasy</h2>
+  <p class="chart-description">Home prices have skyrocketed 73% faster than incomes—even after adjusting for 35% larger homes, still 28% less affordable</p>
+  <div class="chart-wrapper"><div id="housingChart"></div></div>
+</div>
+
+<div class="narrative-section crisis-box">
+  <h3>The Math That Killed Homeownership</h3>
+  <p>The median home price to median household income ratio currently sits at <span class="stat-highlight">5.10x</span>. The historical average is 2.94x. Homes are <span class="stat-highlight">73% less affordable</span> than they were historically.</p>
+  <p>"But wait," you might object, "homes are bigger now! The median new home is 2,146 square feet compared to 1,595 in 1980—that's 35% larger!"</p>
+  <p>Fair point. Let's adjust for that. Even after accounting for 35% larger homes, housing is still <span class="stat-highlight">28% less affordable</span> than the historical average. And here's the kicker: you can't actually choose to buy a 1980s-sized home at 1980s prices. Zoning laws, building codes, and market dynamics mean that smaller, cheaper homes simply aren't being built in most markets.</p>
+  <p>The median home price is now $410,800. The median household income is $83,730. A generation ago, a middle-class salary could buy you a home. Today, it buys you a fantasy.</p>
+</div>
+
+<!-- Chart 2: Healthcare Squeeze -->
+<div class="chart-container">
+  <h2>2. Healthcare: The 70% Tax on Your Paycheck</h2>
+  <p class="chart-description">Medical costs have grown 70% faster than wages since 1980, consuming ever more of your earnings</p>
+  <div class="chart-wrapper"><div id="healthcareChart"></div></div>
+</div>
+
+<div class="narrative-section crisis-box">
+  <h3>You Can't Opt Out</h3>
+  <p>Healthcare costs have increased <span class="stat-highlight">4,323%</span> since 1947. Even focusing on the 1980-2024 period, healthcare costs have grown <span class="stat-highlight">70% faster than wages</span>.</p>
+  <p>To put this in concrete terms: healthcare costs consume 70% more of your hourly wages today than they did in 1980.</p>
+  <p>Now, defenders of the system will point out—correctly—that healthcare is objectively better today. We have MRIs, advanced cancer treatments, biologics, minimally invasive surgeries. Your grandparents' doctor couldn't do half of what modern medicine can do.</p>
+  <p>But here's the problem: <strong>you don't get to choose</strong>. You can't walk into a hospital and say "give me 1980s healthcare at 1980s prices." When you need care, you pay modern prices whether you want cutting-edge treatment or basic care. And a huge portion of healthcare cost increases aren't from better care—they're from administrative bloat, billing complexity, and profit extraction.</p>
+  <p>The "quality is better" argument is true but irrelevant when you can't opt out of the system.</p>
+</div>
+
+<!-- Chart 3: Education Credentialism -->
+<div class="chart-container">
+  <h2>3. Education: The 40% Credentialism Tax</h2>
+  <p class="chart-description">Education costs have grown 109 percentage points faster than wages since 1993</p>
+  <div class="chart-wrapper"><div id="educationChart"></div></div>
+</div>
+
+<div class="narrative-section crisis-box">
+  <h3>The Credentialism Trap</h3>
+  <p>Since 1993 (when reliable data begins), education costs have increased <span class="stat-highlight">282%</span> while wages have increased only <span class="stat-highlight">173%</span>. That's a gap of 109 percentage points.</p>
+  <p>Education costs consume <span class="stat-highlight">40% more of your hourly wages</span> today compared to 1993.</p>
+  <p>The quality defense is even weaker here. Yes, campuses have nicer facilities, better technology, more student services. But they also have massive administrative bloat, grade inflation, and questionable learning outcomes. The labor market returns to a college degree have increased—but is that because education got better, or because credentialism became more entrenched?</p>
+  <p>Regardless, the outcome is the same: you can't participate in the modern economy without expensive credentials. Opting out means opting out of the middle class.</p>
+</div>
+
+<!-- Chart 4: Food - The Good News -->
+<div class="chart-container">
+  <h2>4. Food: The Only Thing That Got Better</h2>
+  <p class="chart-description">Food has become 15% MORE affordable relative to wages since 1980—the only major spending category to improve</p>
+  <div class="chart-wrapper"><div id="foodChart"></div></div>
+</div>
+
+<div class="narrative-section good-box">
+  <h3>You Can Afford to Eat</h3>
+  <p>Since 1980, food prices have increased 280%. That sounds terrible until you realize that average hourly wages increased 340% over the same period. <span class="stat-good">Food has actually become 14.5% more affordable relative to wages.</span></p>
+  <p>This is the only major spending category where Americans are genuinely better off than their parents' generation. You can, quite literally, afford to eat better than your grandparents could in 1980.</p>
+  <p>But here's the cruel irony: <strong>food doesn't determine whether you thrive</strong>. Food is cheap. Housing is expensive. Healthcare is expensive. Education is expensive. You can fill your stomach while watching your dreams die.</p>
+</div>
+
+<!-- Comparison Chart -->
+<div class="chart-container">
+  <h2>5. The Bifurcated Economy: Investment vs Consumption</h2>
+  <p class="chart-description">Investment goods (housing, healthcare, education) have diverged sharply from consumption goods (food)</p>
+  <div class="chart-wrapper"><div id="comparisonChart"></div></div>
+</div>
+
+<div class="narrative-section warning-box">
+  <h3>Survive vs Thrive</h3>
+  <p>What we're seeing is an economy that has split into two distinct categories:</p>
+  <p><strong>Consumption Goods</strong> (Food, commodities, basic necessities)</p>
+  <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+    <li>Stable or decreasing relative to wages</li>
+    <li>You can afford to survive</li>
+    <li>Day-to-day life is manageable</li>
+  </ul>
+  <p><strong>Investment Goods</strong> (Housing, healthcare, education)</p>
+  <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+    <li>Skyrocketing relative to wages</li>
+    <li>You cannot afford to thrive</li>
+    <li>Building wealth and mobility is blocked</li>
+  </ul>
+  <p>This explains the paradox. When economists and policymakers look at "inflation" and "real wages," they're averaging across all goods. The Consumer Price Index (CPI) treats a loaf of bread the same as a college credit. By that measure, things look okay—wages are keeping pace with inflation!</p>
+  <p>But that average obscures the crisis. Yes, you can afford groceries. But you can't afford a house, you're terrified of getting sick, and you can't send your kids to college without crushing debt.</p>
+  <p style="font-weight: 600; font-size: 1.1rem; color: var(--crisis);">You can afford to survive, but you cannot afford to thrive.</p>
+</div>
+
+<div class="insights">
+  <h3>The Generational Divide</h3>
+  <ul>
+    <li><strong>In 1980:</strong> A middle-class income could buy a house for 3x your annual salary, send kids to college for a reasonable fraction of your income, afford healthcare without financial ruin, and still save for retirement</li>
+    <li><strong>In 2024:</strong> That same relative middle-class income faces housing at 5x your salary (or 3.8x for a 35% larger house), education consuming 40% more of your wages, fear of medical bankruptcy, and delayed life milestones</li>
+    <li><strong>The cruel irony:</strong> Food is cheaper, but you're still broke—because food isn't what determines whether you build wealth or stay trapped</li>
+    <li><strong>The "No Choice" problem:</strong> You can't buy 1980s-sized homes at 1980s prices (zoning laws), can't buy 1980s healthcare at 1980s prices (no opt-out), can't skip college credentials (credentialism)</li>
+    <li><strong>Why people feel poor:</strong> Because aggregate statistics measure the wrong things—CPI says inflation is fine, but doesn't capture the despair of realizing you'll never own a home</li>
+  </ul>
+</div>
+
+<div style="background: #fee2e2; border-left: 4px solid #dc2626; padding: 1.5rem; margin: 2rem 0; border-radius: 0 0.5rem 0.5rem 0;">
+  <h3 style="margin-top: 0; color: #991b1b;">The Policy Implications</h3>
+  <p style="margin-bottom: 0.75rem;">If we're serious about fixing this, we need to stop treating all inflation equally. The problem isn't that the CPI is too high. The problem is that <strong>investment goods</strong>—the things that determine whether you can build wealth and achieve mobility—have become luxuries reserved for the already-wealthy.</p>
+  <p style="margin-bottom: 0.75rem;">We need policies that specifically target housing, healthcare, and education costs:</p>
+  <ul style="margin-left: 2rem; margin-bottom: 0.75rem;">
+    <li><strong>Housing:</strong> Zoning reform, land value taxes, public housing investment</li>
+    <li><strong>Healthcare:</strong> Single-payer systems, price controls, administrative simplification</li>
+    <li><strong>Education:</strong> Free public college, elimination of student debt, reduction in credentialism</li>
+  </ul>
+  <p style="margin-bottom: 0; font-weight: 600;">Lowering the price of eggs won't fix this. We have cheap eggs. What we need are affordable futures.</p>
+</div>
+
+<div style="background: #1e293b; color: #f1f5f9; padding: 2rem; margin: 3rem 0 0 0; border-radius: 0.5rem; text-align: center;">
+  <h3 style="color: #f1f5f9; margin-bottom: 1rem;">The American Dream Used to Be Simple</h3>
+  <p style="font-size: 1.1rem; margin-bottom: 1rem;">Work hard, play by the rules, and you can buy a home, raise a family, send your kids to college, and retire with dignity.</p>
+  <p style="font-size: 1.1rem; margin-bottom: 1rem;">That dream is now <strong style="color: #fca5a5;">mathematically impossible</strong> for most Americans, not because they're not working hard enough, but because the math has changed.</p>
+  <p style="font-size: 1.2rem; font-weight: 600; color: #fca5a5; margin: 0;">The numbers are good if you want to eat.<br>The numbers are catastrophic if you want to live.</p>
+</div>
+
+<div style="background: #f9fafb; padding: 1rem; margin-top: 2rem; border-top: 2px solid #e5e7eb; font-size: 0.9rem; color: #6b7280;">
+  <p style="margin-bottom: 0.5rem;"><strong>Data sources:</strong> Federal Reserve Economic Data (FRED), U.S. Census Bureau</p>
+  <p style="margin-bottom: 0;"><strong>Analysis period:</strong> 1980-2024. All wage comparisons use average hourly earnings for private sector workers. Housing data includes quality adjustment for 35% larger median home size. Healthcare and education CPI data from Bureau of Labor Statistics.</p>
+</div>
+
+<script>
+// Load and visualize the data
+fetch('affordability_data.json')
+  .then(response => response.json())
+  .then(data => {
+    createHousingChart(data.housing);
+    createHealthcareChart(data.healthcare);
+    createEducationChart(data.education);
+    createFoodChart(data.food);
+    createComparisonChart(data.comparison);
+  });
+
+function createHousingChart(housing) {
+  // Price to Income Ratio over time
+  const trace = {
+    x: housing.dates,
+    y: housing.price_to_income,
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Price-to-Income Ratio',
+    line: { color: '#dc2626', width: 3 },
+    fill: 'tozeroy',
+    fillcolor: 'rgba(220, 38, 38, 0.1)'
+  };
+
+  // Historical average line
+  const avgTrace = {
+    x: housing.dates,
+    y: new Array(housing.dates.length).fill(2.94),
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Historical Average (2.94x)',
+    line: { color: '#6b7280', width: 2, dash: 'dash' }
+  };
+
+  const layout = {
+    margin: { t: 20, r: 20, b: 40, l: 50 },
+    xaxis: { title: 'Year' },
+    yaxis: { title: 'Median Home Price / Median Income' },
+    hovermode: 'x unified',
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff'
+  };
+
+  Plotly.newPlot('housingChart', [trace, avgTrace], layout, { responsive: true });
+}
+
+function createHealthcareChart(healthcare) {
+  // Healthcare vs Wages indexed to 1980
+  const medicalTrace = {
+    x: healthcare.dates,
+    y: healthcare.medical_indexed,
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Medical Care Costs',
+    line: { color: '#dc2626', width: 3 }
+  };
+
+  const wageTrace = {
+    x: healthcare.dates,
+    y: healthcare.wage_indexed,
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Average Hourly Wages',
+    line: { color: '#3b82f6', width: 3 }
+  };
+
+  const layout = {
+    margin: { t: 20, r: 20, b: 40, l: 50 },
+    xaxis: { title: 'Year' },
+    yaxis: { title: 'Index (1980 = 100)' },
+    hovermode: 'x unified',
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+    annotations: [{
+      x: '2020',
+      y: 500,
+      text: '70% gap',
+      showarrow: true,
+      arrowhead: 2,
+      ax: -40,
+      ay: -40
+    }]
+  };
+
+  Plotly.newPlot('healthcareChart', [medicalTrace, wageTrace], layout, { responsive: true });
+}
+
+function createEducationChart(education) {
+  // Education vs Wages indexed to 1993
+  const educationTrace = {
+    x: education.dates,
+    y: education.education_indexed,
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Education Costs',
+    line: { color: '#dc2626', width: 3 }
+  };
+
+  const wageTrace = {
+    x: education.dates,
+    y: education.wage_indexed,
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Average Hourly Wages',
+    line: { color: '#3b82f6', width: 3 }
+  };
+
+  const layout = {
+    margin: { t: 20, r: 20, b: 40, l: 50 },
+    xaxis: { title: 'Year' },
+    yaxis: { title: 'Index (1993 = 100)' },
+    hovermode: 'x unified',
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+    annotations: [{
+      x: '2020',
+      y: 350,
+      text: '109pp gap',
+      showarrow: true,
+      arrowhead: 2,
+      ax: -40,
+      ay: -40
+    }]
+  };
+
+  Plotly.newPlot('educationChart', [educationTrace, wageTrace], layout, { responsive: true });
+}
+
+function createFoodChart(food) {
+  // Food vs Wages indexed to 1980
+  const foodTrace = {
+    x: food.dates,
+    y: food.food_indexed,
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Food Costs',
+    line: { color: '#10b981', width: 3 }
+  };
+
+  const wageTrace = {
+    x: food.dates,
+    y: food.wage_indexed,
+    type: 'scatter',
+    mode: 'lines',
+    name: 'Average Hourly Wages',
+    line: { color: '#3b82f6', width: 3 }
+  };
+
+  const layout = {
+    margin: { t: 20, r: 20, b: 40, l: 50 },
+    xaxis: { title: 'Year' },
+    yaxis: { title: 'Index (1980 = 100)' },
+    hovermode: 'x unified',
+    showlegend: true,
+    legend: { orientation: 'h', y: -0.2 },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+    annotations: [{
+      x: '2020',
+      y: 400,
+      text: 'Wages growing faster ✓',
+      showarrow: true,
+      arrowhead: 2,
+      ax: -40,
+      ay: -40,
+      font: { color: '#10b981' }
+    }]
+  };
+
+  Plotly.newPlot('foodChart', [foodTrace, wageTrace], layout, { responsive: true });
+}
+
+function createComparisonChart(comparison) {
+  // Bar chart comparing all categories
+  const trace = {
+    x: comparison.categories,
+    y: comparison.growth_vs_wages,
+    type: 'bar',
+    marker: {
+      color: ['#dc2626', '#dc2626', '#dc2626', '#10b981']
+    },
+    text: comparison.growth_vs_wages.map(v => v > 0 ? `+${v}pp` : `${v}pp`),
+    textposition: 'outside'
+  };
+
+  const layout = {
+    margin: { t: 40, r: 20, b: 60, l: 60 },
+    xaxis: { title: '' },
+    yaxis: {
+      title: 'Percentage Point Gap vs Wage Growth',
+      zeroline: true,
+      zerolinewidth: 2,
+      zerolinecolor: '#6b7280'
+    },
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+    shapes: [{
+      type: 'line',
+      x0: -0.5,
+      x1: 3.5,
+      y0: 0,
+      y1: 0,
+      line: { color: '#6b7280', width: 2 }
+    }]
+  };
+
+  Plotly.newPlot('comparisonChart', [trace], layout, { responsive: true });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+{
+  "weimar": {
+    "year": [
+      1928,
+      1930,
+      1932,
+      1933
+    ],
+    "unemployment_rate": [
+      8.5,
+      15.3,
+      30.1,
+      25.9
+    ],
+    "nazi_vote_share": [
+      2.6,
+      18.3,
+      37.3,
+      43.9
+    ],
+    "country": [
+      "Germany",
+      "Germany",
+      "Germany",
+      "Germany"
+    ]
+  },
+  "greece": {
+    "year": [
+      2009,
+      2012,
+      2015
+    ],
+    "unemployment_rate": [
+      9.5,
+      24.3,
+      24.9
+    ],
+    "golden_dawn_vote_share": [
+      0.29,
+      6.97,
+      6.28
+    ],
+    "country": [
+      "Greece",
+      "Greece",
+      "Greece"
+    ]
+  },
+  "hungary": {
+    "year": [
+      2006,
+      2010,
+      2014
+    ],
+    "unemployment_rate": [
+      7.5,
+      11.2,
+      7.7
+    ],
+    "jobbik_vote_share": [
+      2.6,
+      16.7,
+      20.2
+    ],
+    "country": [
+      "Hungary",
+      "Hungary",
+      "Hungary"
+    ]
+  },
+  "combined": [
+    {
+      "case": "Weimar Germany",
+      "year": 1928,
+      "unemployment": 8.5,
+      "extremist_vote": 2.6,
+      "party": "Nazi Party"
+    },
+    {
+      "case": "Weimar Germany",
+      "year": 1930,
+      "unemployment": 15.3,
+      "extremist_vote": 18.3,
+      "party": "Nazi Party"
+    },
+    {
+      "case": "Weimar Germany",
+      "year": 1932,
+      "unemployment": 30.1,
+      "extremist_vote": 37.3,
+      "party": "Nazi Party"
+    },
+    {
+      "case": "Weimar Germany",
+      "year": 1933,
+      "unemployment": 25.9,
+      "extremist_vote": 43.9,
+      "party": "Nazi Party"
+    },
+    {
+      "case": "Greece",
+      "year": 2009,
+      "unemployment": 9.5,
+      "extremist_vote": 0.29,
+      "party": "Golden Dawn"
+    },
+    {
+      "case": "Greece",
+      "year": 2012,
+      "unemployment": 24.3,
+      "extremist_vote": 6.97,
+      "party": "Golden Dawn"
+    },
+    {
+      "case": "Greece",
+      "year": 2015,
+      "unemployment": 24.9,
+      "extremist_vote": 6.28,
+      "party": "Golden Dawn"
+    },
+    {
+      "case": "Hungary",
+      "year": 2006,
+      "unemployment": 7.5,
+      "extremist_vote": 2.6,
+      "party": "Jobbik"
+    },
+    {
+      "case": "Hungary",
+      "year": 2010,
+      "unemployment": 11.2,
+      "extremist_vote": 16.7,
+      "party": "Jobbik"
+    },
+    {
+      "case": "Hungary",
+      "year": 2014,
+      "unemployment": 7.7,
+      "extremist_vote": 20.2,
+      "party": "Jobbik"
+    }
+  ],
+  "correlations": {
+    "weimar": 0.9475825223510016,
+    "greece": 0.9917621315452658,
+    "hungary": 0.37344480007214464,
+    "overall": 0.5792329351819576
+  }
+}
