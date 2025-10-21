@@ -6,194 +6,185 @@
     <title>OpenAI: Less Like the Next Google, More Like the Next WeWork - Horse Energy</title>
     <meta name="description" content="A data-driven analysis of OpenAI's $157B valuation, $8.5B burn rate, governance chaos, and product proliferation - examining whether the company resembles Google's trajectory or WeWork's cautionary tale.">
     <style>
-        * {
+        .back-to-blog {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .back-to-blog:hover {
+            transform: scale(1.05);
+        }
+
+        :root {
+            --bg: #f9fafb;
+            --fg: #1f2937;
+            --muted: #6b7280;
+            --card: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: Georgia, 'Times New Roman', serif;
-            line-height: 1.8;
-            color: #2c3e50;
-            background-color: #fafafa;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            color: var(--fg);
+            padding: 2rem 1rem;
+            max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
-            padding: 60px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #3498db;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
         }
 
         h1 {
-            font-size: 42px;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-            font-weight: normal;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: var(--fg);
         }
 
         .subtitle {
-            font-size: 22px;
-            color: #555;
-            margin-bottom: 10px;
-            font-style: italic;
-            line-height: 1.5;
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .meta {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            text-align: center;
+            background: #fef3c7;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
         }
 
         h2 {
-            font-size: 32px;
-            margin-top: 50px;
-            margin-bottom: 25px;
-            color: #2c3e50;
-            font-weight: normal;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--fg);
         }
 
         h3 {
-            font-size: 24px;
-            margin-top: 35px;
-            margin-bottom: 20px;
-            color: #34495e;
-            font-weight: normal;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--fg);
         }
 
         p {
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 1rem;
         }
 
         .key-stat {
-            background-color: #f8f9fa;
-            border-left: 4px solid #3498db;
-            padding: 20px;
-            margin: 30px 0;
-            font-size: 18px;
+            background: #f3f4f6;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
         }
 
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 30px 0;
-            font-size: 16px;
+            margin: 2rem 0;
         }
 
         .comparison-table th,
         .comparison-table td {
-            padding: 12px;
+            padding: 0.75rem;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .comparison-table th {
-            background-color: #f8f9fa;
-            font-weight: bold;
+            background-color: #f9fafb;
+            font-weight: 600;
         }
 
         .comparison-table tr:hover {
-            background-color: #f8f9fa;
-        }
-
-        .citation {
-            font-size: 16px;
-            color: #666;
-            font-style: italic;
+            background-color: #f9fafb;
         }
 
         blockquote {
-            border-left: 4px solid #e0e0e0;
-            padding-left: 20px;
-            margin: 25px 0;
+            border-left: 4px solid #d1d5db;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
             font-style: italic;
-            color: #555;
+            color: var(--muted);
         }
 
         ul, ol {
-            margin-bottom: 20px;
-            padding-left: 40px;
-            font-size: 18px;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
 
         .chart-container {
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 4px;
+            background: var(--card);
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px var(--shadow);
+            padding: 1.5rem;
+            margin: 2rem 0;
         }
 
         .chart-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
             text-align: center;
+            color: var(--fg);
         }
 
         footer {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-            font-size: 14px;
-            color: #888;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+            color: var(--muted);
             text-align: center;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
+            body {
+                padding: 1rem;
             }
 
             h1 {
-                font-size: 32px;
+                font-size: 1.8rem;
             }
 
             h2 {
-                font-size: 26px;
+                font-size: 1.25rem;
             }
 
             h3 {
-                font-size: 20px;
-            }
-
-            p, ul, ol {
-                font-size: 16px;
+                font-size: 1.1rem;
             }
         }
     </style>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-link">← Back to Horse Energy</a>
 
-        <h1>OpenAI: Less Like the Next Google, More Like the Next WeWork</h1>
-        <p class="subtitle">With the product confusion of Snapchat thrown in for good measure</p>
-        <div class="meta">October 21, 2025 | Data Analysis</div>
+<a href="index.html" class="back-to-blog">← Back to Horse Energy</a>
+
+<h1>OpenAI: Less Like the Next Google, More Like the Next WeWork</h1>
+<p class="subtitle">With the product confusion of Snapchat thrown in for good measure</p>
+<p class="meta">October 21, 2025 | Data Analysis</p>
 
         <p>Try to explain OpenAI's product lineup to a casual tech user. Go ahead, I'll wait.</p>
 
@@ -752,12 +743,11 @@
             <div id="timelineChart"></div>
         </div>
 
-        <footer>
-            <p><strong>Horse Energy</strong> | Data-Driven Analysis</p>
-            <p>All data sourced from public filings, regulatory documents, and verified reporting from Financial Times, The Information, Bloomberg, and other cited sources. Estimates clearly labeled as such.</p>
-            <p><a href="index.html">Back to Horse Energy</a></p>
-        </footer>
-    </div>
+<footer>
+    <p><strong>Horse Energy</strong> | Data-Driven Analysis</p>
+    <p>All data sourced from public filings, regulatory documents, and verified reporting from Financial Times, The Information, Bloomberg, and other cited sources. Estimates clearly labeled as such.</p>
+    <p><a href="index.html" style="color: #3b82f6; text-decoration: none;">Back to Horse Energy</a></p>
+</footer>
 
     <script>
         // Chart 1: Financial Trajectory
