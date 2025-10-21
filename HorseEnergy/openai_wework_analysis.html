@@ -477,9 +477,10 @@
         <p>This wasn't strategic pricing to gain market share; it was defensive pricing to maintain market share against competitors:</p>
 
         <ul>
-            <li><strong>Anthropic's Claude:</strong> Launched Claude 3 in March 2024 with comparable performance to GPT-4 at significantly lower pricing ($3/$15 for Claude 3 Sonnet)</li>
-            <li><strong>Google's Gemini:</strong> Offered Gemini 1.5 Pro at $3.50/$10.50, undercutting OpenAI</li>
-            <li><strong>Meta's Llama:</strong> Released Llama 3 as open-source in April 2024, meaning organizations can run it on their own infrastructure for essentially zero marginal cost beyond compute</li>
+            <li><strong>Anthropic's Claude:</strong> Claude Opus 4.1 (August 2025) achieves 74.5% on SWE-bench Verified coding tasks, nearly matching GPT-5's 74.9%, with superior writing quality and 1M+ token context window</li>
+            <li><strong>Google's Gemini:</strong> Gemini 2.5 Pro (March 2025) offers 1M token context windows and 86.7% on AIME math benchmarks, undercutting OpenAI on pricing</li>
+            <li><strong>Meta's Llama:</strong> Llama 4 continues as open-source, meaning organizations can run competitive models on their own infrastructure for essentially zero marginal cost beyond compute</li>
+            <li><strong>xAI's Grok:</strong> Grok 4 (July 2025) achieves 93% on AIME and 98% on HumanEval coding benchmarks</li>
         </ul>
 
         <p>For OpenAI, this pricing pressure creates a vicious cycle: lower prices mean lower revenue per API call, which means needing more volume to hit revenue targets, which means more compute costs, which means worse margins, which means more pressure to cut prices further.</p>
@@ -492,16 +493,16 @@
 
         <p>Every tech platform business fears commodification: when competitors offer equivalent products at lower prices, eroding margins and differentiation. OpenAI is experiencing this in real-time.</p>
 
-        <p>GPT-4's initial advantage was significant—noticeably better than GPT-3.5 on complex reasoning tasks. But as of late 2024:</p>
+        <p>GPT-4's initial advantage was significant—noticeably better than GPT-3.5 on complex reasoning tasks. But by October 2025, the competitive landscape has fundamentally shifted:</p>
 
         <ul>
-            <li>Claude 3 Opus matches or exceeds GPT-4 on many benchmarks</li>
-            <li>Gemini 1.5 Pro offers comparable performance with 1M+ token context windows</li>
-            <li>Llama 3 70B performs within 10-15% of GPT-4 on most tasks while being open-source</li>
-            <li>Google's Gemini 2.0 (announced December 2024) claims to match GPT-4o</li>
+            <li><strong>GPT-5 vs Claude Opus 4.1:</strong> GPT-5 leads marginally on math (94.6% vs ~87% AIME) but Claude Opus 4.1 nearly matches on coding (74.5% vs 74.9% SWE-bench) and is widely preferred for writing quality</li>
+            <li><strong>Gemini 2.5 Pro:</strong> Offers 1M token context (vs GPT-5's 400K), 86.7% on AIME math, and competitive performance at lower pricing</li>
+            <li><strong>Grok 4:</strong> Achieves 93% on AIME and 98% on HumanEval coding, demonstrating that even newer entrants can reach near-parity</li>
+            <li><strong>Open-source alternatives:</strong> Llama 4 and other open models continue narrowing the gap while offering zero marginal cost beyond inference</li>
         </ul>
 
-        <p>The moat isn't disappearing—OpenAI still has advantages in model quality, API reliability, and ecosystem maturity. But it's narrowing faster than anyone expected 18 months ago.</p>
+        <p>The moat has effectively disappeared. GPT-5's August 2025 release delivered measurable improvements but received mixed user reception, and competitors matched or exceeded its capabilities within weeks on specific benchmarks. OpenAI retains advantages in API reliability and ecosystem maturity, but the technical differentiation that justified premium pricing has evaporated.</p>
 
         <p>This is particularly problematic for OpenAI's valuation, which assumes sustained pricing power and margin expansion. If LLMs commodify into low-margin infrastructure (like cloud storage or compute), the $157 billion valuation becomes indefensible.</p>
 
@@ -516,7 +517,7 @@
         <ul>
             <li><strong>API standardization:</strong> Most LLM providers use similar REST API structures. Switching from OpenAI to Anthropic often requires changing a few lines of code (endpoint URL, API key, maybe parameter names). There's no equivalent to AWS's proprietary services like Lambda, DynamoDB, or SageMaker that lock you into the ecosystem.</li>
             <li><strong>No infrastructure migration:</strong> You're not moving terabytes of data or reconfiguring networks. You're changing which API you call. A competent engineering team can build abstraction layers that make provider-switching nearly trivial.</li>
-            <li><strong>Model interchangeability:</strong> For most use cases, GPT-4, Claude 3 Opus, and Gemini Pro are functionally equivalent. Unlike cloud services where AWS's Lambda differs fundamentally from Google Cloud Functions, LLMs are commoditized interfaces to natural language understanding. Prompt engineering transfers across models with minor adjustments.</li>
+            <li><strong>Model interchangeability:</strong> For most use cases, GPT-5, Claude Opus 4.1, Gemini 2.5 Pro, and Grok 4 are functionally equivalent. Unlike cloud services where AWS's Lambda differs fundamentally from Google Cloud Functions, LLMs are commoditized interfaces to natural language understanding. Prompt engineering transfers across models with minor adjustments.</li>
             <li><strong>No long-term contracts (yet):</strong> Most API usage is pay-as-you-go. Enterprise agreements exist, but they're typically annual, not multi-year commitments with heavy cancellation penalties like cloud contracts.</li>
         </ul>
 
