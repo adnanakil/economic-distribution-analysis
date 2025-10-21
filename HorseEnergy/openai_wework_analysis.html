@@ -499,6 +499,33 @@
 
         <p>This is particularly problematic for OpenAI's valuation, which assumes sustained pricing power and margin expansion. If LLMs commodify into low-margin infrastructure (like cloud storage or compute), the $157 billion valuation becomes indefensible.</p>
 
+        <h3>The Switching Cost Illusion</h3>
+
+        <p>Tech defenders often point to switching costs as a protective moat. In theory, once enterprise customers integrate OpenAI's APIs into their infrastructure, the costs of switching to competitors—rewriting code, retraining employees, migrating data—create stickiness that justifies premium pricing.</p>
+
+        <p>This argument works for cloud providers. Migrating from AWS to Google Cloud or Azure is genuinely painful: you're moving compute instances, databases, storage buckets, networking configurations, identity management systems, and potentially thousands of internal tools that assume AWS-specific services. The switching costs are measured in millions of dollars and months of engineering time. This creates the vendor lock-in that allows AWS to maintain 30%+ operating margins despite competition.</p>
+
+        <p>But LLM switching costs are fundamentally different—and much lower:</p>
+
+        <ul>
+            <li><strong>API standardization:</strong> Most LLM providers use similar REST API structures. Switching from OpenAI to Anthropic often requires changing a few lines of code (endpoint URL, API key, maybe parameter names). There's no equivalent to AWS's proprietary services like Lambda, DynamoDB, or SageMaker that lock you into the ecosystem.</li>
+            <li><strong>No infrastructure migration:</strong> You're not moving terabytes of data or reconfiguring networks. You're changing which API you call. A competent engineering team can build abstraction layers that make provider-switching nearly trivial.</li>
+            <li><strong>Model interchangeability:</strong> For most use cases, GPT-4, Claude 3 Opus, and Gemini Pro are functionally equivalent. Unlike cloud services where AWS's Lambda differs fundamentally from Google Cloud Functions, LLMs are commoditized interfaces to natural language understanding. Prompt engineering transfers across models with minor adjustments.</li>
+            <li><strong>No long-term contracts (yet):</strong> Most API usage is pay-as-you-go. Enterprise agreements exist, but they're typically annual, not multi-year commitments with heavy cancellation penalties like cloud contracts.</li>
+        </ul>
+
+        <p>OpenAI's enterprise business is also relatively immature. The company doesn't disclose exact numbers, but industry estimates suggest enterprise revenue accounts for 10-20% of total revenue—meaning the vast majority comes from API developers and consumer subscriptions, both of which have minimal switching costs.</p>
+
+        <p>Compare this to Salesforce (85% of revenue from multi-year enterprise contracts with high switching costs due to deep CRM integration), or Oracle databases (switching costs so high that customers pay maintenance fees they despise rather than migrate), or even Microsoft Office (institutional inertia and file format lock-in create massive friction).</p>
+
+        <p>OpenAI's position is closer to Dropbox in 2015: useful, popular, but facing commodification from Google Drive, Microsoft OneDrive, and Box, all offering similar functionality at similar or lower prices. Dropbox's stock price has languished because switching costs weren't high enough to prevent customer churn when competitors offered equivalent products cheaper.</p>
+
+        <div class="key-stat">
+            <strong>The stickiness problem:</strong> Without high switching costs or a large enterprise base, OpenAI is exceptionally vulnerable to competitor price cuts. If Anthropic drops Claude pricing by 30%, developers can switch in a weekend. If Google bundles Gemini into Workspace for free, enterprises can migrate in a quarter. The company's $157B valuation assumes it can maintain pricing power, but the structural conditions for that power don't exist.
+        </div>
+
+        <p>This is why the API pricing collapse (83% in 14 months) is so concerning—it's not a strategic choice, it's what happens when you lack a moat and competitors force your hand. And it's why OpenAI's burn rate matters: the company is spending billions to acquire customers who could leave for a 20% discount.</p>
+
         <h3>The Consumer Subscription Question</h3>
 
         <p>ChatGPT Plus reportedly has over 10 million subscribers at $20/month, generating approximately $2.4 billion in annualized revenue. This is OpenAI's most defensible revenue stream—consumer subscriptions have lower churn than API usage and more pricing power than commodity APIs.</p>
