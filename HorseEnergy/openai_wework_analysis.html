@@ -466,27 +466,27 @@
 
         <h2>IV. The Revenue Mirage: When Growth Hides Deterioration</h2>
 
-        <p>OpenAI's revenue growth looks impressive on the surface: from approximately $1.6 billion annualized in late 2023 to $13 billion in 2025, representing more than 8x growth in 18 months. But underneath that headline number, several concerning trends are emerging.</p>
+        <p>OpenAI's revenue growth looks impressive on the surface: from approximately $1.6 billion annualized in late 2023 to $13 billion in 2025,<sup>[3][11]</sup> representing more than 8x growth in 18 months. But underneath that headline number, several concerning trends are emerging.</p>
 
         <h3>The API Pricing Collapse</h3>
 
-        <p>API revenue is OpenAI's largest business segment, accounting for an estimated 60-70% of total revenue. But API pricing has collapsed under competitive pressure.</p>
+        <p>API revenue is OpenAI's largest business segment, with consumer subscriptions (ChatGPT) accounting for 70% of the $13 billion total, suggesting API and enterprise combined represent approximately 30% or roughly $4 billion.<sup>[11]</sup> But API pricing has collapsed under competitive pressure.</p>
 
-        <p>GPT-4's initial pricing in March 2023 was $30 per million input tokens and $60 per million output tokens. By May 2024, GPT-4o launched at $5/$15—an 83% reduction in just 14 months. GPT-4 Turbo pricing dropped from $10/$30 to match GPT-4o's levels.</p>
+        <p>GPT-4's initial pricing in March 2023 was $30 per million input tokens and $60 per million output tokens.<sup>[12]</sup> By May 2024, GPT-4o launched at $5/$15—an 83% reduction in just 14 months.<sup>[13]</sup> GPT-4 Turbo pricing dropped from $10/$30 to match GPT-4o's levels.</p>
 
         <p>This wasn't strategic pricing to gain market share; it was defensive pricing to maintain market share against competitors:</p>
 
         <ul>
-            <li><strong>Anthropic's Claude:</strong> Claude Opus 4.1 (August 2025) achieves 74.5% on SWE-bench Verified coding tasks, nearly matching GPT-5's 74.9%, with superior writing quality and 1M+ token context window</li>
-            <li><strong>Google's Gemini:</strong> Gemini 2.5 Pro (March 2025) offers 1M token context windows and 86.7% on AIME math benchmarks, undercutting OpenAI on pricing</li>
+            <li><strong>Anthropic's Claude:</strong> Claude Opus 4.1 (August 2025) achieves 74.5% on SWE-bench Verified coding tasks,<sup>[14]</sup> nearly matching GPT-5's 74.9%, with superior writing quality and 1M+ token context window</li>
+            <li><strong>Google's Gemini:</strong> Gemini 2.5 Pro (March 2025) offers 1M token context windows and 86.7% on AIME 2025 math benchmarks,<sup>[15]</sup> undercutting OpenAI on pricing</li>
             <li><strong>Meta's Llama:</strong> Llama 4 continues as open-source, meaning organizations can run competitive models on their own infrastructure for essentially zero marginal cost beyond compute</li>
-            <li><strong>xAI's Grok:</strong> Grok 4 (July 2025) achieves 93% on AIME and 98% on HumanEval coding benchmarks</li>
+            <li><strong>xAI's Grok:</strong> Grok 4 (July 2025) achieves 93% on AIME and 98% on HumanEval coding benchmarks<sup>[16]</sup></li>
         </ul>
 
         <p>For OpenAI, this pricing pressure creates a vicious cycle: lower prices mean lower revenue per API call, which means needing more volume to hit revenue targets, which means more compute costs, which means worse margins, which means more pressure to cut prices further.</p>
 
         <div class="key-stat">
-            <strong>Margin compression evidence:</strong> Industry estimates suggest GPT-4 inference costs were initially around $0.30-0.50 per million tokens. At $30 pricing, that's 98%+ gross margins. At $5 pricing with similar costs, margins fall to 90%. But if competitors force prices to $2-3 (matching Claude/Gemini), margins become razor-thin or negative unless inference costs fall proportionally—which they haven't, according to multiple developers reporting their Azure bills.
+            <strong>Margin compression evidence:</strong> GPT-4 incurred $2.3 billion in inference costs between March 2023 and end of 2024, accounting for 49% of its total revenue—far higher than the 5% server costs typical of traditional SaaS businesses.<sup>[17]</sup> At initial $30 pricing, margins were healthy. But as prices collapsed to $5 (and as low as $3-4 in blended rates<sup>[13]</sup>), inference costs consume an unsustainably large share of revenue. If competitors force prices to $2-3, margins become razor-thin or negative.
         </div>
 
         <h3>The Commodification Risk</h3>
@@ -496,9 +496,9 @@
         <p>GPT-4's initial advantage was significant—noticeably better than GPT-3.5 on complex reasoning tasks. But by October 2025, the competitive landscape has fundamentally shifted:</p>
 
         <ul>
-            <li><strong>GPT-5 vs Claude Opus 4.1:</strong> GPT-5 leads marginally on math (94.6% vs ~87% AIME) but Claude Opus 4.1 nearly matches on coding (74.5% vs 74.9% SWE-bench) and is widely preferred for writing quality</li>
-            <li><strong>Gemini 2.5 Pro:</strong> Offers 1M token context (vs GPT-5's 400K), 86.7% on AIME math, and competitive performance at lower pricing</li>
-            <li><strong>Grok 4:</strong> Achieves 93% on AIME and 98% on HumanEval coding, demonstrating that even newer entrants can reach near-parity</li>
+            <li><strong>GPT-5 vs Claude Opus 4.1:</strong> GPT-5 leads marginally on math (94.6% AIME) but Claude Opus 4.1 nearly matches on coding (74.5% vs 74.9% SWE-bench<sup>[14]</sup>) and is widely preferred for writing quality with superior edge case consideration</li>
+            <li><strong>Gemini 2.5 Pro:</strong> Offers 1M token context (vs GPT-5's 400K), 86.7% on AIME 2025 math,<sup>[15]</sup> and competitive performance at lower pricing</li>
+            <li><strong>Grok 4:</strong> Achieves 93% on AIME and 98% on HumanEval coding,<sup>[16]</sup> demonstrating that even newer entrants can reach near-parity</li>
             <li><strong>Open-source alternatives:</strong> Llama 4 and other open models continue narrowing the gap while offering zero marginal cost beyond inference</li>
         </ul>
 
@@ -806,6 +806,12 @@
     <strong>[9]</strong> Leike, J. "Why I'm leaving OpenAI" Personal blog post (May 2024). <a href="https://www.janleike.com/posts/leaving-openai/" target="_blank" style="color: #3b82f6;">Link</a><br>
     <strong>[10]</strong> Patel, D. "GPT-4 Architecture, Datasets, Costs and More Leaked" <em>SemiAnalysis</em> (July 2023). Industry analysis of compute costs.<br>
     <strong>[11]</strong> Hammond, G. & Criddle, C. "OpenAI makes 5-year business plan to meet $1tn spending pledges" <em>Financial Times</em> (October 15, 2025). <a href="https://www.ft.com/content/a169703c-c4df-46d6-a2d3-4184c74bbaf7" target="_blank" style="color: #3b82f6;">Link</a><br>
+    <strong>[12]</strong> "OpenAI GPT-4 API Pricing" <em>Nebuly</em> (2023). Historical pricing documentation for GPT-4 launch. <a href="https://www.nebuly.com/blog/openai-gpt-4-api-pricing" target="_blank" style="color: #3b82f6;">Link</a><br>
+    <strong>[13]</strong> Ng, A. "After a recent price reduction by OpenAI, GPT-4o tokens now cost $4 per million tokens" <em>X/Twitter</em> (August 2024). Analysis of GPT-4o pricing trends. <a href="https://x.com/AndrewYNg/status/1829190549842321758" target="_blank" style="color: #3b82f6;">Link</a><br>
+    <strong>[14]</strong> "Anthropic's Claude Opus 4.1 Improves Refactoring and Safety, Scores 74.5% SWE-bench Verified" <em>InfoQ</em> (August 2025). <a href="https://www.infoq.com/news/2025/08/anthropic-claude-opus-4-1/" target="_blank" style="color: #3b82f6;">Link</a><br>
+    <strong>[15]</strong> "Gemini 2.5 Pro" <em>Google DeepMind</em> (March 2025). Official model documentation and benchmarks. <a href="https://deepmind.google/models/gemini/pro/" target="_blank" style="color: #3b82f6;">Link</a><br>
+    <strong>[16]</strong> "Grok 4 Launches With Benchmark Records and Idiosyncratic Behavior" <em>The Batch / DeepLearning.AI</em> (July 2025). <a href="https://www.deeplearning.ai/the-batch/grok-4-launches-with-benchmark-records-and-idiosyncratic-behavior/" target="_blank" style="color: #3b82f6;">Link</a><br>
+    <strong>[17]</strong> "All You Need to Know about Inference Cost" <em>Primitiva</em> (2024). Analysis of GPT-4 inference costs and margin compression. <a href="https://primitiva.substack.com/p/all-you-need-to-know-about-inference" target="_blank" style="color: #3b82f6;">Link</a><br>
 </p>
 
 <p style="font-size: 0.85rem; color: var(--muted); margin-top: 2rem;">
